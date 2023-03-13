@@ -10,9 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_120007) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_141845) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "type"
+    t.string "status"
+    t.bigint "trips_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trips_id"], name: "index_activities_on_trips_id"
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_favourites_on_activity_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_notes_on_activity_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.string "trip_name"
+    t.string "destination"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "food_preferences"
+    t.integer "activeness"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +64,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_120007) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "location"
+    t.text "bio"
+    t.string "profile_picture"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "trips", column: "trips_id"
+  add_foreign_key "favourites", "activities"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "notes", "activities"
+  add_foreign_key "notes", "users"
+  add_foreign_key "trips", "users"
 end
