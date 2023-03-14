@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first
+Activity.destroy_all
+Trip.destroy_all
 User.destroy_all
 
 puts "creating a user"
@@ -29,10 +31,28 @@ user.save
 
 puts "user has eat-preferences- #{user.eat_preference_list} and do-preferences- #{user.do_preference_list}"
 
-puts "creating a trip from user"
+puts "creating a trip for user"
 
 trip = Trip.create!(
   trip_name: 'Cape Town Adventure',
   destination: 'Cape Town',
-  
+  start_date: Date.new(2023, 4, 20),
+  end_date: Date.new(2023, 5, 20),
+  user: user
 )
+
+puts "created trip for user with id:#{trip.user.id}"
+
+puts "creating activities suggestions for the trip"
+
+activity1 = Activity.create!(
+  name: 'Plant Cafe',
+  description: 'This vegan cafe in Cape Town serves a range of delicious plant-based meals, including burgers, salads,
+   and smoothies. They also have outdoor seating that is dog-friendly, so you can bring your furry friend along while
+    you enjoy your meal.',
+  type: 0,
+  status: 0,
+  trip: trip
+)
+
+puts "created activity with the type: #{activity1.type}"
