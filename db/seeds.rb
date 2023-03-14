@@ -4,5 +4,22 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+#   Character.create(name: "Luke", movie: movies.first
+User.destroy_all
 
+puts "creating a user"
+
+user= User.create!(
+  email: 'john@example.com',
+  password: 'password123',
+  first_name: 'John',
+  last_name: 'Doe',
+  age: 30,
+  location: 'New York City',
+  bio: 'I am a software engineer with a passion for coding.',
+  profile_picture: 'https://example.com/profile-picture.jpg',
+  eat_preferences: ['Vegan-friendly', 'Pet-friendly'],
+  do_preferences: ['Hiking', 'Surfing']
+)
+
+puts "created user with email: #{user.email}"
