@@ -1,1 +1,22 @@
 <h1>hello this is new trip path</h1>
+
+
+<%= simple_form_for @trip do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :trip_name,
+                required: true,
+                autofocus: true %>
+    <%= f.input :destination,
+                required: true,
+                autofocus: true %>
+    <%= f.input :start_date,
+                required: true %>
+     <%= f.input :end_date,
+                required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create Trip" %>
+  </div>
+<% end %>
