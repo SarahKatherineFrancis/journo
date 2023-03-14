@@ -11,24 +11,20 @@ puts "creating a user"
 
 user = User.create!(
   email: 'john@example.com',
-  password: 'password123',
+  password: '123123',
   first_name: 'John',
   last_name: 'Doe',
   age: 30,
   location: 'New York City',
   bio: 'I am a software engineer with a passion for coding.',
-  profile_picture: 'https://example.com/profile-picture.jpg',
-  eat_preferences: ['Vegan-friendly', 'Pet-friendly'],
-  do_preferences: ['Hiking', 'Surfing']
+  profile_picture: 'https://example.com/profile-picture.jpg'
 )
 
-puts "created user with email: #{user.email}"
+puts "created user with email:#{user.email}"
 
-puts "creating a trip"
+puts "creating user eat and do preferences"
+user.eat_preference_list.add("Vegan-friendly", "Pet-friendly")
+user.do_preference_list.add("Hiking", "Swimming", "Coding")
+user.save
 
-trip = Trip.create!(
-  trip_name: "Cape Town Adventure",
-  destination: "Cape Town",
-  start_date: Date.new(2023, 6, 1),
-  end_date: Date.new(2023, 6, 10),
-)
+puts "user has eat-preferences- #{user.eat_preference_list} and do-preferences- #{user.do_preference_list}"
