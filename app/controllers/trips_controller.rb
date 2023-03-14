@@ -9,15 +9,19 @@ class TripsController < ApplicationController
     @trip = Trip.new
   end
 
+  def show
+    @trip = Trip.find(params[:id])
+  end
+
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    redirect_to trip_path(@trip) if @trip.save
+    redirect_to trips_path if @trip.save
   end
 
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :trip_name, :user_id)
+    params.permit(:start_date, :end_date, :trip_name, :user_id)
   end
 end
