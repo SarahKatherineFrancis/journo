@@ -9,7 +9,7 @@ User.destroy_all
 
 puts "creating a user"
 
-user= User.create!(
+user = User.create!(
   email: 'john@example.com',
   password: 'password123',
   first_name: 'John',
@@ -23,3 +23,12 @@ user= User.create!(
 )
 
 puts "created user with email: #{user.email}"
+
+puts "creating a trip"
+
+trip = Trip.create!(
+  trip_name: "Cape Town Adventure",
+  destination: "Cape Town",
+  start_date: Date.new(2023, 6, 1),
+  end_date: Date.new(2023, 6, 10),
+)
