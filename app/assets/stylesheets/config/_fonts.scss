@@ -1,10 +1,12 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Quicksand:wght@334;400&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
+$body-font: "Quicksand", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
-
+$logo-font:  'Gochi Hand', "cursive";
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
