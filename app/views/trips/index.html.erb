@@ -1,1 +1,8 @@
 <h1>hello world</h1>
+<%= current_user.email %>
+
+<ul>
+  <% @trips.each do |trip| %>
+    <li><%= trip.trip_name %></li>
+  <% end %>
+</ul>
