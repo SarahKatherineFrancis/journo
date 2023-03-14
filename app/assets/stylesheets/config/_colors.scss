@@ -2,6 +2,7 @@
 // Define variables for your color scheme
 /* Coolors Exported Palette - https://coolors.co/f5ab2d-279af1-f4ebd9-073b4c-231f20 */
 
+:root {
 /* CSS HEX */
 --hunyadi-yellow: #f5ab2dff;
 --celestial-blue: #279af1ff;
@@ -47,3 +48,4 @@ $gradient-bottom-right: linear-gradient(135deg, #f5ab2dff, #279af1ff, #f4ebd9ff,
 $gradient-top-left: linear-gradient(225deg, #f5ab2dff, #279af1ff, #f4ebd9ff, #073b4cff, #231f20ff);
 $gradient-bottom-left: linear-gradient(315deg, #f5ab2dff, #279af1ff, #f4ebd9ff, #073b4cff, #231f20ff);
 $gradient-radial: radial-gradient(#f5ab2dff, #279af1ff, #f4ebd9ff, #073b4cff, #231f20ff);
+}
