@@ -133,12 +133,12 @@ explore_activity3 = Activity.create!(
   trip: trip
 )
 
-puts "created activity with the type: #{eat_activity1.category}"
-puts "created activity with the type: #{eat_activity2.category}"
-puts "created activity with the type: #{eat_activity3.category}"
-puts "created activity with the type: #{do_activity1.category}"
-puts "created activity with the type: #{do_activity2.category}"
-puts "created activity with the type: #{do_activity3.category}"
-puts "created activity with the type: #{explore_activity1.category}"
-puts "created activity with the type: #{explore_activity2.category}"
-puts "created activity with the type: #{explore_activity3.category}"
+puts "created activity with the category: #{eat_activity1.category}"
+puts "created activity with the category: #{eat_activity2.category}"
+puts "created activity with the category: #{eat_activity3.category}"
+puts "created activity with the category: #{do_activity1.category}"
+puts "created activity with the category: #{do_activity2.category}"
+puts "created activity with the category: #{do_activity3.category}"
+puts "created activity with the category: #{explore_activity1.category}"
+puts "created activity with the category: #{explore_activity2.category}"
+puts "created activity with the category: #{explore_activity3.category}"
