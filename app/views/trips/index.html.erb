@@ -1,0 +1,8 @@
+<h1>hello this is the trip index path </h1>
+<%= current_user.email %>
+
+<ul>
+  <% @trips.each do |trip| %>
+    <li><%= trip.trip_name %></li>
+  <% end %>
+</ul>
