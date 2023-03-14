@@ -29,3 +29,10 @@ user.save
 
 puts "user has eat-preferences- #{user.eat_preference_list} and do-preferences- #{user.do_preference_list}"
 
+puts "creating a trip from user"
+
+trip = Trip.create!(
+  trip_name: 'Cape Town Adventure',
+  destination: 'Cape Town',
+  
+)
