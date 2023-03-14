@@ -1,44 +1,38 @@
 // Define variables for your color scheme
 // Define variables for your color scheme
-/* Coolors Exported Palette - https://coolors.co/f5ab2d-279af1-f4ebd9-073b4c-231f20 */
 
 :root {
-/* CSS HEX */
+
 --hunyadi-yellow: #f5ab2dff;
 --celestial-blue: #279af1ff;
 --eggshell: #f4ebd9ff;
 --midnight-green: #073b4cff;
 --raisin-black: #231f20ff;
 
-/* CSS HSL */
 --hunyadi-yellow: hsla(38, 91%, 57%, 1);
 --celestial-blue: hsla(206, 88%, 55%, 1);
 --eggshell: hsla(40, 55%, 90%, 1);
 --midnight-green: hsla(195, 83%, 16%, 1);
 --raisin-black: hsla(345, 6%, 13%, 1);
 
-/* SCSS HEX */
 $hunyadi-yellow: #f5ab2dff;
 $celestial-blue: #279af1ff;
 $eggshell: #f4ebd9ff;
 $midnight-green: #073b4cff;
 $raisin-black: #231f20ff;
 
-/* SCSS HSL */
 $hunyadi-yellow: hsla(38, 91%, 57%, 1);
 $celestial-blue: hsla(206, 88%, 55%, 1);
 $eggshell: hsla(40, 55%, 90%, 1);
 $midnight-green: hsla(195, 83%, 16%, 1);
 $raisin-black: hsla(345, 6%, 13%, 1);
 
-/* SCSS RGB */
 $hunyadi-yellow: rgba(245, 171, 45, 1);
 $celestial-blue: rgba(39, 154, 241, 1);
 $eggshell: rgba(244, 235, 217, 1);
 $midnight-green: rgba(7, 59, 76, 1);
 $raisin-black: rgba(35, 31, 32, 1);
 
-/* SCSS Gradient */
 $gradient-top: linear-gradient(0deg, #f5ab2dff, #279af1ff, #f4ebd9ff, #073b4cff, #231f20ff);
 $gradient-right: linear-gradient(90deg, #f5ab2dff, #279af1ff, #f4ebd9ff, #073b4cff, #231f20ff);
 $gradient-bottom: linear-gradient(180deg, #f5ab2dff, #279af1ff, #f4ebd9ff, #073b4cff, #231f20ff);
