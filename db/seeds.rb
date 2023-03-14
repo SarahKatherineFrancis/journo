@@ -28,3 +28,4 @@ user.do_preference_list.add("Hiking", "Swimming", "Coding")
 user.save
 
 puts "user has eat-preferences- #{user.eat_preference_list} and do-preferences- #{user.do_preference_list}"
+
