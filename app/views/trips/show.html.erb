@@ -1,18 +1,19 @@
 <h1>hello this is a trip show page</h1>
-
 <div class="trip-card-wrapper">
   <div class="trip-card-header">
-    <h3>Name:<%= @trip.trip_name %></h3>
-
+    <div class="trip-card-header-info">
+      <h3>Name: <%= @trip.trip_name %></h3>
+      <h4>Destination: <%= @trip.destination %></h4>
+      <h3 id="end-date"><%= @trip.end_date %></h3> <!-- hide this end_date -->
+    </div>
+    <div class="trip-countdown" data-controller="countdown">
+      <p>
+        <span id="days"></span>  days
+        <span id="hours"></span>  hours
+        <span id="minutes"></span>  minutes
+        <span id="seconds"></span>  seconds
+      </p>
+    </div>
   </div>
-
-
 </div>
-
-
-<h3>Destination: <%= @trip.destination %></h3>
-<h3>Start: <%= @trip.start_date %></h3>
-<h3>End: <%= @trip.end_date %></h3>
-
-
 <%= link_to "Back", trips_path %>
