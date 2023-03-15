@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ActivitiesTabsController from "./activities_tabs_controller"
+application.register("activities-tabs", ActivitiesTabsController)
+
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 

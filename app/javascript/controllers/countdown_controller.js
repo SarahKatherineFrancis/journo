@@ -9,11 +9,11 @@ export default class extends Controller {
         hour = minute * 60,
         day = hour * 24;
 
-      const endDateText = document.getElementById("end-date");
-      const endDate = new Date(endDateText.innerText);
-      const time = endDate.getTime();
+      const endDate = document.getElementById("end-date");
+      const endDateText = new Date(endDate.innerHTML);
+      const time = endDateText.getTime();
 
-      const timezoneOffset = endDate.getTimezoneOffset();
+      const timezoneOffset = endDateText.getTimezoneOffset();
 
       const dateNow = new Date().getTime(),
         difference = time + timezoneOffset * 60 * 1000 - dateNow;
