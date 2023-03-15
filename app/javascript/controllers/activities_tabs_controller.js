@@ -1,25 +1,33 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="activities-tabs"
 export default class extends Controller {
   connect() {
     // Declare all variables
-    var i, tabcontent, tablinks;
+    const eat = document.getElementById("eat");
+    const eatRecs = document.getElementById("eat-rec")
+    const doRecs = document.getElementById("do-rec")
+    const exploreRecs = document.getElementById("explore-rec")
 
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
+    eat.addEventListener("click", (event) => {
+      console.log(event);
+      eatRecs.classList.remove("hide")
+      doRecs.classList.add("hide");
+      exploreRecs.classList.add("hide");
+    });
 
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
 
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
+    const d = document.getElementById("do");
+    d.addEventListener("click", (event) => {
+      eatRecs.classList.add("hide")
+      doRecs.classList.remove("hide");
+      exploreRecs.classList.add("hide");
+    });
+
+    const explore = document.getElementById("explore");
+    explore.addEventListener("click", (event) => {
+      eatRecs.classList.add("hide")
+      doRecs.classList.add("hide");
+      exploreRecs.classList.remove("hide");
+    });
   }
 }

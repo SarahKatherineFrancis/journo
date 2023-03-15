@@ -20,5 +20,4 @@ class ActivitiesController < ApplicationController
       end
     end
   end
-
 end

@@ -1,17 +1,32 @@
-<div class="activities-tabs">
-  <button class="tablinks" onclick="openCity(event, 'Eat')">Eat</button>
-  <button class="tablinks" onclick="openCity(event, 'Do')">Do</button>
-  <button class="tablinks" onclick="openCity(event, 'Explore')">Explore</button>
+<div class="activities-tabs" data-controller="activities-tabs">
+  <button id="eat">Eat</button>
+  <button id="do">Do</button>
+  <button id="explore">Explore</button>
 </div>
-<div id="eat." class="tabcontent">
+<div id="eat-rec" class="tab-content">
   <h3>Eat</h3>
-  <%= @eat %>
+  <% @eat.each do |eat| %>
+    <div class="recommendation-card">
+      <%= eat.name %>
+      <%= eat.description %>
+    </div>
+  <% end %>
 </div>
-<div id="do." class="tabcontent">
+<div id="do-rec" class="tab-content hide">
   <h3>Do</h3>
-  <%= @do %>
+  <% @do.each do |d| %>
+    <div class="recommendation-card">
+      <%= d.name %>
+      <%= d.description %>
+    </div>
+  <% end %>
 </div>
-<div id="explore." class="tabcontent">
+<div id="explore-rec" class="tab-content hide">
   <h3>Explore</h3>
-  <%= @explore %>
-</div>
+    <% @explore.each do |explore| %>
+      <div class="recommendation-card">
+        <%= explore.name %>
+        <%= explore.description %>
+      </div>
+    <% end %>
+  </div>
