@@ -2,12 +2,8 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    // Declare all variables
     const eat = document.getElementById("eat");
     const eatRecs = document.getElementById("eat-rec")
-    const doRecs = document.getElementById("do-rec")
-    const exploreRecs = document.getElementById("explore-rec")
-
     eat.addEventListener("click", (event) => {
       console.log(event);
       eatRecs.classList.remove("hide")
@@ -15,8 +11,8 @@ export default class extends Controller {
       exploreRecs.classList.add("hide");
     });
 
-
     const d = document.getElementById("do");
+    const doRecs = document.getElementById("do-rec")
     d.addEventListener("click", (event) => {
       eatRecs.classList.add("hide")
       doRecs.classList.remove("hide");
@@ -24,6 +20,7 @@ export default class extends Controller {
     });
 
     const explore = document.getElementById("explore");
+    const exploreRecs = document.getElementById("explore-rec")
     explore.addEventListener("click", (event) => {
       eatRecs.classList.add("hide")
       doRecs.classList.add("hide");
