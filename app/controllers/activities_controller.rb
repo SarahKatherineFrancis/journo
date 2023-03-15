@@ -1,23 +1,25 @@
 class ActivitiesController < ApplicationController
   def index
-    sorted_activities
+    @trip = Trip.find(params[:trip_id])
+    @eat = @trip.activities.where(category: :eat, status: :pending)
+    @explore = @trip.activities.where(category: :explore, status: :pending)
+    @do = @trip.activities.where(category: :do, status: :pending)
+    @selected_activities = selected_activities
   end
 
-  def sorted_activities
-    @activities = Activity.all
-    @eat = []
-    @do = []
-    @explore = []
+  def selected_activities
+    @trip = Trip.find(params[:trip_id])
+    @selected_activities = @trip.activities.where(status: :added)
+  end
 
-    @activities.each do |activity|
-      case activity.category
-      when "eat"
-        @eat << activity
-      when "do"
-        @do << activity
-      when "explore"
-        @explore << activity
-      end
-    end
+  def update
+    @trip = Trip.find(params[:trip_id])
+    @activity = Activity.find(params[:activity_id])
+  end
+
+  private
+
+  def activity_params
+    params.require(:activity).permit(:status)
   end
 end

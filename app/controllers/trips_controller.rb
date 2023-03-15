@@ -10,12 +10,13 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @activities = Activity.all
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    redirect_to trips_path if @trip.save
+    redirect_to trip_activities_path if @trip.save
   end
 
   private

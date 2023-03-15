@@ -1,3 +1,4 @@
+<h1>this is the activities index page</h1>
 <div class="activities-tabs" data-controller="activities-tabs">
   <button id="eat">Eat</button>
   <button id="do">Do</button>
@@ -8,6 +9,10 @@
     <div class="recommendation-card">
       <%= eat.name %>
       <%= eat.description %>
+     <%= simple_form_for eat do |f|  %>
+        <%= f.input :status, default: 2 %>
+        <%= f.submit "Add to Trip" %>
+      <% end %>
     </div>
   <% end %>
 </div>
@@ -20,10 +25,25 @@
   <% end %>
 </div>
 <div id="explore-rec" class="tab-content hide">
-    <% @explore.each do |explore| %>
-      <div class="recommendation-card">
-        <%= explore.name %>
-        <%= explore.description %>
-      </div>
-    <% end %>
-  </div>
+  <% @explore.each do |explore| %>
+    <div class="recommendation-card">
+      <%= explore.name %>
+      <%= explore.description %>
+    </div>
+  <% end %>
+</div>
+<div class="trip-basket">
+  <h2>Trip Itinerary:</h2>
+   <% @selected_activities.each do |eat| %>
+    <div class="recommendation-card">
+      <%= eat.name %>
+      <%= eat.description %>
+     <%= simple_form_for eat do |f|  %>
+        <%= f.input :status, default: 0 %>
+        <%= f.submit "Add to Trip" %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= @selected_activities.count %>
+</div>
+<%= link_to "Go Back", user_path(current_user) %>

@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :trips, only: [:index, :new, :create, :show] do
-    resources :activities, only: [:index, :update]
+    resources :activities, only: [:index, :edit]
   end
 
-  resources :activities, only: [:index] do
+  resources :activities, only: [:update] do
     resources :notes, only: [:create]
   end
 end
