@@ -7,17 +7,36 @@ class ActivitiesController < ApplicationController
     do_preference = @user.do_preference_list
 
     client = OpenAI::Client.new
-    prompt = "I am traveling to #{destination}. Suggest a #{eat_preference} restuarants, 3 activities involving
-    #{do_preference} and 3 top things to explore with descriptions."
+    eat_prompt = "I am traveling to #{destination}. Can you suggest 3 restaurants that are #{eat_preference}? Response must be in a ruby hash with the keys name:, description:,  category: 0 and status: 0"
+    do_prompt = "I am traveling to #{destination}. Can you suggest 3 activities that involve #{do_preference}? Response
+    must include name and description"
+    explore_prompt = "I am traveling to #{destination}. Can you suggest the top 3 things to explore in the area?
+    Response must include name and description"
 
-    response = client.completions(
+    eat_response = client.completions(
       parameters: {
-        model: 'text-davinci-001',
-        prompt: prompt,
-        max_tokens: 200
+        model: 'gpt-4',
+        prompt: eat_prompt,
+        max_tokens: 600
       }
     )
 
-    @response = response["choices"][0]
+    do_response = client.completions(
+      parameters: {
+        model: 'text-davinci-001',
+        prompt: do_prompt,
+        max_tokens: 300
+      }
+    )
+
+    explore_response = client.completions(
+      parameters: {
+        model: 'text-davinci-001',
+        prompt: explore_prompt,
+        max_tokens: 300
+      }
+    )
+
+    @eat_response = eat_response["choices"][0]["text"]
   end
 end
