@@ -1,5 +1,72 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+  <div class="banner" style="background-image: url(https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)">
+    <div class="container">
+      <h1>Welcome back,<%=@user.first_name%> <%=@user.last_name%></h1>
+      <p>Planning to visit your next dream destination?</p>
+      <a class="btn-secondary" href="#">CREATE TRIP</a>
+    </div>
+  </div>
+
+  <div class="trips-container">
+    <h2>YOUR TRIPS</h2>
+    <%# <!-- The grid: three columns -->
+<div class="row">
+  <div class="column" onclick="openTab('b1');" style="background:grey;">upcoming trip</div>
+  <div class="column" onclick="openTab('b2');" style="background:white;">past trips</div>
+  <div class="column" onclick="openTab('b3');" style="background:black;">wishlist</div>
+</div>
+
+<!-- The expanding grid (hidden by default) -->
+<div id="b1" class="containerTab" style="display:none;background:green">
+  <!-- If you want the ability to close the container, add a close button -->
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Box 1</h2>
+  <p>Lorem ipsum..</p>
+</div>
+
+<div id="b2" class="containerTab" style="display:none;background:blue">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Box 2</h2>
+  <p>Lorem ipsum..</p>
+</div>
+
+<div id="b3" class="containerTab" style="display:none;background:red">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Box 3</h2>
+  <p>Lorem ipsum..</p>
+</div> %>
+    <div class="col-md-4 mb-4 trips-cards">
+      <div class="card">
+        <img src="#" alt="upcoming-trips">
+        <h3>Upcoming Trip</h3>
+        <%= link_to "Trips Index", trips_path %>
+      </div>
+
+      <div class="card">
+        <img src="#" alt="past-trips">
+        <h3>Past trips</h3>
+      </div>
+
+      <div class="card">
+        <img src="#" alt="wishlist-activities">
+        <h3>Wishlist</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="activities-container">
+    <h2>ACTIVITIES SUGGESTIONS</h2>
+    <div class="suggestion-cards">
+      <div class="map">
+        <img src="#" alt="map">
+      </div>
+
+      <div class="suggested-activities">
+        <img src="#" alt="past-trips">
+        <h3>Suggested Activities</h3>
+        <%= link_to "Activities Index", activities_path %>
+      </div>
+    </div>
+  </div>
 
 <%= link_to "Trips Index", trips_path %>
 <%= link_to "Favourites", favourites_path %>

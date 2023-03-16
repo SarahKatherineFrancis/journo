@@ -1,3 +1,47 @@
-.card{
-  justify-content: center;
+// .card{
+//   justify-content: center;
+// }
+
+// .trips-cards{
+//   font-family: "Quicksand", "sans-serif";
+//   display: flex;
+// }
+
+// .trips-container h3{
+//   font-family: "Quicksand", "sans-serif";
+
+// }
+
+// .activities-container h3{
+//   font-family: "Quicksand", "sans-serif";
+
+// }
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 50px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+}
+
+.containerTab {
+  padding: 20px;
+  color: white;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Closable button inside the image */
+.closebtn {
+  float: right;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
 }
