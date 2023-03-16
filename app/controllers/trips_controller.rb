@@ -12,12 +12,13 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @activities = @trip.activities.where(status: :pending)
     @note = Note.new
+    @activities = Activity.all
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    redirect_to trips_path if @trip.save
+    redirect_to trip_activities_path if @trip.save
   end
 
   private
