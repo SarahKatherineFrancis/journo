@@ -2,6 +2,18 @@
   border: 1px solid black;
   grid-column-start: 8;
   grid-column-end: 12;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding: 8px;
+  top: 0;
+}
+
+.trip-show-basket {
+  border: 1px solid black;
+  grid-column-start: 8;
+  grid-column-end: 12;
+  grid-row-start: 1;
+  grid-row-end: 2;
   position: sticky;
   padding: 8px;
   top: 0;
