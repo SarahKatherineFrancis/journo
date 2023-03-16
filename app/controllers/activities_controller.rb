@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
     @explore = @trip.activities.where(category: :explore, status: :pending)
     @do = @trip.activities.where(category: :do, status: :pending)
     @selected_activities = selected_activities
+
   end
 
   def selected_activities
@@ -12,14 +13,18 @@ class ActivitiesController < ApplicationController
     @selected_activities = @trip.activities.where(status: :added)
   end
 
-  def update
+  def added
     @trip = Trip.find(params[:trip_id])
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.find(params[:id])
+    @activity.added!
+    redirect_to trip_activities_path(@trip)
   end
 
-  private
-
-  def activity_params
-    params.require(:activity).permit(:status)
+  def favourite
+    @trip = Trip.find(params[:trip_id])
+    @activity = Activity.find(params[:id])
+    @activity.favourite!
+    redirect_to trip_activities_path(@trip)
   end
+
 end

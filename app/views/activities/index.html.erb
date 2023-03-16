@@ -9,9 +9,11 @@
     <div class="recommendation-card">
       <%= eat.name %>
       <%= eat.description %>
-     <%= simple_form_for eat do |f|  %>
-        <%= f.input :status, default: 2 %>
-        <%= f.submit "Add to Trip" %>
+      <%= simple_form_for [@trip, eat], url: add_activity_to_trip_path(@trip, eat), method: :post do |f| %>
+        <%= f.submit 'Add to Trip' %>
+      <% end %>
+         <%= simple_form_for [@trip, eat], url: add_activity_to_favourites_path(@trip, eat), method: :post do |f| %>
+        <%= f.submit 'Add to Favs' %>
       <% end %>
     </div>
   <% end %>
@@ -21,6 +23,13 @@
     <div class="recommendation-card">
       <%= d.name %>
       <%= d.description %>
+      <%= simple_form_for [@trip, d], url: add_activity_to_trip_path(@trip, d), method: :post do |f| %>
+        <%= f.submit 'Add to Trip' %>
+      <% end %>
+       <%= simple_form_for [@trip, d], url: add_activity_to_favourites_path(@trip, d), method: :post do |f| %>
+        <%= f.submit 'Add to Favs' %>
+      <% end %>
+
     </div>
   <% end %>
 </div>
@@ -29,21 +38,21 @@
     <div class="recommendation-card">
       <%= explore.name %>
       <%= explore.description %>
+       <%= simple_form_for [@trip, explore], url: add_activity_to_trip_path(@trip, explore), method: :post do |f| %>
+        <%= f.submit 'Add to Trip' %>
+      <% end %>
+         <%= simple_form_for [@trip, explore], url: add_activity_to_favourites_path(@trip, explore), method: :post do |f| %>
+        <%= f.submit 'Add to Favs' %>
+      <% end %>
     </div>
   <% end %>
 </div>
 <div class="trip-basket">
   <h2>Trip Itinerary:</h2>
-   <% @selected_activities.each do |eat| %>
+  <% @selected_activities.each do |activity| %>
     <div class="recommendation-card">
-      <%= eat.name %>
-      <%= eat.description %>
-     <%= simple_form_for eat do |f|  %>
-        <%= f.input :status, default: 0 %>
-        <%= f.submit "Add to Trip" %>
-      <% end %>
+      <h5><%= activity.name %> <%= activity.category %></h5>
     </div>
   <% end %>
-  <%= @selected_activities.count %>
 </div>
 <%= link_to "Go Back", user_path(current_user) %>
