@@ -10,6 +10,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @activities = @trip.activities.where(status: :pending)
+    @note = Note.new
     @activities = Activity.all
   end
 
