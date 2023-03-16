@@ -1,0 +1,19 @@
+.recommendation-card {
+  display: flex;
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.recommendation-card-info {
+  width: 60%;
+  padding: 8px;
+}
+
+.activity-description {
+  display: none
+}
+
+.trip-basket {
+  position: sticky;
+  top:0;
+}

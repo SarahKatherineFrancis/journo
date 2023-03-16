@@ -1,11 +1,20 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  }
+
 .tab-content {
   padding: 8px;
+  margin: auto;
 }
 
 .hide {
   display: none;
 }
 
-.recommendation-card {
-  padding: 8px;
+.activities-tabs {
+  text-align: center;
 }

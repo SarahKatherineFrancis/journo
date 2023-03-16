@@ -5,7 +5,6 @@ export default class extends Controller {
     const eat = document.getElementById("eat");
     const eatRecs = document.getElementById("eat-rec")
     eat.addEventListener("click", (event) => {
-      console.log(event);
       eatRecs.classList.remove("hide")
       doRecs.classList.add("hide");
       exploreRecs.classList.add("hide");
