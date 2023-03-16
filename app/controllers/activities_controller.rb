@@ -1,6 +1,10 @@
 class ActivitiesController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
+    @eat = @trip.activities.where(category: :eat, status: :pending)
+    @explore = @trip.activities.where(category: :explore, status: :pending)
+    @do = @trip.activities.where(category: :do, status: :pending)
+    @selected_activities = selected_activities
     destination = @trip.destination
     @user = current_user
     eat_preference = @user.eat_preference_list
@@ -47,5 +51,25 @@ class ActivitiesController < ApplicationController
 
     explore_infos = JSON.parse(explore_response.dig('choices', 0, 'text'))
     explore_infos.map { |info| Activity.create(name: info['name'], description: info['description'], category: 2, trip: @trip) }
+
+  end
+
+  def selected_activities
+    @trip = Trip.find(params[:trip_id])
+    @selected_activities = @trip.activities.where(status: :added)
+  end
+
+  def added
+    @trip = Trip.find(params[:trip_id])
+    @activity = Activity.find(params[:id])
+    @activity.added!
+    redirect_to trip_activities_path(@trip)
+  end
+
+  def favourite
+    @trip = Trip.find(params[:trip_id])
+    @activity = Activity.find(params[:id])
+    @activity.favourite!
+    redirect_to trip_activities_path(@trip)
   end
 end
