@@ -6,7 +6,7 @@
         <h3>Name: <%= @trip.trip_name %></h3>
         <h4>Destination: <%= @trip.destination %></h4>
         <h3 id="end-date"><%= @trip.end_date %></h3>
- <!-- hide this end_date -->
+        <!-- hide this end_date -->
       </div>
       <div class="trip-countdown" data-controller="countdown">
         <p>
@@ -18,11 +18,15 @@
       </div>
     </div>
     <%= link_to "Back", trips_path %>
-
-    <%@activities.each do |activity|%>
-      <%=activity.name%>
-      <%= simple_form_for [activity, @note] do |f| %>
-      <%= f.input :comment %>
-      <%= f.button :submit %>
-      <% end %>
-    <%end%>
+    <div>
+      <%@activities.each do |activity|%>
+        <h2><%=activity.name%></h2>
+        <% activity.notes.each do |note| %>
+          <p><%=note.comment%></p>
+        <% end %>
+        <%= simple_form_for [activity, @note] do |f| %>
+          <%= f.input :comment %>
+          <%= f.button :submit %>
+        <%end%>
+      <%end%>
+    </div>
