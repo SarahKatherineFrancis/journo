@@ -7,6 +7,9 @@ import { application } from "./application"
 import ActivitiesTabsController from "./activities_tabs_controller"
 application.register("activities-tabs", ActivitiesTabsController)
 
+import ActivityDropdownController from "./activity_dropdown_controller"
+application.register("activity-dropdown", ActivityDropdownController)
+
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 
