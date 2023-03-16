@@ -19,7 +19,10 @@
     </div>
     <%= link_to "Back", trips_path %>
 
-    <%= simple_form_for [@activities, @note] do |f| %>
-    <%= f.input :comment %>
-    <%= f.button :submit %> 
-    <% end %>
+    <%@activities.each do |activity|%>
+      <%=activity.name%>
+      <%= simple_form_for [activity, @note] do |f| %>
+      <%= f.input :comment %>
+      <%= f.button :submit %>
+      <% end %>
+    <%end%>
