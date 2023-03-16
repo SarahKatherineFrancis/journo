@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
 
   validates :trip_name, :destination, :start_date, :end_date, presence: true
 
-  after_commit :generate_activities, :only [:create]
+  after_commit :generate_activities, on: :create
 
   def generate_activities
     generate_eat_activities
@@ -13,11 +13,10 @@ class Trip < ApplicationRecord
   end
 
   def generate_eat_activities
-    destination = @trip.destination
-    @user = current_user
-    eat_preference = @user.eat_preference_list
+    destination = self.destination
+    eat_preference = user.eat_preference_list
 
-    eat_prompt = "Can you give me a name of a restuarant that is #{eat_preference} in #{destination}?"
+    eat_prompt = "Can you give me a name of a restuarant that is #{eat_preference} in #{destination}? Just one and just the name!"
 
     client = OpenAI::Client.new
 
@@ -31,7 +30,7 @@ class Trip < ApplicationRecord
 
     eat_name = response.dig("choices", 0, "message", "content")
 
-    eat_description_prompt = "Can you give me a short description of the place?"
+    eat_description_prompt = "Can you give me a 30 word description of the place? Just the description!"
 
     response = client.chat(
       parameters: {
@@ -47,11 +46,10 @@ class Trip < ApplicationRecord
   end
 
   def generate_do_activities
-    destination = @trip.destination
-    @user = current_user
-    do_preference = @user.do_preference_list
+    destination = self.destination
+    do_preference = user.do_preference_list
 
-    do_prompt = "Can you give me a name of an that is #{do_preference} in #{destination}?"
+    do_prompt = "Can you give me a name of an activity that is #{do_preference} in #{destination}? Just one and just the name!"
 
     client = OpenAI::Client.new
 
@@ -65,7 +63,7 @@ class Trip < ApplicationRecord
 
     do_name = response.dig("choices", 0, "message", "content")
 
-    do_description_prompt = "Can you give me a short description of the place?"
+    do_description_prompt = "Can you give me a 30 word description of the place? Just the description!"
 
     response = client.chat(
       parameters: {
@@ -81,9 +79,9 @@ class Trip < ApplicationRecord
   end
 
   def generate_explore_activities
-    destination = @trip.destination
+    destination = self.destination
 
-    explore_prompt = "Can you give me a name of the top 3 things to do in #{destination}?"
+    explore_prompt = "Can you give me a name of the top thing to do in #{destination}? Just one and just the name!"
 
     client = OpenAI::Client.new
 
@@ -97,7 +95,7 @@ class Trip < ApplicationRecord
 
     explore_name = response.dig("choices", 0, "message", "content")
 
-    explore_description_prompt = "Can you give me a short description of the place?"
+    explore_description_prompt = "Can you give me a 30 word description of the place? Just the description!"
 
     response = client.chat(
       parameters: {
