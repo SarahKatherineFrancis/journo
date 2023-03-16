@@ -29,7 +29,6 @@ class ActivitiesController < ApplicationController
       @activity.favourite!
       redirect_to trip_activities_path(@trip)
     end
-
   end
   #   client = OpenAI::Client.new
   #   eat_prompt = "Can you suggest 3 restaurants that are #{eat_preference} in #{destination}?
