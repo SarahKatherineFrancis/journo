@@ -10,7 +10,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @activities = Activity.all
+    @activities = @trip.activities.where(status: :added)
   end
 
   def create
