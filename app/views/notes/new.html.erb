@@ -1,0 +1,7 @@
+<h1>Create a note</h1>
+<%= simple_form_for [@note, @activity] do |f| %>
+  <%= f.input :comment %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to "Go Back", user_path, class:"btn btn-secondary" %>
