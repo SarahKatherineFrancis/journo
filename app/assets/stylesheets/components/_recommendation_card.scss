@@ -13,22 +13,21 @@
   display: none
 }
 
-.trip-basket {
-  grid-column-start: 8;
-  grid-column-end: 12;
-  position: sticky;
-  top: 0;
-}
-
 .recommendations {
   grid-column-start: 2;
   grid-column-end: 8;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.recommendation-button {
+  padding: 20px 30px;
 }
 
 .drop:hover {
   cursor: pointer;
 }
 
-.recommendation-button {
-  padding: 20px 30px;
+.activities-tabs {
+  padding: 8px; 
 }
