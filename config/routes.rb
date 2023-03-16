@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :update]
   end
 
+  resources :favourites, only: [:index]
+
   resources :activities, only: [] do
     resources :notes, only: [:create]
   end

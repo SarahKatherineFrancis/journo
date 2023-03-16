@@ -7,22 +7,23 @@ class ActivitiesController < ApplicationController
     @selected_activities = selected_activities
   end
 
-  def selected_activities
-    @trip = Trip.find(params[:trip_id])
-    @selected_activities = @trip.activities.where(status: :added)
-  end
+    def selected_activities
+      @trip = Trip.find(params[:trip_id])
+      @selected_activities = @trip.activities.where(status: :added)
+    end
 
-  def added
-    @trip = Trip.find(params[:trip_id])
-    @activity = Activity.find(params[:id])
-    @activity.added!
-    redirect_to trip_activities_path(@trip)
-  end
+    def added
+      @trip = Trip.find(params[:trip_id])
+      @activity = Activity.find(params[:id])
+      @activity.added!
+      redirect_to trip_activities_path(@trip)
+    end
 
-  def favourite
-    @trip = Trip.find(params[:trip_id])
-    @activity = Activity.find(params[:id])
-    @activity.favourite!
-    redirect_to trip_activities_path(@trip)
-  end
+    def favourite
+      @trip = Trip.find(params[:trip_id])
+      @activity = Activity.find(params[:id])
+      @activity.favourite!
+      redirect_to trip_activities_path(@trip)
+    end
 end
+

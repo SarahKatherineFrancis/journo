@@ -1,0 +1,9 @@
+<h1>favs index page</h1>
+
+<% @favourites.each do |f| %>
+  <%= f.name %>
+  <% @trip = f.trip %>
+  <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
+    <%= f.submit 'Add to Trip' %>
+  <% end %>
+<% end %>
