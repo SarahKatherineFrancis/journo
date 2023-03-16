@@ -5,7 +5,7 @@
 }
 
 .recommendation-card-info {
-  width: 60%;
+  width: 70%;
   padding: 8px;
 }
 
@@ -14,6 +14,18 @@
 }
 
 .trip-basket {
+  grid-column-start: 8;
+  grid-column-end: 12;
   position: sticky;
-  top:0;
+  top: 0;
 }
+
+.recommendations {
+  grid-column-start: 2;
+  grid-column-end: 8;
+}
+
+.drop:hover {
+  cursor: pointer;
+}
+
