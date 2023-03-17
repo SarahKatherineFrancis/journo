@@ -79,3 +79,6 @@ end
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'ruby-openai'
 gem 'bootstrap'
+
+#geocoding using mapbox
+gem "geocoder"

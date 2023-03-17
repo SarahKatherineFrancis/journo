@@ -5,6 +5,14 @@ class ActivitiesController < ApplicationController
     @explore = @trip.activities.where(category: :explore, status: :pending)
     @do = @trip.activities.where(category: :do, status: :pending)
     @selected_activities = selected_activities
+    @activities = Activity.all
+    @markers = @activities.geocoded.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude,
+        info_window_html: render_to_string(partial: "/shared/info_window", locals: { activity: }),
+        marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
+      }
   end
 
     def selected_activities
@@ -26,4 +34,3 @@ class ActivitiesController < ApplicationController
       redirect_to trip_activities_path(@trip)
     end
 end
-

@@ -38,19 +38,18 @@
 <br>
 <div class="activities-container">
   <div class ="row">
-    <div class="col-4">
-      <div class= "card">
-        <div class="map">
-          <img src="#" alt="map">
-        </div>
-      </div>
+    <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <div class="col-md-4 mb-4 trips-card">
-      <div class= "card">
-        <div class="suggested-activities">
-          <h3>suggested activities</h3>
-        </div>
+  </div>
+  <div class="col-md-4 mb-4 trips-card">
+    <div class= "card">
+      <div class="suggested-activities">
+        <h3>suggested activities</h3>
       </div>
     </div>
   </div>
+</div>
 </div>
