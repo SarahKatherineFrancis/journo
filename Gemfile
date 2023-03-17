@@ -79,3 +79,5 @@ end
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'ruby-openai'
 gem 'bootstrap'
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
