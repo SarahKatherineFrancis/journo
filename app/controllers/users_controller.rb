@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @trip = Trip.find(params[:id])
+    @trip = Trip.all.where(id: current_user)
   end
 end

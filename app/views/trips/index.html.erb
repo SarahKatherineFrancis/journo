@@ -1,11 +1,13 @@
-<h1>hello this is the trip index path </h1>
-<%= current_user.email %>
-
-<% @trips.each do |trip| %>
-  <div class="trip">
-    <%= trip.trip_name %>
-    <%= link_to trip.trip_name, trip_path(trip.id) %>
-  </div>
-<% end %>
-
 <%= link_to "New Trip", new_trip_path %>
+  <div class="trip-tabs" data-controller="trip-tabs">
+    <button id="upcoming" class="recommendation-button">Upcoming</button>
+    <button id="past" class="recommendation-button">Past</button>
+  </div>
+<div class="trip-index">
+  <% @trips.each do |trip| %>
+    <div class="trip-card">
+      <%= trip.name %>
+      <%= link_to trip.trip_name, trip_path(trip.id) %>
+    </div>
+  <% end %>
+</div>
