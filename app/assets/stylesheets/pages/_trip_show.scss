@@ -2,11 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: 1px solid black;
+
 }
 
 .added-recommendation {
-  border: 1px solid black;
   padding: 20px;
 }
 
@@ -16,5 +15,4 @@
   grid-row-start: 2;
   grid-row-end: 12;
   padding: 8px;
-  border: 1px solid black;
 }
