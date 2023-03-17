@@ -13,8 +13,14 @@
   <%= f.input :location %>
   <%= f.input :age %>
   <%= f.input :bio %>
-  <%= f.input :eat_preference_list %>
-  <%= f.input :do_preference_list %>
+  <div>
+    <%= f.label :eat_preferences %>
+    <%= f.select :eat_preference_list, collection: ["Budget-friendly", "Couple-friendly", "Kid-friendly", "Vegan-friendly", "Vegetarian-friendly"] %>
+  </div>
+  <div>
+    <%= f.label :do_preferences %>
+    <%= f.select :do_preference_list, collection: ["Coding", "Cultural", "Hiking", "Partying", "Swimming", "Yoga"] %>
+  </div>
   <%= f.input :photo, as: :file %>
 </div>
   <div class="form-actions">
@@ -22,4 +28,3 @@
   </div>
 <% end %>
 <%= render "devise/shared/links" %>
-</div>
