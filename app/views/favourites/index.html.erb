@@ -1,9 +1,28 @@
-<h1>favs index page</h1>
-
-<% @favourites.each do |f| %>
-  <%= f.name %>
-  <% @trip = f.trip %>
-  <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
-    <%= f.submit 'Add to Trip' %>
-  <% end %>
-<% end %>
+<div class="parent">
+  <div class="page-header">
+    <h1>Your Favourites</h1>
+  </div>
+    <div class="search-bar">
+  <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search Favourites"
+  %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+    <div class="favourites">
+      <% @favourites.each do |f| %>
+        <div class="favourite-card">
+          <%= f.name %>
+          <%= f.trip.trip_name %>
+          <% @trip = f.trip %>
+          <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
+            <%= f.submit 'Add to Trip' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "Back", user_path(current_user) %>
