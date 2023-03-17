@@ -13,6 +13,7 @@ class ActivitiesController < ApplicationController
         info_window_html: render_to_string(partial: "/shared/info_window", locals: { activity: }),
         marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
       }
+    end
   end
 
     def selected_activities
@@ -33,4 +34,4 @@ class ActivitiesController < ApplicationController
       @activity.favourite!
       redirect_to trip_activities_path(@trip)
     end
-end
+  end

@@ -23,7 +23,7 @@ class Trip < ApplicationRecord
 
     p activities
     activities.each do |info|
-      Activity.create(name: info['name'], description: info['description'], category:,
+      Activity.create(name: info['name'], description: info['description'], category:, lat:, lon:,
                       trip: self)
     end
   end
