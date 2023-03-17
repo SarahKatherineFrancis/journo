@@ -1,0 +1,15 @@
+.trip-form-header {
+  grid-column-start: 4;
+  grid-column-end: 10;
+  grid-row: 1;
+}
+
+.trip-form {
+  grid-column-start: 4;
+  grid-column-end: 10;
+  grid-row: 2, 12;
+}
+
+.form-actions {
+  text-align: center;
+}
