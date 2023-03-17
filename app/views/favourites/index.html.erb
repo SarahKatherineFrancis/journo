@@ -4,6 +4,7 @@
   <% @favourites.each do |f| %>
     <div class="favourite-card">
       <%= f.name %>
+      <%= f.trip.trip_name %>
       <% @trip = f.trip %>
       <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
         <%= f.submit 'Add to Trip' %>
@@ -12,3 +13,5 @@
   <% end %>
   </div>
 </div>
+
+ <%= link_to "Back", user_path(current_user) %>
