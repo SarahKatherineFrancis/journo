@@ -5,13 +5,13 @@ class Trip < ApplicationRecord
   validates :trip_name, :destination, :start_date, :end_date, presence: true
 
   after_commit :generate_activities, on: :create
+  @@client = OpenAI::Client.new
 
   def call_gpt(prompt, category)
-    client = OpenAI::Client.new
-   response = client.completions(
+    response = @@client.completions(
       parameters: {
         model: "text-davinci-003",
-        prompt: prompt,
+        prompt:,
         max_tokens: 500,
         temperature: 0.1
       }
@@ -23,7 +23,7 @@ class Trip < ApplicationRecord
 
     p activities
     activities.each do |info|
-      Activity.create(name: info['name'], description: info['description'], category: category,
+      Activity.create(name: info['name'], description: info['description'], category:,
                       trip: self)
     end
   end
