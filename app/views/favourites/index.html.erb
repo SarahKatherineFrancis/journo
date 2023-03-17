@@ -1,9 +1,14 @@
-<h1>favs index page</h1>
-
-<% @favourites.each do |f| %>
-  <%= f.name %>
-  <% @trip = f.trip %>
-  <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
-    <%= f.submit 'Add to Trip' %>
+<div class="parent">
+  <h1 id="page-header">Your Favourites</h1>
+  <div class="favourites">
+  <% @favourites.each do |f| %>
+    <div class="favourite-card">
+      <%= f.name %>
+      <% @trip = f.trip %>
+      <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
+        <%= f.submit 'Add to Trip' %>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+  </div>
+</div>

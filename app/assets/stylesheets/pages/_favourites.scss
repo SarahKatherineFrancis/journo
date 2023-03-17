@@ -1,0 +1,17 @@
+.favourite-card {
+  grid-row-start: 2;
+  padding: 8px;
+}
+
+#page-header {
+  grid-row: 1;
+  grid-column-start: 2;
+  grid-column-end: 12;
+}
+
+.favourites {
+  grid-row-start: 2;
+  grid-row-end: 12;
+  grid-column-start: 2;
+  grid-column-end: 12
+}
