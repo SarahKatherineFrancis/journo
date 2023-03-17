@@ -1,0 +1,34 @@
+.recommendation-card {
+  display: flex;
+  padding: 8px;
+}
+
+.recommendation-card-info {
+  width: 70%;
+  padding: 8px;
+}
+
+.activity-description {
+  display: none
+}
+
+.recommendations {
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 12;
+  padding: 8px;
+
+}
+
+.recommendation-button {
+  padding: 20px 30px;
+}
+
+.drop:hover {
+  cursor: pointer;
+}
+
+.activities-tabs {
+  padding: 8px;
+}

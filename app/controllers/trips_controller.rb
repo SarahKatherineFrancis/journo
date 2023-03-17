@@ -10,19 +10,23 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @activities = @trip.activities.where(status: :pending)
+    @activities = @trip.activities.where(status: :added)
     @note = Note.new
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    redirect_to trips_path if @trip.save
+    if @trip.save
+      redirect_to trip_activities_path(@trip)
+    else
+      render :new
+    end
   end
 
   private
 
   def trip_params
-    params.permit(:start_date, :end_date, :trip_name, :user_id)
+    params.require(:trip).permit(:start_date, :end_date, :trip_name, :destination)
   end
 end

@@ -1,32 +1,49 @@
-<h1>hello this is a trip show page</h1>
-<div class="trip-card-wrapper">
-  <div class="trip-card-wrapper">
-    <div class="trip-card-header">
-      <div class="trip-card-header-info">
-        <h3>Name: <%= @trip.trip_name %></h3>
-        <h4>Destination: <%= @trip.destination %></h4>
-        <h3 id="end-date"><%= @trip.end_date %></h3>
-        <!-- hide this end_date -->
-      </div>
-      <div class="trip-countdown" data-controller="countdown">
-        <p>
-          <span id="days"></span>  days
-          <span id="hours"></span>  hours
-          <span id="minutes"></span>  minutes
-          <span id="seconds"></span>  seconds
-        </p>
-      </div>
+<div class="trip">
+  <div class="trip-header">
+    <div class="trip-title">
+      <h3><%= @trip.trip_name %></h3>
     </div>
-    <%= link_to "Back", trips_path %>
-    <div>
-      <%@activities.each do |activity|%>
-        <h2><%=activity.name%></h2>
-        <% activity.notes.each do |note| %>
-          <p><%=note.comment%></p>
-        <% end %>
-        <%= simple_form_for [activity, @note] do |f| %>
-          <%= f.input :comment %>
-          <%= f.button :submit %>
-        <%end%>
+    <div class="trip-countdown" data-controller="countdown">
+      <p>
+        <span id="days"></span>  days
+        <span id="hours"></span>  hours
+        <span id="minutes"></span>  minutes
+        <span id="seconds"></span>  seconds
+      </p>
+    </div>
+  </div>
+  <div class="parent">
+    <div class="recommendations">
+      <% @activities.each do |activity|%>
+        <div class="added-recommendation">
+          <h2><%=activity.name%></h2>
+          <p><%=activity.description %></p>
+          <% activity.notes.each do |note| %>
+            <p><%=note.comment%></p>
+            <%= note.created_at %>
+          <% end %>
+          <%= simple_form_for [activity, @note] do |f| %>
+            <%= f.input :comment %>
+            <%= f.button :submit %>
+          <%end%>
+        </div>
       <%end%>
     </div>
+    <div class="trip-show-basket">
+    <div class="sticky">
+      <h3>Trip Details</h3>
+      <h4>Destination: <%= @trip.destination %></h4>
+      <h3>Start: </h3>
+      <h3><%= @trip.start_date %></h3>
+      <h3>End:</h3>
+      <h3 id="end-date"><%= @trip.end_date %></h3>
+      <%= link_to "Add more", trip_activities_path(@trip) %>
+      <h4>share button placeholder</h4>
+      <%= link_to "Back", trips_path %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+  </div>
+</div>
