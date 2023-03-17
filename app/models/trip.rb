@@ -8,18 +8,20 @@ class Trip < ApplicationRecord
 
   def call_gpt(prompt, category)
     client = OpenAI::Client.new
-    explore_response = client.completions(
+   response = client.completions(
       parameters: {
         model: "text-davinci-003",
         prompt: prompt,
-        max_tokens: 200,
+        max_tokens: 500,
         temperature: 0.1
       }
     )
+    p response
 
-    explore_infos = explore_response.parsed_response['choices'][0]['text']
-    activities = JSON.parse(explore_infos)
+    infos = response.parsed_response['choices'][0]['text']
+    activities = JSON.parse(infos)
 
+    p activities
     activities.each do |info|
       Activity.create(name: info['name'], description: info['description'], category: category,
                       trip: self)
@@ -31,10 +33,6 @@ class Trip < ApplicationRecord
     eat_preference = user.eat_preference_list
     do_preference = user.do_preference_list
 
-    p destination
-    p eat_preference
-    p do_preference
-
     explore_prompt = "You are a travel consultant. recommend the 3 best activities in #{destination}.
     Response must be a JSON with inside an array of activities with only the keys called name, description and lat and lon."
 
@@ -44,8 +42,8 @@ class Trip < ApplicationRecord
     do_prompt = "You are a travel consultant. 3 best activities in #{destination} that involve: #{do_preference}.
     Response must be a JSON with inside an array of activities with only the keys called name, description and lat and lon."
 
-    GenerateActivitiesJob.perform_later(self.id, eat_prompt, 0)
-    GenerateActivitiesJob.perform_later(self.id, do_prompt, 1)
-    GenerateActivitiesJob.perform_later(self.id, explore_prompt, 2)
+    GenerateActivitiesJob.perform_later(self, eat_prompt, 0)
+    GenerateActivitiesJob.perform_later(self, do_prompt, 1)
+    GenerateActivitiesJob.perform_later(self, explore_prompt, 2)
   end
 end
