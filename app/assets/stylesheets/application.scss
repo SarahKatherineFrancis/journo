@@ -21,6 +21,14 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
+h1{
+  color:#073b4cff;
+}
+
+.h3{
+  text-align: center;
+}
+
 .image-container {
   background-image: url("https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)");
   background-size: cover;
@@ -48,4 +56,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
   mix-blend-mode: screen;
+}
+
+.button{
+  background: #073b4cff;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  color: #f4ebd9ff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover {
+  background: #279af1ff;
+  color: #f4ebd9ff;
+  text-decoration: none;
 }
