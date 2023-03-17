@@ -1,4 +1,5 @@
 <div class="trip">
+  <div class="parent">
   <div class="trip-header">
     <div class="trip-title">
       <h3><%= @trip.trip_name %></h3>
@@ -12,7 +13,6 @@
       </p>
     </div>
   </div>
-  <div class="parent">
     <div class="recommendations">
       <% @activities.each do |activity|%>
         <div class="added-recommendation">

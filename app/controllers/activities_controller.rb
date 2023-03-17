@@ -26,4 +26,3 @@ class ActivitiesController < ApplicationController
       redirect_to trip_activities_path(@trip)
     end
 end
-
