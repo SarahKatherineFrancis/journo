@@ -5,8 +5,8 @@
   </div>
 <div class="trip-index">
   <% @trips.each do |trip| %>
-    <div class="recommendation-card">
-      <%= trip.trip_name %>
+    <div class="trip-card">
+      <%= trip.name %>
       <%= link_to trip.trip_name, trip_path(trip.id) %>
     </div>
   <% end %>
