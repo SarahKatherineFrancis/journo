@@ -3,8 +3,8 @@
     <h1>Your Wishlist</h1>
     <p>Adding items from your wishlist to a trip!</p>
   </div>
-    <div class="search-bar">
-  <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
+  <div class="search-bar">
+    <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
     params[:query],
     class: "form-control",
@@ -13,17 +13,17 @@
       <%= submit_tag "Search" %>
     <% end %>
   </div>
-    <div class="favourites">
-      <% @favourites.each do |f| %>
-        <div class="favourite-card">
-          <%= f.name %>
-          <%= f.trip.trip_name %>
-          <% @trip = f.trip %>
-          <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
-            <%= f.submit 'Add to Trip' %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+  <div class="favourites">
+    <% @favourites.each do |f| %>
+      <div class="favourite-card">
+        <%= f.name %>
+        <%= f.trip.trip_name %>
+        <% @trip = f.trip %>
+        <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
+          <%= f.submit 'Add to Trip', class: 'button' %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-  <%= link_to "Back", user_path(current_user) %>
+</div>
+<%= link_to "Back", user_path(current_user), class: 'button' %>

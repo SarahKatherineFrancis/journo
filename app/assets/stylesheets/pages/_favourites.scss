@@ -7,13 +7,22 @@
   grid-row: 1;
   grid-column-start: 2;
   grid-column-end: 12;
+  font-family: 'Gochi Hand', "cursive";
+  text-align: center;
 }
+
+.page-header p {
+  font-family: "Quicksand", "sans-serif";
+  text-align: center;
+}
+
 
 .favourites {
   grid-row-start: 4;
   grid-row-end: 12;
   grid-column-start: 2;
   grid-column-end: 12
+
 }
 
 .search-bar {
@@ -21,4 +30,9 @@
   grid-row-end: 3;
   grid-column-start: 4;
   grid-column-end: 10;
+}
+
+.search-bar{
+height: 56px;
+padding: 6px;
 }
