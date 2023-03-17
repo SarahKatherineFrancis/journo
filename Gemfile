@@ -82,3 +82,6 @@ gem 'bootstrap'
 
 #geocoding using mapbox
 gem "geocoder"
+
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"

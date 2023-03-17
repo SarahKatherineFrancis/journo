@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   resources :activities, only: [] do
     resources :notes, only: [:create]
   end
+
+  require "sidekiq/web"
+  mount Sidekiq::Web => '/sidekiq'
 end
