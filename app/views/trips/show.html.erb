@@ -35,8 +35,7 @@
         <h2>Trip Details</h2>
         <br>
         <p><strong>Destination:</strong> <%= @trip.destination %></p>
-        <p><strong>Start date:</strong></p>
-        <p id="start-date"><%= @trip.start_date %></p>
+        <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
         <p><strong>End Date:</strong> <%= @trip.end_date %></p>
         <br>
         <%= link_to "Add more", trip_activities_path(@trip), class: 'button' %>
