@@ -3,7 +3,7 @@
     <div class="trip-header">
       <div class="trip-title">
         <h2><%= @trip.trip_name %></h2>
-         <%= link_to "Back", trips_path, class: 'button' %>
+        <%= link_to "Back", trips_path, class: 'button' %>
       </div>
       <div class="trip-countdown" data-controller="countdown">
         <p>
@@ -15,29 +15,21 @@
       </div>
     </div>
     <div class="recommendations">
-      <% @activities.each do |activity|%>
-        <div class="added-recommendation">
-          <h2><%=activity.name%></h2>
-          <h5><%=activity.description %></h5>
-          <% activity.notes.each do |note| %>
-            <h6>Comment:</h6> <p><%=note.comment%></p>
-            <%= note.created_at %>
-          <% end %>
-          <%= simple_form_for [activity, @note] do |f| %>
-            <%= f.input :comment %>
-            <%= f.button :submit, class: 'btn' %>
-          <%end%>
-        </div>
-      <%end%>
+        <%= @infos.html_safe %>
     </div>
     <div class="trip-show-basket">
       <div class="sticky">
         <h2>Trip Details</h2>
-        <br>
         <p><strong>Destination:</strong> <%= @trip.destination %></p>
         <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
         <p><strong>End Date:</strong> <%= @trip.end_date %></p>
-        <br>
+
+        <h2>Your Selected activities:</h2>
+        <% @activities.each do |activity|%>
+        <div class="added-recommendation">
+          <h6><%=activity.name%></h6>
+        </div>
+      <%end%>
         <%= link_to "Add more", trip_activities_path(@trip), class: 'button' %>
       </div>
     </div>
