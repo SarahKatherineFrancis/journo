@@ -38,7 +38,7 @@ class TripsController < ApplicationController
         model: "text-davinci-003",
         prompt: itinerary_prompt,
         max_tokens: 2000,
-        temperature: 0.8
+        temperature: 0.1
       }
     )
     @infos = response.parsed_response['choices'][0]['text']
