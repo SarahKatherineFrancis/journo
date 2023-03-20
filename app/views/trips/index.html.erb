@@ -6,7 +6,7 @@
   <div class = "cards">
     <% @trips.each do |trip| %>
       <div class="card-category" onclick="openTab('b1');">
-        <h3><%= trip.trip_name %></h3>
+        <h4><%= trip.trip_name %></h4>
         <%# <i class="fa-duotone fa-calendar" style="--fa-secondary-color: #f3e012;"></i> %>
         <p>Departing: <%= trip.start_date %></p>
         <%= link_to "View Trip", trip_path(trip.id), class: 'button' %>
@@ -19,7 +19,7 @@
   <!-- If you want the ability to close the container, add a close button -->
   <% @trips.each do |trip| %>
     <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
-    <h3><%= trip.trip_name %></h3>
+    <h4><%= trip.trip_name %></h4>
     <p><%= trip.start_date %></p>
   <% end %>
 </div>
