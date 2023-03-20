@@ -9,8 +9,8 @@ class Trip < ApplicationRecord
 
   @@client = OpenAI::Client.new
 
-  # geocoded_by :destination,
-  # after_validation :geocode, if: :will_save_change_to_destination?,
+  # geocoded_by :address,
+  # after_validation :geocode, if: :will_save_change_to_address?,
 
   def call_gpt(prompt, category)
     response = @@client.completions(

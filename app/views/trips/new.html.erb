@@ -1,30 +1,27 @@
 <div class="parent">
   <div class="trip-form-header">
-  <h1>Trip Board</h1>
-  <h5>Start your next adventure!</h4>
+    <h1>Trip Board</h1>
+    <h5>Start your next adventure!</h4>
   </div>
   <div class="trip-form">
-  <%= simple_form_for @trip do |f| %>
-    <div class="form-inputs">
-      <%= f.input :trip_name,
+    <%= simple_form_for @trip do |f| %>
+      <div class="form-inputs">
+        <%= f.input :trip_name,
                 required: true,
                 autofocus: true %>
-      <%= f.input :destination,
-                required: true,
-                autofocus: true%>
-    <%= f.input :destination,
+        <%= f.input :destination,
                 input_html: {data: {address_autocomplete_target: "address", class: "d-none"}},
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-    <%= f.input :start_date,
+        <%= f.input :longitude, :as => :hidden, :input_html => { :value => "lonTarget" } %>
+        <%= f.input :latitude, :as => :hidden, :input_html => { :value => "latTarget" } %>
+        <%= f.input :start_date,
                 autofocus: true %>
-      <%= f.input :start_date,
+        <%= f.input :end_date,
                 required: true %>
-      <%= f.input :end_date,
-                required: true %>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit, "Let's Go!", class: 'button' %>
-    </div>
-  <% end %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Let's Go!", class: 'button' %>
+      </div>
+    <% end %>
   </div>
 </div>
