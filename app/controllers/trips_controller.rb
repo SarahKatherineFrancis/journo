@@ -25,10 +25,9 @@ class TripsController < ApplicationController
 
     itinerary_prompt = "I am going on a trip to #{@trip.destination}.
     I leave on #{@trip.start_date} and return on #{@trip.end_date}.
-    I want to visit: #{activity_dos}.
-    I want to explore: #{activity_exps}
+    I want to visit: #{activity_dos.append(activity_exps)}.
     I want to eat at: #{activity_restaurants}.
-    Do not repeat any item.
+    Do not repeat an item.
     Suggest me an itinerary clearly showing restaurants and activities.
     Please format the response in a HTML list.
     I would like a suggested daily and total budget in a seperate section.
@@ -38,8 +37,8 @@ class TripsController < ApplicationController
       parameters: {
         model: "text-davinci-003",
         prompt: itinerary_prompt,
-        max_tokens: 500,
-        temperature: 1
+        max_tokens: 2000,
+        temperature: 0.8
       }
     )
     @infos = response.parsed_response['choices'][0]['text']
