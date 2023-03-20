@@ -33,13 +33,13 @@ class Trip < ApplicationRecord
     eat_preference = user.eat_preference_list
     do_preference = user.do_preference_list
 
-    explore_prompt = "You are a travel consultant. recommend the 3 best activities in #{destination}.
+    explore_prompt = "You are a travel consultant. recommend the 5 best activities in #{destination}.
     Response must be a JSON with inside an array of activities with only the keys called name, description and lat and lon."
 
-    eat_prompt = "You are a travel consultant. recommend the 3 best restaurants in #{destination} that are: #{eat_preference}.
+    eat_prompt = "You are a travel consultant. recommend the 5 best restaurants in #{destination} that are: #{eat_preference}.
     Response must be a JSON with inside an array of activities with only the keys called name, description and lat and lon."
 
-    do_prompt = "You are a travel consultant. 3 best activities in #{destination} that involve: #{do_preference}.
+    do_prompt = "You are a travel consultant. 5 best activities in #{destination} that involve: #{do_preference}.
     Response must be a JSON with inside an array of activities with only the keys called name, description and lat and lon."
 
     GenerateActivitiesJob.perform_later(self, eat_prompt, 0)
