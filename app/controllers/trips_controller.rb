@@ -27,15 +27,16 @@ exps = @activities.where(category: :explore)
 activity_exps = @activities.map(&:name)
 
 itinerary_prompt = "I am going on a trip to #{@trip.destination}.
-I leave on #{@trip.start_date} and return on #{@trip.end_date}.
+The itinerary must be for #{(@trip.end_date - @trip.start_date).to_i} days.
 I want to visit: #{activity_dos.append(activity_exps)}.
 I want to eat at: #{activity_restaurants}.
 Each day should suggest at least one restaurant and one activity.
 Do not repeat an item.
-Suggest me an itinerary clearly showing restaurants and activities.
+The itinerary clearly shows restaurants and activities.
+The itinerary does not have to include everything.
 Please format the response in a HTML list."
 
-response1 = @@client.completions(
+itinerary_response = @@client.completions(
   parameters: {
     model: "text-davinci-003",
     prompt: itinerary_prompt,
@@ -43,14 +44,14 @@ response1 = @@client.completions(
     temperature: 0.1
   }
 )
-@infos = response1.parsed_response['choices'][0]['text']
+@infos = itinerary_response.parsed_response['choices'][0]['text']
 
 budget_prompt = "I would like a suggested daily and total budget for visiting
 #{@trip.destination} between #{(@trip.end_date - @trip.start_date).to_i}. Please give
 a short piece of budget advice based on the destination.
 Format your response as a HTML list and use the destination currency."
 
-response2 = @@client.completions(
+budget_response = @@client.completions(
   parameters: {
     model: "text-davinci-003",
     prompt: budget_prompt,
@@ -58,13 +59,13 @@ response2 = @@client.completions(
     temperature: 0.1
   }
 )
-@budget = response2.parsed_response['choices'][0]['text']
+@budget = budget_response.parsed_response['choices'][0]['text']
 
 packing_prompt = "I would like a recommended packing list for
 #{@trip.destination}. Give a short reason for each item based on the destination.
 Format this as a HTML list"
 
-response3 = @@client.completions(
+packing_response = @@client.completions(
   parameters: {
     model: "text-davinci-003",
     prompt: packing_prompt,
@@ -72,7 +73,35 @@ response3 = @@client.completions(
     temperature: 0.1
   }
 )
-@packing = response3.parsed_response['choices'][0]['text']
+@packing = packing_response.parsed_response['choices'][0]['text']
+
+accomodation_prompt = "Suggest me 5 areas to stay in #{@trip.destination}.
+These should suit a range of budgets. Each area should have a one line description.
+It should be a HTML list format."
+
+budget_response = @@client.completions(
+  parameters: {
+    model: "text-davinci-003",
+    prompt: accomodation_prompt,
+    max_tokens: 2000,
+    temperature: 0.1
+  }
+)
+@accom = budget_response.parsed_response['choices'][0]['text']
+
+visa_prompt = "I am a German National and travelling to Kenya.
+What are the visa requirements and necessary vaccines to travel for leisure?"
+
+visa_response = @@client.completions(
+  parameters: {
+    model: "text-davinci-003",
+    prompt: visa_prompt,
+    max_tokens: 2000,
+    temperature: 0.1
+  }
+)
+@visa = visa_response.parsed_response['choices'][0]['text']
+
 
   end
 

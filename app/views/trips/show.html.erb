@@ -20,6 +20,11 @@
       <%= @budget.html_safe %>
       <h2>We recommend packing:</h2>
       <%= @packing.html_safe %>
+      <h2>We recommend staying:</h2>
+      <%= @accom.html_safe %>
+      <h2>Visa Recommendations:</h2>
+      <%= @visa.html_safe %>
+
     </div>
     <div class="trip-show-basket">
       <div class="sticky">
@@ -32,14 +37,13 @@
         <%= link_to "<i class='fa-solid fa-download'></i>".html_safe, '#', class: 'button' %>
         <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'button' %>
         <div class="selected-activities">
-          <h2>Your Selected activities:</h2>
+          <h2>Your want to do:</h2>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
               <h6><%=activity.name%></h6>
             </div>
           <%end%>
 
-          <%= (@trip.end_date - @trip.start_date).to_i %>
           <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'button' %>
         </div>
       </div>
