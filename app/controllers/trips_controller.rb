@@ -4,12 +4,6 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.where(user_id: current_user.id)
     @user = current_user
-    @markers = @trips.geocoded.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude
-      }
-    end
   end
 
   def new
@@ -17,6 +11,7 @@ class TripsController < ApplicationController
   end
 
   def show
+    @note = Note.new
     @trip = Trip.find(params[:id])
     @activities = @trip.activities.where(status: :added)
 
@@ -33,22 +28,33 @@ class TripsController < ApplicationController
     I leave on #{@trip.start_date} and return on #{@trip.end_date}.
     I want to visit: #{activity_dos.append(activity_exps)}.
     I want to eat at: #{activity_restaurants}.
+    Each day should suggest at least one restaurant and one activity.
     Do not repeat an item.
     Suggest me an itinerary clearly showing restaurants and activities.
-    Please format the response in a HTML list.
-    I would like a suggested daily and total budget in a seperate section.
-    The list should have the following title (H4): 'Your recommended itinerary for #{@trip.destination}"
+    Please format the response in a HTML list."
 
     response = @@client.completions(
       parameters: {
         model: "text-davinci-003",
         prompt: itinerary_prompt,
         max_tokens: 2000,
-        temperature: 0.8
+        temperature: 0.1
       }
     )
     @infos = response.parsed_response['choices'][0]['text']
-    @note = Note.new
+
+    budget_prompt = "I would like a suggested daily and total budget for visiting
+    #{@trip.destination} between #{@trip.start_date} and #{@trip.end_date}. Format this as a HTML list"
+
+    response = @@client.completions(
+      parameters: {
+        model: "text-davinci-003",
+        prompt: budget_prompt,
+        max_tokens: 2000,
+        temperature: 0.1
+      }
+    )
+    @budget = response.parsed_response['choices'][0]['text']
   end
 
   def create
