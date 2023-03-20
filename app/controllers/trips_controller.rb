@@ -46,7 +46,9 @@ response1 = @@client.completions(
 @infos = response1.parsed_response['choices'][0]['text']
 
 budget_prompt = "I would like a suggested daily and total budget for visiting
-#{@trip.destination} between #{@trip.start_date} and #{@trip.end_date}. Format this as a HTML list"
+#{@trip.destination} between #{(@trip.end_date - @trip.start_date).to_i}. Please give
+a short piece of budget advice based on the destination.
+Format your response as a HTML list and use the destination currency."
 
 response2 = @@client.completions(
   parameters: {
@@ -59,7 +61,7 @@ response2 = @@client.completions(
 @budget = response2.parsed_response['choices'][0]['text']
 
 packing_prompt = "I would like a recommended packing list for
-#{@trip.destination} between #{@trip.start_date} and #{@trip.end_date}. Give a short reason for each item.
+#{@trip.destination}. Give a short reason for each item based on the destination.
 Format this as a HTML list"
 
 response3 = @@client.completions(
