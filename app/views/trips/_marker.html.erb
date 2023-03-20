@@ -1,3 +1,5 @@
 <div class="badge rounded-pill bg-primary fs-6">
-  <%= trip.name %>
+  <%@trips.each do |trip|%>
+  <%= trip.trip_name %>
+  <%end%>
 </div>
