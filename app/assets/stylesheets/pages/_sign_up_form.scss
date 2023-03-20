@@ -1,0 +1,18 @@
+.sign-up-headers {
+  grid-column-start: 4;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.sign-up-form {
+  grid-column-start: 4;
+  grid-column-end: 10;
+  grid-row: 2, 12;
+}
+
+.form-actions {
+  text-align: center;
+}

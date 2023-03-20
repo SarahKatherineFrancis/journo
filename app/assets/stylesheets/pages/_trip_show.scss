@@ -9,14 +9,30 @@
   padding: 8px;
 }
 
-.added-recommendation {
-  padding: 20px;
-}
-
 .show-recommendations {
   grid-column-start: 2;
   grid-column-end: 8;
   grid-row-start: 2;
   grid-row-end: 12;
   padding: 8px;
+}
+
+.btn{
+  background: #073b4cff;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  color: #f4ebd9ff;
+  font-size: 12px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.recommendations p {
+  color: #073b4cff;
+  font-family: 'Gochi Hand', "cursive";;
+}
+
+.countdown-number {
+  font-size: 30px;
 }

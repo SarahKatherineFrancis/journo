@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :trips, dependent: :destroy
+  has_one_attached :photo
 
   acts_as_taggable_on :eat_preference, :do_preference
 end

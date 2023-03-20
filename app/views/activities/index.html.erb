@@ -1,4 +1,5 @@
-<%= link_to "Go Back", user_path(current_user) %>
+<br>
+<%= link_to "Go Back", user_path(current_user), class: 'button' %>
 <div class="parent">
   <div class="recommendations">
     <h2>Your recommendations: </h2>
@@ -11,9 +12,9 @@
       <% @eat.each do |eat| %>
         <div class="recommendation-card" data-controller="activity-dropdown">
           <div class="recommendation-card-info">
-            <h3><%= eat.name %></h3>
-            <h4><%= eat.category %></h4>
-            <p data-activity-dropdown-target="description" class="activity-description"><%= eat.description %></p>
+            <h4><%= eat.name %></h4>
+            <h5><%= eat.category %></h5>
+            <h6 data-activity-dropdown-target="description" class="activity-description"><%= eat.description %></h6>
           </div>
           <div class="recommendation-card-buttons">
             <%= simple_form_for [@trip, eat], url: add_activity_to_trip_path(@trip, eat), method: :post do |f| %>
@@ -33,9 +34,9 @@
       <% @do.each do |d| %>
         <div class="recommendation-card" data-controller="activity-dropdown">
           <div class="recommendation-card-info">
-            <h3><%= d.name %></h3>
-            <h4><%= d.category %></h4>
-            <p data-activity-dropdown-target="description" class="activity-description"><%= d.description %></p>
+            <h4><%= d.name %></h4>
+            <h5><%= d.category %></h5>
+            <h6 data-activity-dropdown-target="description" class="activity-description"><%= d.description %></h6>
           </div>
           <div class="recommendation-card-buttons">
             <%= simple_form_for [@trip, d], url: add_activity_to_trip_path(@trip, d), method: :post do |f| %>
@@ -55,9 +56,9 @@
       <% @explore.each do |explore| %>
         <div class="recommendation-card" data-controller="activity-dropdown">
           <div class="recommendation-card-info">
-            <h3><%= explore.name %></h3>
-            <h4><%= explore.category %></h4>
-            <p data-activity-dropdown-target="description" class="activity-description"><%= explore.description %></p>
+            <h4><%= explore.name %></h4>
+            <h5><%= explore.category %></h5>
+            <h6 data-activity-dropdown-target="description" class="activity-description"><%= explore.description %></h6>
           </div>
           <div class="recommendation-card-buttons">
             <%= simple_form_for [@trip, explore], url: add_activity_to_trip_path(@trip, explore), method: :post do |f| %>
@@ -75,13 +76,13 @@
     </div>
   </div>
   <div class="trip-basket">
-    <h2>Your Trip:</h2>
+    <h1>Your Trip:</h1>
     <% @selected_activities.reverse.each do |activity| %>
       <div class="recommendation-card">
         <h5><%= activity.name %> <%= activity.category %></h5>
       </div>
     <% end %>
-    <%= link_to "View your Trip", trip_path(@trip) %>
+    <%= link_to "View your Trip", trip_path(@trip), class: 'button' %>
   </div>
 </div>
 <div style="width: 100%; height: 600px;"

@@ -1,14 +1,17 @@
-<%= link_to "New Trip", new_trip_path %>
-  <div class="trip-tabs" data-controller="trip-tabs">
-    <button id="upcoming" class="recommendation-button">Upcoming</button>
-    <button id="past" class="recommendation-button">Past</button>
-  </div>
+<br>
+<%= link_to "New Trip", new_trip_path, class: 'button' %>
+<br>
+<%# <div class="trip-tabs" data-controller="trip-tabs">
+  <button id="upcoming" class="recommendation-button">Upcoming</button>
+  <button id="past" class="recommendation-button">Past</button> %>
+</div>
+<br>
 <div class="trip-index">
   <% @trips.each do |trip| %>
     <div class="trip-card">
       <h2><%= trip.trip_name %></h2>
       <h4>Departing: <%= trip.start_date %></h4>
-      <%= link_to "View Trip", trip_path(trip.id) %>
+      <%= link_to "View Trip", trip_path(trip.id), class: 'button' %>
     </div>
   <% end %>
 </div>
