@@ -18,6 +18,9 @@ export default class extends Controller {
   }
   #setInputValue(event) {
     this.addressTarget.value = event.result["place_name"]
+    // add these two to an hidden input field
+    this.latTarget.value = event.result["geometry"]["coordinates"][0]
+    this.lonTarget.value = event.result["geometry"]["coordinates"][1]
   }
 
   #clearInputValue() {

@@ -4,12 +4,6 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.where(user_id: current_user.id)
     @user = current_user
-    @markers = @trips.geocoded.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude
-      }
-    end
   end
 
   def new
