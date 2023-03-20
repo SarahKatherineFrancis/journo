@@ -5,12 +5,15 @@ class ActivitiesController < ApplicationController
     @explore = @trip.activities.where(category: :explore, status: :pending)
     @do = @trip.activities.where(category: :do, status: :pending)
     @selected_activities = selected_activities
-    @activities = Activity.all
-    @markers = Trip.activities.geocoded.map do |activity|
+    @activities = @trip.activities.all
+    @markers = selected_activities.geocoded.map do |activity|
       {
         lat: activity.latitude,
         lng: activity.longitude,
-        info_window_html: render_to_string(partial: "/shared/info_window", locals: { activity: }),
+        info_window_html: render_to_string(partial: "/shared/info_window",
+                                           locals: {
+                                             activities: @activities, trip: @trip
+                                           }),
         marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
       }
     end

@@ -1,0 +1,6 @@
+<div class="map-box-contents">
+  <%@activities.each do |activity|%>
+    <p><%= activity.name %> <%= activity.description %></p>
+    <p><i class="fa-solid fa-location-dot"></i> <%= activity.category %></p>
+  <%end%>
+</div>
