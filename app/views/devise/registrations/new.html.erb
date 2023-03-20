@@ -16,15 +16,11 @@
         <%= f.input :location %>
         <%= f.input :age %>
         <%= f.input :bio %>
-        <br>
         <div>
-          <%= f.label :eat_preferences %>
-          <%= f.select :eat_preference_list, collection: ["Budget-friendly", "Couple-friendly", "Kid-friendly", "Vegan-friendly", "Vegetarian-friendly"] %>
+          <%= f.input :eat_preference_list, collection: ["Budget-friendly", "Couple-friendly", "Kid-friendly", "Vegan-friendly", "Vegetarian-friendly"],:as => :check_boxes %>
         </div>
-        <br>
         <div>
-          <%= f.label :do_preferences %>
-          <%= f.select :do_preference_list, collection: ["Coding", "Cultural", "Hiking", "Partying", "Swimming", "Yoga"] %>
+          <%= f.input :do_preference_list, collection: ["Coding", "Cultural", "Hiking", "Partying", "Swimming", "Yoga"], :as => :check_boxes%>
         </div>
         <br>
         <%= f.input :photo, as: :file %>
