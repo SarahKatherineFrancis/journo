@@ -7,6 +7,9 @@ class Trip < ApplicationRecord
   after_commit :generate_activities, on: :create
   @@client = OpenAI::Client.new
 
+  # geocoded_by :destination,
+  # after_validation :geocode, if: :will_save_change_to_destination?,
+
   def call_gpt(prompt, category)
     response = @@client.completions(
       parameters: {
@@ -23,7 +26,7 @@ class Trip < ApplicationRecord
 
     p activities
     activities.each do |info|
-      Activity.create(name: info['name'], description: info['description'], category:,
+      Activity.create(name: info['name'], description: info['description'], category:, lat:, lon:,
                       trip: self)
     end
   end

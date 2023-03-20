@@ -10,8 +10,14 @@ application.register("activities-tabs", ActivitiesTabsController)
 import ActivityDropdownController from "./activity_dropdown_controller"
 application.register("activity-dropdown", ActivityDropdownController)
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
