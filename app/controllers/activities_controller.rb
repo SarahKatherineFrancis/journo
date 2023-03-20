@@ -9,12 +9,13 @@ class ActivitiesController < ApplicationController
     @markers = selected_activities.geocoded.map do |activity|
       {
         lat: activity.latitude,
-        lng: activity.longitude
-        # info_window_html: render_to_string(partial: "/shared/info_window",
-        #   locals: { activities: @activities, user: current_user, trip: @trip }),
-        # marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
+        lng: activity.longitude,
+        info_window_html: render_to_string(partial: "/shared/info_window",
+                                           locals: {
+                                             activities: @activities, trip: @trip
+                                           }),
+        marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
       }
-      raise
     end
   end
 

@@ -1,11 +1,6 @@
 <div class="map-box-contents">
-  <h2><%= trip.trip_name %></h2>
-  <p><%= trip.destination %>
-    <p><%= trip.start_date %>
-      <p><%= trip.end_date %>
-      </div>
-
-      <div class="map-box-contents">
-        <h5><%= activity.name %> <%= activity.category %></h5>
-        <h6><i class="fa-solid fa-location-dot"></i> <%= activity.description %></h6>
-      </div>
+  <%@activities.each do |activity|%>
+    <p><%= activity.name %> <%= activity.description %></p>
+    <p><i class="fa-solid fa-location-dot"></i> <%= activity.category %></p>
+  <%end%>
+</div>
