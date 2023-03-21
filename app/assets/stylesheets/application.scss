@@ -6,7 +6,7 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
-// @import "mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
@@ -15,6 +15,7 @@
 @import "pages/user_dashboard";
 @import "pages/trips_index";
 @import "pages/trip_form";
+@import "components/buttons";
 
 body{
   background-color: #073b4cff;

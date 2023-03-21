@@ -4,3 +4,4 @@ class UsersController < ApplicationController
     @trip = Trip.all.where(id: current_user)
   end
 end
+
