@@ -23,6 +23,7 @@
       <div class="favourite-text">
         <h5><%= trip.trip_name %></h5>
         <h6>Departing: <%= trip.start_date %></h6>
+        <h6>Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
       </div>
       <div class="add-button">
         <%= link_to "View Trip", trip_path(trip.id), class: 'button' %>
