@@ -2,7 +2,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many :activities, dependent: :destroy
 
-  validates :trip_name, :destination, :date_range, presence: true
+  validates :trip_name, :destination, presence: true
 
   after_commit :generate_activities, on: :create
   # after_commit :generate_budget, on: :create

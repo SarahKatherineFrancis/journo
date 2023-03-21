@@ -128,7 +128,6 @@ class TripsController < ApplicationController
     full_params_trip = trip_params.merge(date_range_hash)
     @trip = Trip.new(full_params_trip)
     @trip.user = current_user
-    raise
     if @trip.save
       redirect_to trip_activities_path(@trip)
     else
