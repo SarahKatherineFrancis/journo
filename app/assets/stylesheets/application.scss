@@ -14,6 +14,7 @@
 @import "components/_lightbox";
 @import "pages/user_dashboard";
 @import "pages/trips_index";
+@import "pages/trip_form";
 
 body{
   background-color: #073b4cff;
@@ -22,7 +23,7 @@ body{
 h1{
   font-family: 'Gochi Hand', "cursive";
   font-size: 24;
-  color: #073b4cff;
+  color: #FAF5ED;
 }
 
 h2{
