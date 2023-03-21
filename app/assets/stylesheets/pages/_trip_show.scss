@@ -26,6 +26,8 @@
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   text-align: center;
+  margin: 12px;
+  padding: 12px;
 }
 
 .recommendations p {
@@ -36,3 +38,41 @@
 .countdown-number {
   font-size: 30px;
 }
+
+.trip-card-category{
+  display: grid;
+  grid-gap: 16px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 30px;
+}
+
+.trip-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  }
+
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
