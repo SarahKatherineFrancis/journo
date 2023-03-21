@@ -1,12 +1,12 @@
-<br>
-<%= link_to "New Trip", new_trip_path, class: 'button' %>
-<br>
-<%# <div class="trip-tabs" data-controller="trip-tabs">
-  <button id="upcoming" class="recommendation-button">Upcoming</button>
-  <button id="past" class="recommendation-button">Past</button> %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1514896856000-91cb6de818e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80);">
+  <div class="container">
+    <h1>Your upcoming trips</h1>
+     <%= link_to icon('fa-solid', 'fa-plus', class:"fa-fade"),  new_trip_path, class: 'new-trip-btn' %>
+  </div>
 </div>
+<br>
 <div class="parent">
-<div class="search-bar">
+  <div class="search-bar">
     <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
     params[:query],
@@ -16,19 +16,33 @@
       <%= submit_tag "Search", class: "button" %>
     <% end %>
   </div>
-
-<div class="favourites">
+</div>
+<div class="row">
+  <div class="cards">
+    <% @trips.each do |trip| %>
+      <%=link_to (trip) do%>
+        <div class="favourite-card">
+          <div class="favourite-text">
+            <h3><%= trip.trip_name %></h3>
+            <h6><strong>Departing:</strong> <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
+            <h6><strong>Destination:</strong> <%= trip.destination%></h6>
+          </div>
+        <%end%>
+        <div class="add-button">
+          <%= link_to icon('fa-regular','eye', class:"fa-fade"), trip_path(trip.id), class: 'button' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<!-- The expanding grid (hidden by default) -->
+<div id="b1" class="containerTab" style="display:none;background:#073b4cff">
+  <!-- If you want the ability to close the container, add a close button -->
   <% @trips.each do |trip| %>
-    <div class="favourite-card">
-      <div class="favourite-text">
-        <h5><%= trip.trip_name %></h5>
-        <h6>Departing: <%= trip.start_date %></h6>
-        <h6>Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
-      </div>
-      <div class="add-button">
-        <%= link_to "View Trip", trip_path(trip.id), class: 'button' %>
-      </div>
-    </div>
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+    <h4><%= trip.trip_name %></h4>
+    <p><%= trip.start_date %></p>
   <% end %>
+</div>
 </div>
 </div>
