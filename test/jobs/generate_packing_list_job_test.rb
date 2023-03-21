@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PackingJobTest < ActiveJob::TestCase
+class GeneratePackingListJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

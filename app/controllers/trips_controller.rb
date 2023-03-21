@@ -20,22 +20,17 @@ class TripsController < ApplicationController
     @note = Note.new
     @trip = Trip.find(params[:id])
     @activities = @trip.activities.where(status: :added)
-    @trip = Trip.find(params[:id])
-    @activities = @trip.activities.where(status: :added)
 
-    restaurants = @activities.where(category: :eat)
-    activity_restaurants = restaurants.map(&:name)
+    restaurants = @activities.where(category: :eat).pluck(:name)
+    dos = @activities.where(category: :do).pluck(:name)
+    exps = @activities.where(category: :explore).pluck(:name)
 
-    dos = @activities.where(category: :do)
-    activity_dos = dos.map(&:name)
-
-    exps = @activities.where(category: :explore)
-    activity_exps = exps.map(&:name)
+    activity_names = (dos + exps).uniq
 
     itinerary_prompt = "I am going on a trip to #{@trip.destination}.
     The itinerary must be for #{(@trip.end_date - @trip.start_date).to_i} days.
-    I want to visit: #{activity_dos.append(activity_exps)}.
-    I want to eat at: #{activity_restaurants}.
+    I want to visit: #{activity_names}.
+    I want to eat at: #{restaurants}.
     Each day should suggest at least one restaurant and one activity.
     Do not repeat an item.
     The itinerary clearly shows restaurants and activities.
@@ -52,72 +47,19 @@ class TripsController < ApplicationController
     )
     @infos = itinerary_response.parsed_response['choices'][0]['text']
 
-    budget_prompt = "I would like a suggested daily and total budget for visiting
-    #{@trip.destination} between #{(@trip.end_date - @trip.start_date).to_i}. Please give
-    a short piece of budget advice based on the destination.
-    Format your response as a HTML list and use the destination currency."
+    # accomodation_prompt = "Suggest me 5 areas to stay in #{@trip.destination}.
+    # These should suit a range of budgets. Each area should have a one line description.
+    # It should be a HTML list format."
 
-    budget_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: budget_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    @budget = budget_response.parsed_response['choices'][0]['text']
-
-    packing_prompt = "I would like a recommended packing list for
-    #{@trip.destination}. Give a short reason for each item based on the destination.
-    Format this as a HTML list"
-
-    packing_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: packing_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    @packing = packing_response.parsed_response['choices'][0]['text']
-
-    accomodation_prompt = "Suggest me 5 areas to stay in #{@trip.destination}.
-    These should suit a range of budgets. Each area should have a one line description.
-    It should be a HTML list format."
-
-    budget_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: accomodation_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    @accom = budget_response.parsed_response['choices'][0]['text']
-
-    visa_prompt = "I am a German National and travelling to Kenya.
-    What are the visa requirements and necessary vaccines to travel for leisure?"
-
-    visa_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: visa_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    @visa = visa_response.parsed_response['choices'][0]['text']
-
-
-    restaurants = @activities.where(category: :eat)
-    activity_restaurants = @activities.map(&:name)
-
-    dos = @activities.where(category: :do)
-    activity_dos = @activities.map(&:name)
-
-    exps = @activities.where(category: :explore)
-    activity_exps = @activities.map(&:name)
-
+    # budget_response = @@client.completions(
+    #   parameters: {
+    #     model: "text-davinci-003",
+    #     prompt: accomodation_prompt,
+    #     max_tokens: 2000,
+    #     temperature: 0.1
+    #   }
+    # )
+    # @accom = budget_response.parsed_response['choices'][0]['text']
   end
 
   def create
