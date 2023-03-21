@@ -22,7 +22,7 @@
         </div>
         <div class="add-button">
           <%= simple_form_for [f], url: add_activity_to_trip_path(f.trip, f), method: :post do |f| %>
-            <%= f.submit 'Add to Trip', class: 'button' %>
+            <%= f.submit '+', class: 'new-trip-btn' %>
           </div>
         <% end %>
       </div>
