@@ -11,8 +11,66 @@ class TripsController < ApplicationController
   end
 
   def show
+    @note = Note.new
     @trip = Trip.find(params[:id])
     @activities = @trip.activities.where(status: :added)
+    @trip = Trip.find(params[:id])
+@activities = @trip.activities.where(status: :added)
+
+restaurants = @activities.where(category: :eat)
+activity_restaurants = @activities.map(&:name)
+
+dos = @activities.where(category: :do)
+activity_dos = @activities.map(&:name)
+
+exps = @activities.where(category: :explore)
+activity_exps = @activities.map(&:name)
+
+itinerary_prompt = "I am going on a trip to #{@trip.destination}.
+I leave on #{@trip.start_date} and return on #{@trip.end_date}.
+I want to visit: #{activity_dos.append(activity_exps)}.
+I want to eat at: #{activity_restaurants}.
+Each day should suggest at least one restaurant and one activity.
+Do not repeat an item.
+Suggest me an itinerary clearly showing restaurants and activities.
+Please format the response in a HTML list."
+
+response1 = @@client.completions(
+  parameters: {
+    model: "text-davinci-003",
+    prompt: itinerary_prompt,
+    max_tokens: 2000,
+    temperature: 0.1
+  }
+)
+@infos = response1.parsed_response['choices'][0]['text']
+
+budget_prompt = "I would like a suggested daily and total budget for visiting
+#{@trip.destination} between #{@trip.start_date} and #{@trip.end_date}. Format this as a HTML list"
+
+response2 = @@client.completions(
+  parameters: {
+    model: "text-davinci-003",
+    prompt: budget_prompt,
+    max_tokens: 2000,
+    temperature: 0.1
+  }
+)
+@budget = response2.parsed_response['choices'][0]['text']
+
+packing_prompt = "I would like a recommended packing list for
+#{@trip.destination} between #{@trip.start_date} and #{@trip.end_date}. Give a short reason for each item.
+Format this as a HTML list"
+
+response3 = @@client.completions(
+  parameters: {
+    model: "text-davinci-003",
+    prompt: packing_prompt,
+    max_tokens: 2000,
+    temperature: 0.1
+  }
+)
+@packing = response3.parsed_response['choices'][0]['text']
 
     restaurants = @activities.where(category: :eat)
     activity_restaurants = @activities.map(&:name)
