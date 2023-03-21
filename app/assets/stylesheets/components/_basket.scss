@@ -25,3 +25,13 @@
   padding: 8px;
   top: 0;
 }
+
+.empty-trip {
+  width: 80%;
+  margin: 30px auto 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid var(--midnight-green);
+}

@@ -75,20 +75,17 @@
         <% end %>
       </div>
     </div>
-    <div class="trip-basket">
+    <div class="trip-basket" data-controller="basket">
       <div class="basket-title">
         <h2>Your Trip</h2>
         <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(@trip)%>
       </div>
+    <div class="added-trips">
       <% @selected_activities.reverse.each do |activity| %>
         <div class="recommendation-card">
           <h6><%= activity.name%> <span></span>
           </h6>
         </div>
       <% end %>
-    </div>
-    <div class="activities-index-map" data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
