@@ -7,6 +7,23 @@
   grid-column-start: 2;
   grid-column-end: 12 ;
   padding: 8px;
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin: 30px 0px;
+}
+
+.trip-details {
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 8px;
+}
+
+.selected-activities {
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 8px;
 }
 
 .show-recommendations {
@@ -15,6 +32,7 @@
   grid-row-start: 2;
   grid-row-end: 12;
   padding: 8px;
+  margin-bottom: 30px;
 }
 
 .btn{
