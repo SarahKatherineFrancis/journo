@@ -6,3 +6,32 @@
 .hide {
   display: none;
 }
+
+.activities-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 8px;
+
+  .tab-button {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: var(--hunyadi-yellow);
+    color: var(--midnight-green);
+    width: 150px;
+    height: 75px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tab-button:hover {
+    cursor: pointer;
+    color: var(--eggshell);
+    background-color: var(--midnight-green);
+  }
+}
+
+.tab-button h2 {
+  margin-top: 8px;
+}

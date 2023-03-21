@@ -2,9 +2,13 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many :activities, dependent: :destroy
 
-  validates :trip_name, :destination, :start_date, :end_date, presence: true
+  validates :trip_name, :destination, presence: true
 
   after_commit :generate_activities, on: :create
+  after_commit :generate_budget, on: :create
+  after_commit :generate_packing_list, on: :create
+  after_commit :generate_visa, on: :create
+
   @@client = OpenAI::Client.new
 
   # geocoded_by :address,
@@ -27,7 +31,6 @@ class Trip < ApplicationRecord
     p activities
     activities.each do |info|
       Activity.create(name: info['name'], description: info['description'], latitude: info['lat'], longitude: info['lon'], category:,
-
                       trip: self)
     end
   end
@@ -49,5 +52,17 @@ class Trip < ApplicationRecord
     GenerateActivitiesJob.perform_later(self, eat_prompt, 0)
     GenerateActivitiesJob.perform_later(self, do_prompt, 1)
     GenerateActivitiesJob.perform_later(self, explore_prompt, 2)
+  end
+
+  def generate_budget
+    GenerateBudgetJob.perform_later(self)
+  end
+
+  def generate_packing_list
+    GeneratePackingListJob.perform_later(self)
+  end
+
+  def generate_visa
+    GenerateVisaJob.perform_later(self)
   end
 end

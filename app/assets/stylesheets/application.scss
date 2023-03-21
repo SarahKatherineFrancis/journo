@@ -6,82 +6,59 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
-// @import "mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/_lightbox";
+@import "pages/user_dashboard";
+@import "pages/trips_index";
+@import "pages/trip_form";
+@import "components/buttons";
 
-.cards {
-  display: flex;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  width: 320px;
-  padding: 20px;
-  border-radius: 7px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+body{
+  background-color: #073b4cff;
 }
 
 h1{
-  color:#073b4cff;
-}
-
-.h3{
-  text-align: center;
-}
-
-.image-container {
-  background-image: url("https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)");
-  background-size: cover;
-  position: relative;
-  height: 300px;
-  background-size: cover;
-  background-position: relative;
-  padding: 150px 0;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-.text {
-  background-color: black;
-  color: white;
-  font-size: 10vw;
-  font-weight: bold;
   font-family: 'Gochi Hand', "cursive";
-  margin: 0 auto;
-  padding: 10px;
-  width: 50%;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
+  font-size: 24;
+  color: #FAF5ED;
 }
 
-.button{
-  background: #073b4cff;
-  border-radius: 28px;
+h2{
   font-family: "Quicksand", "sans-serif";
-  color: #f4ebd9ff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  text-align: center;
+  font-size: 22;
+  color: #231f20ff;
 }
 
-.button:hover {
-  background: #279af1ff;
-  color: #f4ebd9ff;
-  text-decoration: none;
+h3{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 20;
+  color: #231f20ff;
 }
 
-.container{
-  padding: 100px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 2px;
+h4{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 18;
+  color: #231f20ff;
 }
 
-// body {
-//   background-color: #073b4cff;
-// }
+h5{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 16;
+  color: #231f20ff;
+}
+
+h6{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 14;
+  color: #231f20ff;
+}
+
+p{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 12;
+  color: #231f20ff;
+}

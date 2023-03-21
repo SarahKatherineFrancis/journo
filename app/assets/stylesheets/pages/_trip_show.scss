@@ -7,6 +7,23 @@
   grid-column-start: 2;
   grid-column-end: 12 ;
   padding: 8px;
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin: 30px 0px;
+}
+
+.trip-details {
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 8px;
+}
+
+.selected-activities {
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 8px;
 }
 
 .show-recommendations {
@@ -15,17 +32,16 @@
   grid-row-start: 2;
   grid-row-end: 12;
   padding: 8px;
+  margin-bottom: 30px;
 }
 
-.btn{
-  background: #073b4cff;
-  border-radius: 28px;
-  font-family: "Quicksand", "sans-serif";
-  color: #f4ebd9ff;
-  font-size: 12px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  text-align: center;
+.trip-recommendations {
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  padding: 8px;
+  background-color: var(--eggshell);
+  border-radius: 5px;
 }
 
 .recommendations p {
@@ -36,3 +52,28 @@
 .countdown-number {
   font-size: 30px;
 }
+
+.trip-card-category{
+  display: grid;
+  grid-gap: 16px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 30px;
+}
+
+.trip-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  }

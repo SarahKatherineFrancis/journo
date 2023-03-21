@@ -5,7 +5,7 @@
 
 // Define fonts for body and headers
 $body-font: "Quicksand", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$headers-font: "Quicksand", "sans-serif";
 $logo-font:  'Gochi Hand', "cursive";
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -16,3 +16,44 @@ $logo-font:  'Gochi Hand', "cursive";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+h1{
+  font-family: 'Gochi Hand', "cursive";
+  font-size: 24;
+  color: #073b4cff;
+}
+
+h2{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 22;
+  color: #231f20ff;
+}
+
+h3{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 20;
+  color: #231f20ff;
+}
+
+h4{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 18;
+  color: #231f20ff;
+}
+
+h5{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 16;
+  color: #231f20ff;
+}
+
+h6{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 14;
+  color: #231f20ff;
+}
+
+p{
+  font-family: "Quicksand", "sans-serif";
+  font-size: 12;
+  color: #231f20ff;
+}
