@@ -83,5 +83,8 @@ gem "geocoder"
 gem "cloudinary"
 gem "sidekiq"
 gem "sidekiq-failures", "~> 1.0"
+gem "daterange"
+=======
 
 gem "font-awesome-sass", "~> 6.3.0"
+
