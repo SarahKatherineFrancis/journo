@@ -52,20 +52,20 @@ class TripsController < ApplicationController
     )
     @infos = itinerary_response.parsed_response['choices'][0]['text']
 
-    budget_prompt = "I would like a suggested daily and total budget for visiting
-    #{@trip.destination} between #{(@trip.end_date - @trip.start_date).to_i}. Please give
-    a short piece of budget advice based on the destination.
-    Format your response as a HTML list and use the destination currency."
+    # budget_prompt = "I would like a suggested daily and total budget for visiting
+    # #{@trip.destination} between #{(@trip.end_date - @trip.start_date).to_i}. Please give
+    # a short piece of budget advice based on the destination.
+    # Format your response as a HTML list and use the destination currency."
 
-    budget_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: budget_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    @budget = budget_response.parsed_response['choices'][0]['text']
+    # budget_response = @@client.completions(
+    #   parameters: {
+    #     model: "text-davinci-003",
+    #     prompt: budget_prompt,
+    #     max_tokens: 2000,
+    #     temperature: 0.1
+    #   }
+    # )
+    # @budget = budget_response.parsed_response['choices'][0]['text']
 
     packing_prompt = "I would like a recommended packing list for
     #{@trip.destination}. Give a short reason for each item based on the destination.
@@ -107,17 +107,6 @@ class TripsController < ApplicationController
       }
     )
     @visa = visa_response.parsed_response['choices'][0]['text']
-
-
-    restaurants = @activities.where(category: :eat)
-    activity_restaurants = @activities.map(&:name)
-
-    dos = @activities.where(category: :do)
-    activity_dos = @activities.map(&:name)
-
-    exps = @activities.where(category: :explore)
-    activity_exps = @activities.map(&:name)
-
   end
 
   def create
