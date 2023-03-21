@@ -4,6 +4,7 @@
   justify-content: space-between;
   background-color: var(--eggshell);
   border-radius: 5px;
+  margin-bottom: 8px;
 }
 
 .recommendation-card-info {
@@ -19,7 +20,7 @@
   grid-column-start: 2;
   grid-column-end: 8;
   grid-row-start: 1;
-  grid-row-end: 12;
+  grid-row-end: 11;
   padding: 8px;
 
 }
