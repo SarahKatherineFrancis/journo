@@ -3,7 +3,7 @@ class GenerateVisaJob < ApplicationJob
 
   def perform(trip)
     client = OpenAI::Client.new
-    visa_prompt = "I am a #{trip.nationality} National and travelling to #{trip.destination}.
+    visa_prompt = "I am a #{trip.user.nationality} National and travelling to #{trip.destination}.
     What are the visa requirements and necessary vaccines to travel for leisure?"
     visa_response = client.completions(
       parameters: {
@@ -14,5 +14,6 @@ class GenerateVisaJob < ApplicationJob
       }
     )
     visa = visa_response.parsed_response['choices'][0]['text']
+    trip.update(visa: visa)
   end
 end

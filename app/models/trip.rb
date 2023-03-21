@@ -7,6 +7,7 @@ class Trip < ApplicationRecord
   after_commit :generate_activities, on: :create
   after_commit :generate_budget, on: :create
   after_commit :generate_packing_list, on: :create
+  after_commit :generate_visa, on: :create
 
   @@client = OpenAI::Client.new
 
@@ -59,5 +60,9 @@ class Trip < ApplicationRecord
 
   def generate_packing_list
     GeneratePackingListJob.perform_later(self)
+  end
+
+  def generate_visa
+    GenerateVisaJob.perform_later(self)
   end
 end
