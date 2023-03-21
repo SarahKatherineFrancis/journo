@@ -1,7 +1,7 @@
 <div class="parent">
   <div class="trip-form-header">
   <h1>Trip Board</h1>
-  <h5>Start your next adventure!</h4>
+  <h5>Start your next adventure!</h5>
   </div>
   <div class="trip-form">
   <%= simple_form_for @trip do |f| %>
@@ -15,12 +15,7 @@
     <%= f.input :destination,
                 input_html: {data: {address_autocomplete_target: "address", class: "d-none"}},
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-    <%= f.input :start_date,
-                autofocus: true %>
-      <%= f.input :start_date,
-                required: true %>
-      <%= f.input :end_date,
-                required: true %>
+    <%= f.input :date_range, input_html: { id: 'daterange' } %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Let's Go!", class: 'button' %>
@@ -28,3 +23,13 @@
   <% end %>
   </div>
 </div>
+
+<script>
+  $(function() {
+    $('#daterange').daterangepicker({
+      opens: 'left'
+    }, function(start, end, label) {
+      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+  });
+</script>

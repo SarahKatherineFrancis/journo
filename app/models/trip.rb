@@ -2,7 +2,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many :activities, dependent: :destroy
 
-  validates :trip_name, :destination, :start_date, :end_date, presence: true
+  validates :trip_name, :destination, :date_range, presence: true
 
   after_commit :generate_activities, on: :create
   @@client = OpenAI::Client.new
