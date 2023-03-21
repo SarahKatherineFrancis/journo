@@ -2,8 +2,14 @@ class TripsController < ApplicationController
   @@client = OpenAI::Client.new
 
   def index
-    @trips = Trip.where(user_id: current_user.id)
     @user = current_user
+
+    if params[:query].present?
+      sql_query = "trip_name ILIKE :query OR destination ILIKE :query"
+      @trips = Trip.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @trips = Trip.where(user_id: current_user.id)
+    end
   end
 
   def new
