@@ -22,19 +22,52 @@
       <%= @trip.packing_list.html_safe %>
       <h2>Visa Recommendations:</h2>
       <%= @trip.visa.html_safe %>
+    <div class="trip-recommendations" data-controller="recommendation-tabs">
+      <div id="itinerary-content" class=''>
+        <h2>Your recommended itinerary:</h2>
+        <%= @infos.html_safe %>
+      </div>
+      <div id="budget-content" class='d-none'>
+        <h2>Our suggested budget:</h2>
+        <%= @trip.budget.html_safe %>
+      </div>
+      <div id="packing-content" class='d-none'>
+        <h2>We recommend packing:</h2>
+        <%= @trip.packing_list.html_safe %>
+      </div>
+      <div id="visa-content" class='d-none'>
+        <h2>Visa Recommendations:</h2>
+        <%= @trip.visa.html_safe %>
+      </div>
+      <div class="activities-tabs" >
+        <div id="itinerary" class="tab-button">
+          <h2><i class="fa-solid fa-clipboard-list"></i></h2>
+        </div>
+        <div id="budget" class="tab-button">
+          <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
+        </div>
+        <div id="packing" class="tab-button">
+          <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
+        </div>
+        <div id="visa" class="tab-button">
+          <h2><i class="fa-solid fa-passport"></i></h2>
+        </div>
+      </div>
     </div>
     <div class="trip-show-basket">
       <div class="sticky">
-        <h2>Trip Details</h2>
-        <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
-        <p><strong>Arriving from:</strong> <%= current_user.location %></p>
-        <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
-        <p><strong>End Date:</strong> <%= @trip.end_date %></p>
-        <%= link_to "<i class='fa-solid fa-share'></i>".html_safe, '#', class: 'button' %>
-        <%= link_to "<i class='fa-solid fa-download'></i>".html_safe, '#', class: 'button' %>
-        <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'button' %>
+        <div class="trip-details">
+          <h2>Trip Details</h2>
+          <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
+          <p><strong>Arriving from:</strong> <%= current_user.location %></p>
+          <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
+          <p><strong>End Date:</strong> <%= @trip.end_date %></p>
+          <%= link_to "<i class='fa-solid fa-share'></i>".html_safe, '#', class: 'button' %>
+          <%= link_to "<i class='fa-solid fa-download'></i>".html_safe, '#', class: 'button' %>
+          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'button' %>
+        </div>
         <div class="selected-activities">
-          <h2>Your want to do:</h2>
+          <h2>You selected:</h2>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
               <h6><%=activity.name%></h6>

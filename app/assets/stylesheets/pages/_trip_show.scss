@@ -7,6 +7,23 @@
   grid-column-start: 2;
   grid-column-end: 12 ;
   padding: 8px;
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin: 30px 0px;
+}
+
+.trip-details {
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 8px;
+}
+
+.selected-activities {
+  background-color: var(--eggshell);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 8px;
 }
 
 .show-recommendations {
@@ -15,6 +32,16 @@
   grid-row-start: 2;
   grid-row-end: 12;
   padding: 8px;
+  margin-bottom: 30px;
+}
+
+.trip-recommendations {
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  padding: 8px;
+  background-color: var(--eggshell);
+  border-radius: 5px;
 }
 
 .recommendations p {
@@ -49,35 +76,4 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 20px;
-  }
-
-  .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-  }
-
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .trip-basket{
-  width: 500px;
-  height: 500px;
-  background: #FAF5ED;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 2px;
-  }
-
-  .trip-basket h1{
-    color: #073b4cff;
-  }
-
-  .recommendation-card{
-  background: #FAF5ED;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 2px;
   }

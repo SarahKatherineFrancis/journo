@@ -129,7 +129,12 @@ Format this as a HTML list"
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    date_range = params[:date_range]
+    start_date = Date.parse(date_range.split[0])
+    end_date = Date.parse(date_range.split[2])
+    date_range_hash = {:start_date => start_date, :end_date => end_date}
+    full_params_trip = trip_params.merge(date_range_hash)
+    @trip = Trip.new(full_params_trip)
     @trip.user = current_user
     if @trip.save
       redirect_to trip_activities_path(@trip)
@@ -141,6 +146,7 @@ Format this as a HTML list"
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :trip_name, :destination)
+    params.require(:trip).permit(:trip_name, :destination)
   end
+
 end
