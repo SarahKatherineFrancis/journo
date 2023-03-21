@@ -1,0 +1,52 @@
+.button{
+  background: #073b4cff;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  color: #f4ebd9ff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover {
+  background: #279af1ff;
+  color: #f4ebd9ff;
+  text-decoration: none;
+}
+
+.btn{
+  background: #073b4cff;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  color: #f4ebd9ff;
+  font-size: 12px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+  margin: 12px;
+  padding: 12px;
+}
+button {
+  background-color: transparent;
+  border: none;
+}
+.back-button-favourites {
+  grid-column-start: 2;
+  grid-row: 12;
+}
+
+.new-trip-btn{
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #f4ebd9ff;
+  background: #f5ab2dff;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+  text-align: center;
+}
