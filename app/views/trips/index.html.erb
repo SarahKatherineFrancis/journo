@@ -5,13 +5,30 @@
   <button id="upcoming" class="recommendation-button">Upcoming</button>
   <button id="past" class="recommendation-button">Past</button> %>
 </div>
-<br>
-<div class="trip-index">
+<div class="parent">
+<div class="search-bar">
+    <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+    params[:query],
+    class: "form-control search-bar",
+    placeholder: "Search Your Trips"
+  %>
+      <%= submit_tag "Search", class: "button" %>
+    <% end %>
+  </div>
+
+<div class="favourites">
   <% @trips.each do |trip| %>
-    <div class="trip-card">
-      <h2><%= trip.trip_name %></h2>
-      <h4>Departing: <%= trip.start_date %></h4>
-      <%= link_to "View Trip", trip_path(trip.id), class: 'button' %>
+    <div class="favourite-card">
+      <div class="favourite-text">
+        <h5><%= trip.trip_name %></h5>
+        <h6>Departing: <%= trip.start_date %></h6>
+        <h6>Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
+      </div>
+      <div class="add-button">
+        <%= link_to "View Trip", trip_path(trip.id), class: 'button' %>
+      </div>
     </div>
   <% end %>
+</div>
 </div>

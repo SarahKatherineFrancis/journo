@@ -10,9 +10,16 @@
 .sign-up-form {
   grid-column-start: 4;
   grid-column-end: 10;
-  grid-row: 2, 12;
+  grid-row: 2, 9;
 }
 
 .form-actions {
   text-align: center;
+
+}
+
+.log-in-form-actions {
+  grid-row: 10;
+  grid-column-start: 4;
+  grid-column-end: 10;
 }

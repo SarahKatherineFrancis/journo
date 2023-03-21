@@ -14,8 +14,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
       this.map = new mapboxgl.Map({
@@ -24,6 +23,8 @@ export default class extends Controller {
         center: [41, 21],
         zoom: 3 // <-- edit style!
       });
+      this.#addMarkersToMap()
+      this.#fitMapToMarkers()
 }
 
 #addMarkersToMap() {
