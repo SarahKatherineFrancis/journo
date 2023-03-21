@@ -2,11 +2,16 @@
 <%= link_to "Go Back", user_path(current_user), class: 'button' %>
 <div class="parent">
   <div class="recommendations">
-    <h2>Your recommendations: </h2>
     <div class="activities-tabs" data-controller="activities-tabs">
-      <button id="eat" class="recommendation-button">Eat</button>
-      <button id="do" class="recommendation-button">Do</button>
-      <button id="explore" class="recommendation-button">Explore</button>
+      <div id="eat" class="tab-button">
+        <h2>Eat</h2>
+      </div>
+      <div id="do" class="tab-button">
+        <h2>Do</h2>
+      </div>
+      <div id="explore" class="tab-button">
+        <h2>Explore</h2>
+      </div>
     </div>
     <div id="eat-rec" class="tab-content">
       <% @eat.each do |eat| %>
