@@ -39,6 +39,11 @@
   font-size: 30px;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
 .trip-card-category{
   display: grid;
   grid-gap: 16px;
