@@ -3,8 +3,17 @@
   grid-column-end: 12;
   grid-row-start: 1;
   grid-row-end: 12;
+  margin: 8px;
   padding: 8px;
   top: 0;
+  background-color: var(--eggshell);
+  border-radius: 5px;
+
+  .basket-title {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--midnight-green);
+  }
 }
 
 .trip-show-basket {
