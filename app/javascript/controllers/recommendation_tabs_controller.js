@@ -1,29 +1,41 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
+    const itinerary = document.getElementById("itinerary");
+    const itineraryContent = document.getElementById("itinerary-content");
+    itinerary.addEventListener("click", (event) => {
+      itineraryContent.classList.remove("d-none");
+      budgetContent.classList.add("d-none");
+      packingContent.classList.add("d-none");
+      visaContent.classList.add("d-none");
+    });
+
     const budget = document.getElementById("budget");
-    const budgetContent = document.getElementById("budget-content")
+    const budgetContent = document.getElementById("budget-content");
     budget.addEventListener("click", (event) => {
-      budgetContent.classList.toggle("hide")
-      packing.classList.toggle("hide");
-      exploreRecs.classList.toggle("hide");
+      budgetContent.classList.remove("d-none");
+      itineraryContent.classList.add("d-none");
+      packingContent.classList.add("d-none");
+      visaContent.classList.add("d-none");
     });
 
     const packing = document.getElementById("packing");
-    const packingContent = document.getElementById("packing-content")
+    const packingContent = document.getElementById("packing-content");
     packing.addEventListener("click", (event) => {
-      budgetContent.classList.toggle("hide")
-      packingContent.classList.toggle("hide");
-      visaContent.classList.toggle("hide");
+      packingContent.classList.remove("d-none");
+      itineraryContent.classList.add("d-none");
+      budgetContent.classList.add("d-none");
+      visaContent.classList.add("d-none")
     });
 
     const visa = document.getElementById("visa");
-    const visaContent = document.getElementById("visa-content")
+    const visaContent = document.getElementById("visa-content");
     visa.addEventListener("click", (event) => {
-      budgetContent.classList.toggle("hide")
-      packingContent.classList.toggle("hide");
-      visaContent.classList.toggle("hide");
+      visaContent.classList.remove("d-none");
+      itineraryContent.classList.add("d-none");
+      budgetContent.classList.add("d-none");
+      packingContent.classList.add("d-none");
     });
   }
 }

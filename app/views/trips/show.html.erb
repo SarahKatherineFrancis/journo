@@ -14,30 +14,35 @@
       </div>
     </div>
     <div class="trip-recommendations" data-controller="recommendation-tabs">
-      <h2>Your recommended itinerary:</h2>
-      <%= @infos.html_safe %>
-      <div class="activities-tabs" >
-        <div id="budget" class="tab-button hide">
-          <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
-        </div>
-        <div id="packing" class="tab-button hide">
-          <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
-        </div>
-        <div id="visa" class="tab-button hide">
-          <h2><i class="fa-solid fa-passport"></i></h2>
-        </div>
+      <div id="itinerary-content" class='d-none'>
+        <h2>Your recommended itinerary:</h2>
+        <%= @infos.html_safe %>
       </div>
-      <div id="budget-content">
+      <div id="budget-content" class='d-none'>
         <h2>Our suggested budget:</h2>
         <%= @trip.budget.html_safe %>
       </div>
-      <div id="packing-content">
+      <div id="packing-content" class='d-none'>
         <h2>We recommend packing:</h2>
         <%= @trip.packing_list.html_safe %>
       </div>
-      <div id="visa-content">
+      <div id="visa-content" class='d-none'>
         <h2>Visa Recommendations:</h2>
         <%= @trip.visa.html_safe %>
+      </div>
+      <div class="activities-tabs" >
+        <div id="itinerary" class="tab-button">
+          <h2><i class="fa-solid fa-clipboard-list"></i></h2>
+        </div>
+        <div id="budget" class="tab-button">
+          <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
+        </div>
+        <div id="packing" class="tab-button">
+          <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
+        </div>
+        <div id="visa" class="tab-button">
+          <h2><i class="fa-solid fa-passport"></i></h2>
+        </div>
       </div>
     </div>
     <div class="trip-show-basket">
