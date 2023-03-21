@@ -27,3 +27,6 @@ application.register("loading", LoadingController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import RecommendationTabsController from "./recommendation_tabs_controller"
+application.register("recommendation-tabs", RecommendationTabsController)

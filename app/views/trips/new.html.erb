@@ -18,10 +18,7 @@
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
         <%= f.input :longitude, :as => :hidden, :input_html => { :value => "lonTarget" } %>
         <%= f.input :latitude, :as => :hidden, :input_html => { :value => "latTarget" } %>
-        <%= f.input :start_date,
-                autofocus: true %>
-        <%= f.input :end_date,
-                required: true %>
+        <input type="text" id="daterange" name="date_range"><br><br>
       </div>
       <div class="form-actions">
         <%= f.button :submit, "Let's Go!", class: 'button' %>
@@ -29,3 +26,13 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(function() {
+    $('#daterange').daterangepicker({
+      opens: 'left', locale: {format: "DD/MM/YYYY"}
+    }, function(start, end, label) {
+      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+  });
+</script>

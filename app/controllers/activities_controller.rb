@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
         lng: activity.longitude,
         info_window_html: render_to_string(partial: "/shared/info_window",
                                            locals: {
-                                             activities: @activities, trip: @trip
+                                             activity:
                                            }),
         marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
       }
