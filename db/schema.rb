@@ -115,6 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_091701) do
     t.datetime "updated_at", null: false
     t.string "budget"
     t.text "packing_list"
+    t.text "visa"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
