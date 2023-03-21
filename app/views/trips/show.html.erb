@@ -19,8 +19,8 @@
       <h2>Our suggested budget:</h2>
       <%= @trip.budget.html_safe %>
       <h2>We recommend packing:</h2>
-      <%= @packing.html_safe %>
-      <h2>We recommend staying:</h2>
+      <%= @trip.packing_list.html_safe %>
+      <%# <h2>We recommend staying:</h2>
       <%= @accom.html_safe %>
       <h2>Visa Recommendations:</h2>
       <%= @visa.html_safe %>

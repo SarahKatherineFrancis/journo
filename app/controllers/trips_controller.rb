@@ -52,48 +52,19 @@ class TripsController < ApplicationController
     )
     @infos = itinerary_response.parsed_response['choices'][0]['text']
 
-    # budget_prompt = "I would like a suggested daily and total budget for visiting
-    # #{@trip.destination} between #{(@trip.end_date - @trip.start_date).to_i}. Please give
-    # a short piece of budget advice based on the destination.
-    # Format your response as a HTML list and use the destination currency."
+    # accomodation_prompt = "Suggest me 5 areas to stay in #{@trip.destination}.
+    # These should suit a range of budgets. Each area should have a one line description.
+    # It should be a HTML list format."
 
     # budget_response = @@client.completions(
     #   parameters: {
     #     model: "text-davinci-003",
-    #     prompt: budget_prompt,
+    #     prompt: accomodation_prompt,
     #     max_tokens: 2000,
     #     temperature: 0.1
     #   }
     # )
-    # @budget = budget_response.parsed_response['choices'][0]['text']
-
-    packing_prompt = "I would like a recommended packing list for
-    #{@trip.destination}. Give a short reason for each item based on the destination.
-    Format this as a HTML list"
-
-    packing_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: packing_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    @packing = packing_response.parsed_response['choices'][0]['text']
-
-    accomodation_prompt = "Suggest me 5 areas to stay in #{@trip.destination}.
-    These should suit a range of budgets. Each area should have a one line description.
-    It should be a HTML list format."
-
-    budget_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: accomodation_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    @accom = budget_response.parsed_response['choices'][0]['text']
+    # @accom = budget_response.parsed_response['choices'][0]['text']
 
     visa_prompt = "I am a German National and travelling to Kenya.
     What are the visa requirements and necessary vaccines to travel for leisure?"
