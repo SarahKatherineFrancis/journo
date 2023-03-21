@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BudgetJobTest < ActiveJob::TestCase
+class GenerateBudgetJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

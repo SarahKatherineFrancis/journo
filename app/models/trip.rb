@@ -5,7 +5,9 @@ class Trip < ApplicationRecord
   validates :trip_name, :destination, :start_date, :end_date, presence: true
 
   after_commit :generate_activities, on: :create
-  # after_commit :generate_budget, on: :create
+  after_commit :generate_budget, on: :create
+  after_commit :generate_packing_list, on: :create
+  after_commit :generate_visa, on: :create
 
   @@client = OpenAI::Client.new
 
@@ -29,7 +31,6 @@ class Trip < ApplicationRecord
     p activities
     activities.each do |info|
       Activity.create(name: info['name'], description: info['description'], latitude: info['lat'], longitude: info['lon'], category:,
-
                       trip: self)
     end
   end
@@ -53,45 +54,15 @@ class Trip < ApplicationRecord
     GenerateActivitiesJob.perform_later(self, explore_prompt, 2)
   end
 
+  def generate_budget
+    GenerateBudgetJob.perform_later(self)
+  end
 
+  def generate_packing_list
+    GeneratePackingListJob.perform_later(self)
+  end
 
-  # def ask_gpt(prompt)
-  #   response = @@client.completions(
-  #     parameters: {
-  #       model: "text-davinci-003",
-  #       prompt: prompt,
-  #       max_tokens: 2000,
-  #       temperature: 0.1
-  #     }
-  #   )
-  #    response = response.parsed_response['choices'][0]['text']
-  # end
-
-  # def generate_budget
-  #   budget_prompt = "I would like a suggested daily and total budget for visiting
-  #   #{self.destination} between #{self.start_date} and #{self.end_date}. Format this as a HTML list"
-
-  #   GenerateBudgetJob.perform_later(self, budget_prompt)
-  # end
-
-  # def generate_packing_list
-  #   packing_prompt = "I would like a recommended packing list for
-  #   #{self.destination} between #{self.start_date} and #{self.end_date}. Give a short reason for each item.
-  #   Format this as a HTML list"
-
-  #   GeneratePackingJob.perform_later(self, packing_prompt)
-  # end
-
-  # def generate_itinerary
-  #   itinerary_prompt = "I am going on a trip to #{self.destination}.
-  #   I leave on #{self.start_date} and return on #{self.end_date}.
-  #   I want to visit: #{self.activities.where(category: :do)}.
-  #   I want to eat at: #{self.activities.where(category: :eat)}.
-  #   Each day should suggest at least one restaurant and one activity.
-  #   Do not repeat an item.
-  #   Suggest me an itinerary clearly showing restaurants and activities.
-  #   Please format the response in a HTML list."
-
-  #   GenerateItineraryJob.perform_later(self, itinerary_prompt)
-  # end
+  def generate_visa
+    GenerateVisaJob.perform_later(self)
+  end
 end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:first_name, :last_name, :age, :location, :bio, :profile_picture, :email, :password, :eat_preference_list => [], :do_preference_list => [])
+      u.permit(:first_name, :last_name, :age, :location, :nationality, :profile_picture, :email, :password, :eat_preference_list => [], :do_preference_list => [])
     end
   end
 

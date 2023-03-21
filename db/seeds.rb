@@ -11,7 +11,7 @@ user = User.create!(
   last_name: 'Doe',
   age: 30,
   location: 'New York City',
-  bio: 'I am a software engineer with a passion for coding.',
+  nationality: 'South African',
   profile_picture: 'https://example.com/profile-picture.jpg'
 )
 

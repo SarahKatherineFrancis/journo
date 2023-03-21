@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ItineraryJobTest < ActiveJob::TestCase
+class GenerateVisaJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

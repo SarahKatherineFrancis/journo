@@ -12,8 +12,7 @@
       <% @eat.each do |eat| %>
         <div class="recommendation-card" data-controller="activity-dropdown">
           <div class="recommendation-card-info">
-            <h4><%= eat.name %></h4>
-            <h5><%= eat.category %></h5>
+            <h4><%= eat.name %> <i class="fa-solid fa-utensils"></i></h4>
             <h6 data-activity-dropdown-target="description" class="activity-description"><%= eat.description %></h6>
           </div>
           <div class="recommendation-card-buttons">
@@ -34,8 +33,7 @@
       <% @do.each do |d| %>
         <div class="recommendation-card" data-controller="activity-dropdown">
           <div class="recommendation-card-info">
-            <h4><%= d.name %></h4>
-            <h5><%= d.category %></h5>
+            <h4><%= d.name %> <i class="fa-duotone fa-person-hiking"></i></h4>
             <h6 data-activity-dropdown-target="description" class="activity-description"><%= d.description %></h6>
           </div>
           <div class="recommendation-card-buttons">
@@ -56,8 +54,7 @@
       <% @explore.each do |explore| %>
         <div class="recommendation-card" data-controller="activity-dropdown">
           <div class="recommendation-card-info">
-            <h4><%= explore.name %></h4>
-            <h5><%= explore.category %></h5>
+            <h4><%= explore.name %> <i class="fa-solid fa-compass"></i></h4>
             <h6 data-activity-dropdown-target="description" class="activity-description"><%= explore.description %></h6>
           </div>
           <div class="recommendation-card-buttons">

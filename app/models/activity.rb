@@ -16,5 +16,4 @@ class Activity < ApplicationRecord
     favourite: 1,
     added: 2
   }
-
 end

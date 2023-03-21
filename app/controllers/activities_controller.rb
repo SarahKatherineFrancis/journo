@@ -18,7 +18,6 @@ class ActivitiesController < ApplicationController
         marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
       }
     end
-
   end
 
   def selected_activities
