@@ -1,29 +1,32 @@
 <div class="parent">
   <div class="page-header">
     <h1>Your Wishlist</h1>
-    <p>Adding items from your wishlist to a trip!</p>
+    <p>Add previous recommendations to your trip!</p>
   </div>
   <div class="search-bar">
     <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
     params[:query],
-    class: "form-control",
+    class: "form-control search-bar",
     placeholder: "Search Favourites"
   %>
-      <%= submit_tag "Search" %>
+      <%= submit_tag "Search", class: "button" %>
     <% end %>
   </div>
   <div class="favourites">
     <% @favourites.each do |f| %>
       <div class="favourite-card">
-        <%= f.name %>
-        <%= f.trip.trip_name %>
-        <% @trip = f.trip %>
-        <%= simple_form_for [f], url: add_activity_to_trip_path(@trip, f), method: :post do |f| %>
-          <%= f.submit 'Add to Trip', class: 'button' %>
+        <div class="favourite-text">
+          <h5><%= f.name %></h5>
+          <h6><%= f.trip.trip_name %></h6>
+        </div>
+        <div class="add-button">
+          <%= simple_form_for [f], url: add_activity_to_trip_path(f.trip, f), method: :post do |f| %>
+            <%= f.submit 'Add to Trip', class: 'button' %>
+          </div>
         <% end %>
       </div>
     <% end %>
   </div>
+  <%= link_to "Back", user_path(current_user), class: 'button back-button-favourites' %>
 </div>
-<%= link_to "Back", user_path(current_user), class: 'button' %>
