@@ -1,6 +1,9 @@
-<br>
-<%= link_to "New Trip", new_trip_path, class: 'button' %>
-<br>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1514896856000-91cb6de818e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80);">
+  <div class="container">
+    <h1>Your upcoming trips</h1>
+    <%= link_to "New Trip", new_trip_path, class: 'button' %>
+  </div>
+</div>
 <br>
 <div class="parent">
   <div class="search-bar">
@@ -17,14 +20,16 @@
 <div class="row">
   <div class="cards">
     <% @trips.each do |trip| %>
-      <div class="favourite-card">
-        <div class="favourite-text">
-          <h5><%= trip.trip_name %></h5>
-          <h6>Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
-          <h6>Destination: <%= trip.destination%></h6>
-        </div>
+      <%=link_to (trip) do%>
+        <div class="favourite-card">
+          <div class="favourite-text">
+            <h3><%= trip.trip_name %></h3>
+            <h6><strong>Departing:</strong> <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
+            <h6><strong>Destination:</strong> <%= trip.destination%></h6>
+          </div>
+        <%end%>
         <div class="add-button">
-          <%= link_to "View Trip", trip_path(trip.id), class: 'button' %>
+          <%= link_to icon('fa-regular','eye', class:"fa-fade"), trip_path(trip.id), class: 'button' %>
         </div>
       </div>
     <% end %>
