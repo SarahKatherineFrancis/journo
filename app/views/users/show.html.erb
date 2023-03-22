@@ -3,66 +3,69 @@
     <h1>Welcome back,<%=@user.first_name%> <%=@user.last_name%>.</h1>
     <p>Planning to visit your next dream destination?</p>
     <br>
-    <%= link_to icon('fa-solid', 'fa-plus', class:"fa-fade"),  new_trip_path, class: 'new-trip-btn' %>
   </div>
-  <div class="cards">
-    <div class="card-category">
-      <%= link_to(image_tag("https://images.unsplash.com/photo-1574043623771-dc0c956ce7da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
-    </div>
-    <div class="card-category">
-      <%= link_to(image_tag("https://images.unsplash.com/photo-1505819244306-ef53954f9648?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=798&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
-    </div>
-    <div class="card-category">
-      <%= link_to(image_tag("https://images.unsplash.com/photo-1653580559380-e44e45d2893e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), favourites_path,  :method => :get) %>
-    </div>
+</div>
+<div class="cards">
+  <div class="user-card-category">
+    <%= link_to "new trip",  new_trip_path, class: 'tab-button' %>
   </div>
-  <div class="image-container">
-    <div class="text">t r a v e l</div>
+  <div class="user-card-category">
+    <%= link_to "view all trips",  trips_path, class: 'tab-button' %>
   </div>
-  <div class="user-map" style="width: 100%; height: 600px;"
+  <div class="user-card-category">
+    <%= link_to "upcoming trip",  trip_path(current_user), class: 'tab-button' %>
+  </div>
+</div>
+<div class="container-trips">
+  <div class ="row">
+    <div class="user-map" style="width: 50%; height: 450px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-  <div class="cards-lower">
-    <div class="card-category">
-      <%= link_to(image_tag("https://images.unsplash.com/photo-1497262693247-aa258f96c4f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
     </div>
-    <div class="card-category">
-      <%= link_to(image_tag("https://images.unsplash.com/photo-1574260031597-bcd9eb192b4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
-    </div>
-    <div class="card-category">
-      <%= link_to(image_tag("https://images.unsplash.com/photo-1531969179221-3946e6b5a5e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), favourites_path,  :method => :get) %>
+    <div class ="user-trip" style="width: 50%; height: 450px;">
+      <div class="trip-details">
+        <h1><%=@trips.last.trip_name%></h1>
+        <h6><i class="fa-solid fa-location-dot"></i> <%=@trips.last.destination%></h6>
+        <h6><i class="fa-regular fa-calendar"></i> <%=@trips.last.start_date%></h6>
+      </div>
     </div>
   </div>
 </div>
-
-    <div class="container bootstrap snippets bootdeys">
-      <div class="row">
-        <% @trips.each do |trip| %>
-          <div class="col-md-4 col-sm-6 content-card">
-            <%=link_to (trip) do%>
-              <div class="card-big-shadow">
-                <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                  <div class="content">
-                    <h6 class="category">Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
-                    <h1 class="title"><%= trip.trip_name %></h1>
-                    <p class="description">Destination:<%= trip.destination%></p>
-                  </div>
-                </div>
+<div class="image-container">
+  <div class="text">t r a v e l</div>
+</div>
+<div class="cards-lower">
+  <%= link_to(image_tag("https://images.unsplash.com/photo-1497262693247-aa258f96c4f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
+  <%= link_to(image_tag("https://images.unsplash.com/photo-1574260031597-bcd9eb192b4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
+  <%= link_to(image_tag("https://images.unsplash.com/photo-1531969179221-3946e6b5a5e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), favourites_path,  :method => :get) %>
+</div>
+<div class="container bootstrap snippets bootdeys">
+  <div class="row">
+    <% @trips[0..2].each do |trip| %>
+      <div class="col-md-4 col-sm-6 content-card">
+        <%=link_to (trip) do%>
+          <div class="card-big-shadow">
+            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+              <div class="content">
+                <h6 class="category">Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
+                <h1 class="title"><%= trip.trip_name %></h1>
+                <p class="description">Destination:<%= trip.destination%></p>
               </div>
-            <%end%>
+            </div>
           </div>
-        <% end %>
+        <%end%>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<div class="trip-banner" style="background-image: url(https://images.unsplash.com/photo-1459213599465-03ab6a4d5931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80)">
+  <div class="container">
+    <h1>your next adventure awaits.</h1>
+    <p>plan your trip using your from your wishlist</p>
     <br>
-    <div class="trip-banner" style="background-image: url(https://images.unsplash.com/photo-1459213599465-03ab6a4d5931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80)">
-      <div class="container">
-        <h1>your next adventure awaits.</h1>
-        <p>plan your trip using your from your wishlist</p>
-        <br>
-        <%= link_to "go to wishlist",  favourites_path, class: 'btn' %>
-      </div>
-    </div>
-    <br>
+    <%= link_to "go to wishlist",  favourites_path, class: 'btn' %>
+  </div>
+</div>
+<br>
