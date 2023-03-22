@@ -1,7 +1,6 @@
 class ActivitiesController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
-<<<<<<< HEAD
     @eat = @trip.activities.where(category: :eat, status: :pending)
     @explore = @trip.activities.where(category: :explore, status: :pending)
     @do = @trip.activities.where(category: :do, status: :pending)
@@ -24,9 +23,7 @@ class ActivitiesController < ApplicationController
   def selected_activities
     @trip = Trip.find(params[:trip_id])
     @selected_activities = @trip.activities.where(status: :added)
-=======
     @markers = Activity.generate_markers_json(@trip.activities.selected)
->>>>>>> 35759b012206a25ae20e1d400aab9b9017fe9fe4
   end
 
   def added
