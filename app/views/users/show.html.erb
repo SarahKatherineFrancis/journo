@@ -53,9 +53,10 @@
     <div class="trip-banner" style="background-image: url(https://images.unsplash.com/photo-1459213599465-03ab6a4d5931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80)">
       <div class="container">
         <h1>your next adventure awaits.</h1>
+        <br>
         <p>plan your trip using your from your wishlist</p>
         <br>
-        <%= link_to "go to wishlist",  favourites_path, class: 'btn' %>
+        <%= link_to icon('fa-solid', 'chevron-right', class:"fa-fade"),  favourites_path, class: 'button' %>
       </div>
     </div>
     <br>
