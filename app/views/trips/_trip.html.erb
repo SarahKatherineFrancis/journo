@@ -3,7 +3,7 @@
   <div class="parent">
     <% if trip.activities.pending_eat.empty? %>
       <div>
-        <i class="fa-solid fa-plane-departure fa-beat" style="color: #ffffff;"></i>
+        <i class="fa-solid fa-plane-departure fa-beat pen" style="color: #ffffff;"></i>
         <h1>Generating activities</h1>
       </div>
     <% else %>
@@ -20,20 +20,20 @@
           </div>
         </div>
         <div id="eat-rec" class="tab-content">
-          <%= render "activities/activities_tab_content", activities: trip.activities.pending_eat, trip: trip, icon: "fa-utensils"%>
+          <%= render "activities/activities_tab_content", activities: trip.activities.pending_eat, trip: trip, icon: "fa-utensils", class: "pen"%>
         </div>
         <div id="do-rec" class="tab-content hide">
-          <%= render "activities/activities_tab_content", activities: trip.activities.pending_do, trip: trip, icon: "fa-person-walking"%>
+          <%= render "activities/activities_tab_content", activities: trip.activities.pending_do, trip: trip, icon: "fa-person-walking", class: "pen"%>
         </div>
         <div id="explore-rec" class="tab-content hide">
-          <%= render "activities/activities_tab_content", activities: trip.activities.pending_explore, trip: trip, icon: "fa-compass"%>
+          <%= render "activities/activities_tab_content", activities: trip.activities.pending_explore, trip: trip, icon: "fa-compass", class: "pen"%>
         </div>
       </div>
     <% end %>
     <div class="trip-basket">
       <div class="basket-title">
         <h1><%=trip.trip_name%> trip</h1>
-        <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(trip)%>
+        <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(trip), class: "pen"%>
       </div>
       <% trip.activities.selected.reverse.each do |activity| %>
         <div class="recommendation-card">
