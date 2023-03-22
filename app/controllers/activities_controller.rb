@@ -11,11 +11,11 @@ class ActivitiesController < ApplicationController
       {
         lat: activity.latitude,
         lng: activity.longitude,
-        info_window_html: render_to_string(partial: "/shared/info_window",
+        info_window_html: render_to_string(partial: "/activities/info_window",
                                            locals: {
                                              activity:
                                            }),
-        marker_html: render_to_string(partial: "/shared/marker", locals: { activity: })
+        marker_html: render_to_string(partial: "/activities/marker", locals: { activity: })
       }
     end
   end
