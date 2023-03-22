@@ -1,9 +1,13 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1514896856000-91cb6de818e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80);">
   <div class="container">
-    <h1>Your upcoming trips</h1>
-     <%= link_to icon('fa-solid', 'fa-plus', class:"fa-fade"),  new_trip_path, class: 'new-trip-btn' %>
+    <h1>your upcoming trips</h1>
+    <%# <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'new-trip-btn' %>
   </div>
 </div>
+<br>
+<%= link_to icon('fa-solid', 'chevron-left'),  new_trip_path, class: 'btn' %>
+<%= link_to icon('fa-solid', 'heart'),  new_trip_path, class: 'btn' %>
+<%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
 <br>
 <div class="parent">
   <div class="search-bar">
@@ -13,36 +17,24 @@
     class: "form-control search-bar",
     placeholder: "Search Your Trips"
   %>
-      <%= submit_tag "Search", class: "button" %>
+      <%= submit_tag "search", class: "btn" %>
     <% end %>
   </div>
 </div>
-<div class="row">
-  <div class="cards">
-    <% @trips.each do |trip| %>
-      <%=link_to (trip) do%>
-        <div class="favourite-card">
-          <div class="favourite-text">
-            <h3><%= trip.trip_name %></h3>
-            <h6><strong>Departing:</strong> <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
-            <h6><strong>Destination:</strong> <%= trip.destination%></h6>
+<div class="container bootstrap snippets bootdeys">
+  <div class="row">
+    <div class="col-md-4 col-sm-6 content-card">
+      <% @trips.each do |trip| %>
+        <%=link_to (trip) do%>
+          <div class="card-big-shadow">
+            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+              <div class="content">
+                <h6 class="category">Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
+                <h1 class="title"><%= trip.trip_name %></h1>
+                <p class="description">Destination:<%= trip.destination%></p>
+              </div>
+            <%end%>
           </div>
-        <%end%>
-        <div class="add-button">
-          <%= link_to icon('fa-regular','eye', class:"fa-fade"), trip_path(trip.id), class: 'button' %>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
-<!-- The expanding grid (hidden by default) -->
-<div id="b1" class="containerTab" style="display:none;background:#073b4cff">
-  <!-- If you want the ability to close the container, add a close button -->
-  <% @trips.each do |trip| %>
-    <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
-    <h4><%= trip.trip_name %></h4>
-    <p><%= trip.start_date %></p>
-  <% end %>
-</div>
-</div>
-</div>
+    </div>
