@@ -19,8 +19,6 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @activities = @trip.activities.where(status: :added)
-    @note = Note.new
-    @notes = @trip.notes
 
     restaurants = @activities.where(category: :eat).pluck(:name)
     dos = @activities.where(category: :do).pluck(:name)
@@ -61,6 +59,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(full_params_trip)
     @trip.user = current_user
     if @trip.save
+      @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
       redirect_to trip_activities_path(@trip)
     else
       render :new

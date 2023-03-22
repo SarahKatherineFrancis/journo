@@ -53,8 +53,6 @@
           <p><strong>Arriving from:</strong> <%= current_user.location %></p>
           <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
           <p><strong>End Date:</strong> <%= @trip.end_date %></p>
-          <%= link_to "<i class='fa-solid fa-share'></i>".html_safe, '#', class: 'button' %>
-          <%= link_to "<i class='fa-solid fa-download'></i>".html_safe, '#', class: 'button' %>
           <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'button' %>
         </div>
         <div class="selected-activities">
@@ -69,20 +67,12 @@
       </div>
     </div>
     <div class="notes" data-controller="notes">
-    <div id="note"><%= @notes.last.note.html_safe %></div>
-      <% if @notes.length > 0 %>
-        <%= simple_form_for [@trip, @note] do |f| %>
+      <div id="note"><%= @trip.note.note.html_safe %></div>
+      <div class="form">
+        <%= simple_form_for [@trip, @trip.note] do |f| %>
           <%= f.input :note %>
           <%= f.button :submit, "Edit" %>
-          <% end %>
-        <% else %>
-          <%= simple_form_for [@trip, @note] do |f| %>
-            <%= f.input :note %>
-            <%= f.button :submit %>
-          <% end %>
         <% end %>
       </div>
-    </div>
-    <div>
     </div>
   </div>
