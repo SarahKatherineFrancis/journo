@@ -7,6 +7,13 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user = current_user
     @trip = Trip.find(params[:trip_id])
+    redirect_to trip_path(@trip) if @note.save
+  end
+
+  def create
+    @note = Note.new(note_params)
+    @note.user = current_user
+    @trip = Trip.find(params[:trip_id])
     @note.trip = @trip
     redirect_to trip_path(@trip) if @note.save
   end
@@ -14,6 +21,6 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:comment)
+    params.require(:note).permit(:note)
   end
 end

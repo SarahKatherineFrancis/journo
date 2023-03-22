@@ -1,28 +1,35 @@
 <%= turbo_stream_from trip%>
 <div id="<%= dom_id(trip)%>">
   <div class="parent">
-    <div class="recommendations">
-      <div class="activities-tabs" data-controller="activities-tabs">
-        <div id="eat" class="tab-button">
-          <h2>eat</h2>
+    <% if trip.activities.pending_eat.empty? %>
+      <div>
+        <i class="fa-solid fa-plane-departure fa-beat" style="color: #ffffff;"></i>
+        <h1>Generating activities</h1>
+      </div>
+    <% else %>
+      <div class="recommendations">
+        <div class="activities-tabs" data-controller="activities-tabs">
+          <div id="eat" class="tab-button">
+            <h2>eat</h2>
+          </div>
+          <div id="do" class="tab-button">
+            <h2>do</h2>
+          </div>
+          <div id="explore" class="tab-button">
+            <h2>explore</h2>
+          </div>
         </div>
-        <div id="do" class="tab-button">
-          <h2>do</h2>
+        <div id="eat-rec" class="tab-content">
+          <%= render "activities/activities_tab_content", activities: trip.activities.pending_eat, trip: trip, icon: "fa-utensils"%>
         </div>
-        <div id="explore" class="tab-button">
-          <h2>explore</h2>
+        <div id="do-rec" class="tab-content hide">
+          <%= render "activities/activities_tab_content", activities: trip.activities.pending_do, trip: trip, icon: "fa-person-walking"%>
+        </div>
+        <div id="explore-rec" class="tab-content hide">
+          <%= render "activities/activities_tab_content", activities: trip.activities.pending_explore, trip: trip, icon: "fa-compass"%>
         </div>
       </div>
-      <div id="eat-rec" class="tab-content">
-        <%= render "activities/activities_tab_content", activities: trip.activities.pending_eat, trip: trip, icon: "fa-utensils"%>
-      </div>
-      <div id="do-rec" class="tab-content hide">
-        <%= render "activities/activities_tab_content", activities: trip.activities.pending_do, trip: trip, icon: "fa-person-walking"%>
-      </div>
-      <div id="explore-rec" class="tab-content hide">
-        <%= render "activities/activities_tab_content", activities: trip.activities.pending_explore, trip: trip, icon: "fa-compass"%>
-      </div>
-    </div>
+    <% end %>
     <div class="trip-basket">
       <div class="basket-title">
         <h1><%=trip.trip_name%> trip</h1>
