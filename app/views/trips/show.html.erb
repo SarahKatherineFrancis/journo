@@ -14,6 +14,20 @@
       </div>
     </div>
     <div class="trip-recommendations" data-controller="recommendation-tabs">
+      <div class="activities-tabs" >
+        <div id="itinerary" class="tab-button">
+          <h2><i class="fa-solid fa-clipboard-list"></i></h2>
+        </div>
+        <div id="budget" class="tab-button">
+          <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
+        </div>
+        <div id="packing" class="tab-button">
+          <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
+        </div>
+        <div id="visa" class="tab-button">
+          <h2><i class="fa-solid fa-passport"></i></h2>
+        </div>
+      </div>
       <div id="itinerary-content" class=''>
         <h2>Your recommended itinerary:</h2>
         <%= @infos.html_safe %>
@@ -30,21 +44,6 @@
         <h2>Visa Recommendations:</h2>
         <%= @trip.visa.html_safe %>
       </div>
-      <div class="activities-tabs" >
-        <div id="itinerary" class="tab-button">
-          <h2><i class="fa-solid fa-clipboard-list"></i></h2>
-        </div>
-        <div id="budget" class="tab-button">
-          <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
-        </div>
-        <div id="packing" class="tab-button">
-          <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
-        </div>
-        <div id="visa" class="tab-button">
-          <h2><i class="fa-solid fa-passport"></i></h2>
-        </div>
-      </div>
-
     </div>
     <div class="trip-show-basket">
       <div class="sticky">
@@ -69,8 +68,14 @@
         </div>
       </div>
     </div>
+    <div class="notes">
+      <h2><%= @trip.notes.first %></h2>
+      <%= simple_form_for [@trip, @note] do |f| %>
+        <%= f.input :note %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
   </div>
   <div>
   </div>
 </div>
-
