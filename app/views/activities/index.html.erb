@@ -77,8 +77,8 @@
   </div>
   <div class="trip-basket" data-controller="basket">
     <div class="basket-title">
-      <h2><%=@trip.trip_name%> trip</h2>
-      <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(@trip)%>
+      <h1><%=@trip.trip_name%> trip</h1>
+      <%= link_to "<i class='fa-solid fa-chevron-right'></i>".html_safe, trip_path(@trip)%>
     </div>
     <div class="added-trips">
       <% @selected_activities.reverse.each do |activity| %>
