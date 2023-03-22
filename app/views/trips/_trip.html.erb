@@ -1,39 +1,43 @@
 <%= turbo_stream_from trip%>
-<div class="recommendations" id="<%= dom_id(trip)%>">
-  <div class="activities-tabs" data-controller="activities-tabs">
-    <div id="eat" class="tab-button">
-      <h2>eat</h2>
+<div>
+  <div class="parent" id="<%= dom_id(trip)%>">
+    <div class="recommendations">
+      <div class="activities-tabs" data-controller="activities-tabs">
+        <div id="eat" class="tab-button">
+          <h2>eat</h2>
+        </div>
+        <div id="do" class="tab-button">
+          <h2>do</h2>
+        </div>
+        <div id="explore" class="tab-button">
+          <h2>explore</h2>
+        </div>
+      </div>
+      <div id="eat-rec" class="tab-content">
+        <%= render "activities/activities_tab_content", activities: trip.activities.pending_eat, trip: trip, icon: "fa-utensils"%>
+      </div>
+      <div id="do-rec" class="tab-content hide">
+        <%= render "activities/activities_tab_content", activities: trip.activities.pending_do, trip: trip, icon: "fa-person-walking"%>
+      </div>
+      <div id="explore-rec" class="tab-content hide">
+        <%= render "activities/activities_tab_content", activities: trip.activities.pending_explore, trip: trip, icon: "fa-compass"%>
+      </div>
     </div>
-    <div id="do" class="tab-button">
-      <h2>do</h2>
+    <div class="trip-basket">
+      <div class="basket-title">
+        <h1><%=trip.trip_name%> trip</h1>
+        <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(trip)%>
+      </div>
+      <% trip.activities.selected.reverse.each do |activity| %>
+        <div class="recommendation-card">
+          <h6><%= activity.name%> <span></span>
+          </h6>
+        </div>
+      <% end %>
     </div>
-    <div id="explore" class="tab-button">
-      <h2>explore</h2>
-    </div>
-  </div>
-  <div id="eat-rec" class="tab-content">
-    <%= render "activities/activities_tab_content", activities: trip.activities.pending_eat, trip: trip, icon: "fa-utensils"%>
-  </div>
-  <div id="do-rec" class="tab-content hide">
-    <%= render "activities/activities_tab_content", activities: trip.activities.pending_do, trip: trip, icon: "fa-person-walking"%>
-  </div>
-  <div id="explore-rec" class="tab-content hide">
-    <%= render "activities/activities_tab_content", activities: trip.activities.pending_explore, trip: trip, icon: "fa-compass"%>
-  </div>
-</div>
-<div class="trip-basket">
-  <div class="basket-title">
-    <h1><%=trip.trip_name%> trip</h1>
-    <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(trip)%>
-  </div>
-  <% trip.activities.selected.reverse.each do |activity| %>
-    <div class="recommendation-card">
-      <h6><%= activity.name%> <span></span>
-      </h6>
-    </div>
-  <% end %>
-</div>
-<div class="activities-index-map" data-controller="map"
+    <div class="activities-index-map" data-controller="map"
       data-map-markers-value="<%= markers %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
