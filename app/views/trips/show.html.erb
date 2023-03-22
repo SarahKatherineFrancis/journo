@@ -48,34 +48,41 @@
     <div class="trip-show-basket">
       <div class="sticky">
         <div class="trip-details">
-          <h1><%=@trip.trip_name%></h1>
+
+        <div class="basket-title">
+          <h2>Trip Details</h2>
+          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
+        </div>
           <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
           <p><strong>Arriving from:</strong> <%= current_user.location %></p>
           <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
           <p><strong>End Date:</strong> <%= @trip.end_date %></p>
-          <%= link_to "<i class='fa-solid fa-share'></i>".html_safe, '#', class: 'button' %>
-          <%= link_to "<i class='fa-solid fa-download'></i>".html_safe, '#', class: 'button' %>
-          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'button' %>
         </div>
         <div class="selected-activities">
+         <div class="basket-title">
+          <h2>You selected:</h2>
+          <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
+        </div>
           <h1>Selected Activities</h1>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
               <h6><%=activity.name%></h6>
             </div>
           <%end%>
-          <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'button' %>
         </div>
       </div>
     </div>
-    <div class="notes">
-      <h2><%= @trip.notes.first.note %></h2>
-      <%= simple_form_for [@trip, @note] do |f| %>
-        <%= f.input :note %>
-        <%= f.button :submit %>
-      <% end %>
+    <div class="notes" data-controller="notes">
+      <div class="notes-header">
+        <h2>Notes</h2>
+        <i id="pen" class='fa-solid fa-pen pen'></i>
+      </div>
+      <div id="note"><%= @trip.note.note.html_safe %></div>
+      <div class="notes-form">
+        <%= simple_form_for [@trip, @trip.note] do |f| %>
+          <%= f.input :note %>
+          <%= f.button :submit, "Edit" %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div>
-  </div>
-</div>
