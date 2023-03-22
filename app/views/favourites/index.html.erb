@@ -1,32 +1,37 @@
-<div class="parent">
-  <div class="page-header">
-    <h1>Your Wishlist</h1>
-    <p>Add previous recommendations to your trip!</p>
+<div class="trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1489493585363-d69421e0edd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
+  <div class="container">
+    <h1>your wishlist</h1>
   </div>
-  <div class="search-bar">
-    <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
+</div>
+<div class="parent">
+  <%= link_to icon('fa-solid', 'chevron-left'),  trips_path, class: 'btn' %>
+    <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
+    <br>
+    <div class="page-header">
+      <h3></h3>
+    </div>
+    <div class="search-bar">
+      <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
     params[:query],
     class: "form-control search-bar",
     placeholder: "Search Favourites"
   %>
-      <%= submit_tag "Search", class: "button" %>
-    <% end %>
-  </div>
-  <div class="favourites">
-    <% @favourites.each do |f| %>
-      <div class="favourite-card">
-        <div class="favourite-text">
-          <h5><%= f.name %></h5>
-          <h6><%= f.trip.trip_name %></h6>
-        </div>
-        <div class="add-button">
-          <%= simple_form_for [f], url: add_activity_to_trip_path(f.trip, f), method: :post do |f| %>
-            <%= f.submit 'Add to Trip', class: 'button' %>
+        <%= submit_tag "Search", class: "button" %>
+      <% end %>
+    </div>
+    <div class="favourites">
+      <% @favourites.each do |f| %>
+        <div class="favourite-card">
+          <div class="favourite-text">
+            <h5><%= f.name %></h5>
+            <h6><%= f.trip.trip_name %></h6>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <%= link_to "Back", user_path(current_user), class: 'button back-button-favourites' %>
-</div>
+          <div class="add-button">
+            <%= simple_form_for [f], url: add_activity_to_trip_path(f.trip, f), method: :post do |f| %>
+              <%= f.submit '+', class: 'new-trip-btn' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>

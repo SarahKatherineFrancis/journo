@@ -2,13 +2,13 @@
   <div class="recommendations">
     <div class="activities-tabs" data-controller="activities-tabs">
       <div id="eat" class="tab-button">
-        <h2>Eat</h2>
+        <h2>eat</h2>
       </div>
       <div id="do" class="tab-button">
-        <h2>Do</h2>
+        <h2>do</h2>
       </div>
       <div id="explore" class="tab-button">
-        <h2>Explore</h2>
+        <h2>explore</h2>
       </div>
     </div>
     <div id="eat-rec" class="tab-content">
@@ -26,7 +26,7 @@
               <button type="submit"><i class="fa-solid fa-heart"></i></button>
             <% end %>
             <div class="dropdown">
-              <h2><i class="fa-solid fa-caret-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
+              <h2><i class="fa-solid fa-chevron-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
               <button type="submit"><i class="fa-solid fa-heart"></i></button>
             <% end %>
             <div class="dropdown">
-              <h2><i class="fa-solid fa-caret-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
+              <h2><i class="fa-solid fa-chevron-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
               <button type="submit"><i class="fa-solid fa-heart"></i></button>
             <% end %>
             <div class="dropdown">
-              <h2><i class="fa-solid fa-caret-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
+              <h2><i class="fa-solid fa-chevron-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
             </div>
           </div>
         </div>
@@ -77,8 +77,8 @@
   </div>
   <div class="trip-basket">
     <div class="basket-title">
-      <h2>Your Trip</h2>
-      <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(@trip)%>
+      <h1><%=@trip.trip_name%> trip</h1>
+      <%= link_to "<i class='fa-solid fa-chevron-right'></i>".html_safe, trip_path(@trip)%>
     </div>
     <% @selected_activities.reverse.each do |activity| %>
       <div class="recommendation-card">

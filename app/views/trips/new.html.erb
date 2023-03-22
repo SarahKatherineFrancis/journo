@@ -1,10 +1,12 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1538061879026-7703d25d483c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1677&q=80);">
+<div class="trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1658727965704-081e5ca55269?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80);">
   <div class="container">
-    <h1>plan your next adventure</h1>
-    <p>create a new trip board</p>
+    <h1>where to next?</h1>
+    <h1>we're here to help you plan!</h1>
   </div>
 </div>
 <div class="parent">
+  <%= link_to icon('fa-solid', 'chevron-left'),  trips_path, class: 'btn' %>
+  <%= link_to icon('fa-solid', 'heart'),  favourites_path, class: 'btn' %>
   <div class="trip-form-header">
   </div>
   <div class="trip-form">
@@ -18,15 +20,20 @@
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
         <%= f.input :longitude, :as => :hidden, :input_html => { :value => "lonTarget" } %>
         <%= f.input :latitude, :as => :hidden, :input_html => { :value => "latTarget" } %>
-        <input type="text" id="daterange" name="date_range"><br><br>
+        <h4><i class="fa-regular fa-calendar"></i></h4>
+        <input type="text" id="daterange" name="date_range">
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Let's Go!", class: 'button' %>
+        <%= f.button :submit, "Let's Go!", class: 'buttn' %>
       </div>
     <% end %>
   </div>
 </div>
-
+<br>
+<div class="trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1658727965704-081e5ca55269?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80);">
+  <div class="container">
+  </div>
+</div>
 <script>
   $(function() {
     $('#daterange').daterangepicker({
