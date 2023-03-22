@@ -13,15 +13,6 @@
         </p>
       </div>
     </div>
-    <div class="recommendations">
-      <h2>Your recommended itinerary:</h2>
-      <%= @infos.html_safe %>
-      <h2>Our suggested budget:</h2>
-      <%= @trip.budget.html_safe %>
-      <h2>We recommend packing:</h2>
-      <%= @trip.packing_list.html_safe %>
-      <h2>Visa Recommendations:</h2>
-      <%= @trip.visa.html_safe %>
     <div class="trip-recommendations" data-controller="recommendation-tabs">
       <div id="itinerary-content" class=''>
         <h2>Your recommended itinerary:</h2>
@@ -53,6 +44,7 @@
           <h2><i class="fa-solid fa-passport"></i></h2>
         </div>
       </div>
+
     </div>
     <div class="trip-show-basket">
       <div class="sticky">
@@ -81,4 +73,4 @@
   <div>
   </div>
 </div>
-<div class="cards">
+
