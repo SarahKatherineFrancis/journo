@@ -9,8 +9,8 @@
   <%= link_to icon('fa-solid', 'heart'),  favourites_path, class: 'btn' %>
   <div class="trip-form-header">
   </div>
-  <div class="trip-form">
-    <%= simple_form_for @trip do |f| %>
+  <div class="trip-form", data-controller="activities">
+    <%= simple_form_for @trip, html: { id: 'trip-form '} do |f| %>
       <div class="form-inputs">
         <%= f.input :trip_name,
                 required: true,
