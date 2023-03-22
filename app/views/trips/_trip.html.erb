@@ -1,6 +1,6 @@
 <%= turbo_stream_from trip%>
-<div>
-  <div class="parent" id="<%= dom_id(trip)%>">
+<div id="<%= dom_id(trip)%>">
+  <div class="parent">
     <div class="recommendations">
       <div class="activities-tabs" data-controller="activities-tabs">
         <div id="eat" class="tab-button">
