@@ -49,7 +49,6 @@ class TripsController < ApplicationController
     )
     itinerary = itinerary_response.parsed_response['choices'][0]['text']
     @trip.update(itinerary: itinerary)
-
   end
 
   def create
