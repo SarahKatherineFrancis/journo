@@ -1,7 +1,6 @@
-<h1>Create a note</h1>
+<h1>Any thoughts?</h1>
 <%= simple_form_for [@activity, @note] do |f| %>
   <%= f.input :comment %>
   <%= f.button :submit %>
 <% end %>
-
-<%= link_to "Go Back", trip_path, class: 'button' %>
+<%= link_to icon('fa-solid', 'chevron-left'),  trip_path, class: 'btn' %>
