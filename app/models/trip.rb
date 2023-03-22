@@ -36,6 +36,7 @@ class Trip < ApplicationRecord
     end
   end
 
+
   def generate_activities
     destination = self.destination
     eat_preference = user.eat_preference_list
