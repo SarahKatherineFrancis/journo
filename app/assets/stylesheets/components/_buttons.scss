@@ -10,13 +10,13 @@
 }
 
 .button:hover {
-  background: #279af1ff;
+  background: #f5ab2dff;
   color: #f4ebd9ff;
   text-decoration: none;
 }
 
 .btn{
-  background: #073b4cff;
+  background: none;
   border-radius: 28px;
   font-family: "Quicksand", "sans-serif";
   color: #f4ebd9ff;
@@ -41,8 +41,8 @@ button {
   width: 55px;
   height: 55px;
   box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
-  color: #f4ebd9ff;
-  background: #f5ab2dff;
+  color: #073b4cff;
+  background: none;
   border-radius: 28px;
   font-family: "Quicksand", "sans-serif";
   font-size: 20px;

@@ -18,12 +18,12 @@
 </div>
 <div class="container-trips">
   <div class ="row">
-    <div class="user-map" style="width: 50%; height: 450px;"
+    <div class="map-card" style="width: 50%; height: 450px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <div class ="user-trip" style="width: 50%; height: 450px;">
+    <div class ="map-card" style="width: 50%; height: 450px;">
       <div class="trip-details">
         <h1><%=@trips.last.trip_name%></h1>
         <h6><i class="fa-solid fa-location-dot"></i> <%=@trips.last.destination%></h6>
@@ -32,8 +32,11 @@
     </div>
   </div>
 </div>
+<br>
 <div class="image-container">
-  <div><h1></h1></div>
+  <div>
+    <h1></h1>
+  </div>
 </div>
 <div class="container bootstrap snippets bootdeys">
   <div class="row">
