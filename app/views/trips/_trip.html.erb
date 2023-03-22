@@ -26,7 +26,7 @@
         <h1><%=trip.trip_name%> trip</h1>
         <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(trip)%>
       </div>
-      <% @selected_activities.reverse.each do |activity| %>
+      <% trip.activities.selected.reverse.each do |activity| %>
         <div class="recommendation-card">
           <h6><%= activity.name%> <span></span>
           </h6>
@@ -34,7 +34,7 @@
       <% end %>
     </div>
     <div class="activities-index-map" data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-markers-value="<%= markers %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
