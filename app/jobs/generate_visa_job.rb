@@ -4,7 +4,7 @@ class GenerateVisaJob < ApplicationJob
   def perform(trip)
     client = OpenAI::Client.new
     visa_prompt = "I am a #{trip.user.nationality} National and travelling to #{trip.destination}.
-    What are the visa requirements and necessary vaccines to travel for leisure?"
+    What are the visa requirements and necessary vaccines to travel for leisure? Display the response as a HTML list."
     visa_response = client.completions(
       parameters: {
         model: "text-davinci-003",
