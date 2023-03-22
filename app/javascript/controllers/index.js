@@ -2,26 +2,28 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import ActivitiesTabsController from "./activities_tabs_controller"
-application.register("activities-tabs", ActivitiesTabsController)
+import BasketController from "./basket_controller";
+application.register("basket", BasketController);
 
-import ActivityDropdownController from "./activity_dropdown_controller"
-application.register("activity-dropdown", ActivityDropdownController)
+import ActivitiesTabsController from "./activities_tabs_controller";
+application.register("activities-tabs", ActivitiesTabsController);
 
-import AddressAutocompleteController from "./address_autocomplete_controller"
-application.register("address-autocomplete", AddressAutocompleteController)
+import ActivityDropdownController from "./activity_dropdown_controller";
+application.register("activity-dropdown", ActivityDropdownController);
 
-import CountdownController from "./countdown_controller"
-application.register("countdown", CountdownController)
+import AddressAutocompleteController from "./address_autocomplete_controller";
+application.register("address-autocomplete", AddressAutocompleteController);
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import CountdownController from "./countdown_controller";
+application.register("countdown", CountdownController);
 
-import MapController from "./map_controller"
-application.register("map", MapController)
+import HelloController from "./hello_controller";
+application.register("hello", HelloController);
 
-import RecommendationTabsController from "./recommendation_tabs_controller"
-application.register("recommendation-tabs", RecommendationTabsController)
+import MapController from "./map_controller";
+application.register("map", MapController);
 
+import RecommendationTabsController from "./recommendation_tabs_controller";
+application.register("recommendation-tabs", RecommendationTabsController);
