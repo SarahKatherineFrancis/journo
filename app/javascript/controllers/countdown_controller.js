@@ -10,7 +10,7 @@ export default class extends Controller {
         day = hour * 24;
 
       const startDate = document.getElementById("start-date");
-      const startDateText = new Date(startDate.innerHTML);
+      const startDateText = new Date(startDate.innerText);
       const time = startDateText.getTime();
 
       const timezoneOffset = startDateText.getTimezoneOffset();
