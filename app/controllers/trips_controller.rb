@@ -47,7 +47,9 @@ class TripsController < ApplicationController
         temperature: 0.1
       }
     )
-    @infos = itinerary_response.parsed_response['choices'][0]['text']
+    itinerary = itinerary_response.parsed_response['choices'][0]['text']
+    @trip.update(itinerary: itinerary)
+
   end
 
   def create
