@@ -10,7 +10,7 @@ class Trip < ApplicationRecord
   after_commit :generate_packing_list, on: :create
   after_commit :generate_visa, on: :create
 
-  geocoded_by :address
+  # geocoded_by :address
 
   @@client = OpenAI::Client.new
 
