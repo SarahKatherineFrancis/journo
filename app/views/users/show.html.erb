@@ -7,13 +7,13 @@
 </div>
 <div class="cards">
   <div class="user-card-category">
-    <%= link_to "new trip",  new_trip_path, class: 'tab-button' %>
+    <h1><%= link_to icon("fa-regular", "calendar-plus"),  new_trip_path, class: 'tab-button' %></h1>
   </div>
   <div class="user-card-category">
-    <%= link_to "view all trips",  trips_path, class: 'tab-button' %>
+    <h1><%= link_to icon("fa-solid", "earth-africa"),  trips_path, class: 'tab-button' %></h1>
   </div>
   <div class="user-card-category">
-    <%= link_to "upcoming trip",  trip_path(current_user), class: 'tab-button' %>
+    <h1><%= link_to icon("fa-solid", "plane"),  trip_path(current_user), class: 'tab-button' %></h1>
   </div>
 </div>
 <div class="container-trips">
