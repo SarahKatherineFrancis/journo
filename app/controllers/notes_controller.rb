@@ -6,9 +6,8 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
-    @activity = Activity.find(params[:activity_id])
-    @note.activity = @activity
-    @trip = @activity.trip
+    @trip = Trip.find(params[:trip_id])
+    @note.trip = @trip
     redirect_to trip_path(@trip) if @note.save
   end
 
