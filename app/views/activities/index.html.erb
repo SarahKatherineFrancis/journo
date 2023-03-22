@@ -2,13 +2,13 @@
   <div class="recommendations">
     <div class="activities-tabs" data-controller="activities-tabs">
       <div id="eat" class="tab-button">
-        <h2>Eat</h2>
+        <h2>eat</h2>
       </div>
       <div id="do" class="tab-button">
-        <h2>Do</h2>
+        <h2>do</h2>
       </div>
       <div id="explore" class="tab-button">
-        <h2>Explore</h2>
+        <h2>explore</h2>
       </div>
     </div>
     <div id="eat-rec" class="tab-content">
@@ -20,77 +20,76 @@
           </div>
           <div class="recommendation-card-buttons">
             <%= simple_form_for [@trip, eat], url: add_activity_to_trip_path(@trip, eat), method: :post do |f| %>
-                   <button type="submit"><i class="fa-solid fa-plus"></i></button>
+              <button type="submit"><i class="fa-solid fa-plus"></i></button>
             <% end %>
             <%= simple_form_for [@trip, eat], url: add_activity_to_favourites_path(@trip, eat), method: :post do |f| %>
               <button type="submit"><i class="fa-solid fa-heart"></i></button>
             <% end %>
-              <div class="dropdown">
-                <h2><i class="fa-solid fa-caret-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
-              </div>
+            <div class="dropdown">
+              <h2><i class="fa-solid fa-chevron-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
             </div>
           </div>
-        <% end %>
-      </div>
-      <div id="do-rec" class="tab-content hide">
-        <% @do.each do |d| %>
-          <div class="recommendation-card" data-controller="activity-dropdown">
-            <div class="recommendation-card-info">
-              <h4><%= d.name %> <i class="fa-solid fa-person-walking"></i></h4>
-              <h6 data-activity-dropdown-target="description" class="activity-description"><%= d.description %></h6>
-            </div>
-            <div class="recommendation-card-buttons">
-              <%= simple_form_for [@trip, d], url: add_activity_to_trip_path(@trip, d), method: :post do |f| %>
-                 <button type="submit"><i class="fa-solid fa-plus"></i></button>
-              <% end %>
-              <%= simple_form_for [@trip, d], url: add_activity_to_favourites_path(@trip, d), method: :post do |f| %>
-                <button type="submit"><i class="fa-solid fa-heart"></i></button>
-              <% end %>
-              <div class="dropdown">
-                <h2><i class="fa-solid fa-caret-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div id="explore-rec" class="tab-content hide">
-        <% @explore.each do |explore| %>
-          <div class="recommendation-card" data-controller="activity-dropdown">
-            <div class="recommendation-card-info">
-              <h4><%= explore.name %> <i class="fa-solid fa-compass"></i></h4>
-              <h6 data-activity-dropdown-target="description" class="activity-description"><%= explore.description %></h6>
-            </div>
-            <div class="recommendation-card-buttons">
-              <%= simple_form_for [@trip, explore], url: add_activity_to_trip_path(@trip, explore), method: :post do |f| %>
-                 <button type="submit"><i class="fa-solid fa-plus"></i></button>
-              <% end %>
-              <%= simple_form_for [@trip, explore], url: add_activity_to_favourites_path(@trip, explore), method: :post do |f| %>
-                <button type="submit"><i class="fa-solid fa-heart"></i></button>
-              <% end %>
-              <div class="dropdown">
-                <h2><i class="fa-solid fa-caret-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="trip-basket" data-controller="basket">
-      <div class="basket-title">
-        <h2>Your Trip</h2>
-        <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(@trip)%>
-      </div>
-    <div class="added-trips">
-      <% @selected_activities.reverse.each do |activity| %>
-        <div class="recommendation-card">
-          <h6><%= activity.name%> <span></span>
-          </h6>
         </div>
       <% end %>
-     </div>
-      <div class="activities-index-map" data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+    <div id="do-rec" class="tab-content hide">
+      <% @do.each do |d| %>
+        <div class="recommendation-card" data-controller="activity-dropdown">
+          <div class="recommendation-card-info">
+            <h4><%= d.name %> <i class="fa-solid fa-person-walking"></i></h4>
+            <h6 data-activity-dropdown-target="description" class="activity-description"><%= d.description %></h6>
+          </div>
+          <div class="recommendation-card-buttons">
+            <%= simple_form_for [@trip, d], url: add_activity_to_trip_path(@trip, d), method: :post do |f| %>
+              <button type="submit"><i class="fa-solid fa-plus"></i></button>
+            <% end %>
+            <%= simple_form_for [@trip, d], url: add_activity_to_favourites_path(@trip, d), method: :post do |f| %>
+              <button type="submit"><i class="fa-solid fa-heart"></i></button>
+            <% end %>
+            <div class="dropdown">
+              <h2><i class="fa-solid fa-chevron-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="explore-rec" class="tab-content hide">
+      <% @explore.each do |explore| %>
+        <div class="recommendation-card" data-controller="activity-dropdown">
+          <div class="recommendation-card-info">
+            <h4><%= explore.name %> <i class="fa-solid fa-compass"></i></h4>
+            <h6 data-activity-dropdown-target="description" class="activity-description"><%= explore.description %></h6>
+          </div>
+          <div class="recommendation-card-buttons">
+            <%= simple_form_for [@trip, explore], url: add_activity_to_trip_path(@trip, explore), method: :post do |f| %>
+              <button type="submit"><i class="fa-solid fa-plus"></i></button>
+            <% end %>
+            <%= simple_form_for [@trip, explore], url: add_activity_to_favourites_path(@trip, explore), method: :post do |f| %>
+              <button type="submit"><i class="fa-solid fa-heart"></i></button>
+            <% end %>
+            <div class="dropdown">
+              <h2><i class="fa-solid fa-chevron-down drop" data-action="click->activity-dropdown#toggle"></i></h2>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
+  <div class="trip-basket">
+    <div class="basket-title">
+     <h1><%=@trip.trip_name%> trip</h1>
+      <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(@trip)%>
+    </div>
+    <% @selected_activities.reverse.each do |activity| %>
+      <div class="recommendation-card">
+        <h6><%= activity.name%> <span></span>
+        </h6>
+      </div>
+    <% end %>
+  </div>
+  <div class="activities-index-map" data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
