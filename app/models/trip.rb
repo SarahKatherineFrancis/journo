@@ -9,6 +9,8 @@ class Trip < ApplicationRecord
   after_commit :generate_packing_list, on: :create
   after_commit :generate_visa, on: :create
 
+  after_update_commit { broadcast_update }
+
   @@client = OpenAI::Client.new
 
   # geocoded_by :address,
@@ -19,19 +21,17 @@ class Trip < ApplicationRecord
       parameters: {
         model: "text-davinci-003",
         prompt:,
-        max_tokens: 500,
-        temperature: 0.1
+        max_tokens: 2000,
+        temperature: 0.3
       }
     )
-    p response
 
     infos = response.parsed_response['choices'][0]['text']
     activities = JSON.parse(infos)
 
-    p activities
     activities.each do |info|
       Activity.create(name: info['name'], description: info['description'], latitude: info['lat'], longitude: info['lon'], category:,
-                      trip: self)
+        trip: self)
     end
   end
 

@@ -16,4 +16,8 @@ class Activity < ApplicationRecord
     favourite: 1,
     added: 2
   }
+
+  scope :pending_eat, -> { where(category: :eat, status: :pending) }
+  scope :pending_do, -> { where(category: :do, status: :pending) }
+  scope :pending_explore, -> { where(category: :explore, status: :pending) }
 end

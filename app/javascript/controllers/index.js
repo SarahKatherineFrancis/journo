@@ -24,3 +24,4 @@ application.register("map", MapController)
 
 import RecommendationTabsController from "./recommendation_tabs_controller"
 application.register("recommendation-tabs", RecommendationTabsController)
+
