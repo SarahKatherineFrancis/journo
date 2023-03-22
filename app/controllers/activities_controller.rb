@@ -1,9 +1,6 @@
 class ActivitiesController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
-    @eat = @trip.activities.where(category: :eat, status: :pending)
-    @explore = @trip.activities.where(category: :explore, status: :pending)
-    @do = @trip.activities.where(category: :do, status: :pending)
     @selected_activities = selected_activities
 
     @activities = @trip.activities.all
