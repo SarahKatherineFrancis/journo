@@ -16,11 +16,10 @@ export default class extends Controller {
       ]
     });
 
-    const pen = document.querySelector("pen")
+    const pen = document.getElementById("pen")
     const note = document.querySelector(".notes-form")
-
-    pen.addEventListener("click", (event) =>
-    note.classList.toggle("hide")
+      pen.addEventListener("click", (event) =>
+      note.classList.remove("hide")
     )
   }
 }
