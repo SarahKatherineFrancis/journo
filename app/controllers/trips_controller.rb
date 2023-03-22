@@ -29,16 +29,18 @@ class TripsController < ApplicationController
 
     activity_names = (dos + exps).uniq
 
-    itinerary_prompt = "I am going on a trip to #{@trip.destination}.
-    The itinerary must be for #{(@trip.end_date - @trip.start_date).to_i} days.
-    I want to visit: #{activity_names}.
-    I want to eat at: #{restaurants}.
-    Each day should suggest at least one restaurant and one activity.
-    Do not repeat an item.
-    The itinerary clearly shows restaurants and activities.
-    The itinerary does not have to include everything.
-    Please format the response in a HTML list."
+    if @trip.itinerary.nil?
+      itinerary_prompt = "I am going on a trip to #{@trip.destination}.
+      The itinerary must be for #{(@trip.end_date - @trip.start_date).to_i} days.
+      I want to visit: #{activity_names}.
+      I want to eat at: #{restaurants}.
+      Each day should suggest at least one restaurant and one activity.
+      Do not repeat an item.
+      The itinerary clearly shows restaurants and activities.
+      The itinerary does not have to include everything.
+      Please format the response in a HTML list."
 
+<<<<<<< Updated upstream
     itinerary_response = @@client.completions(
       parameters: {
         model: "text-davinci-003",
@@ -50,6 +52,21 @@ class TripsController < ApplicationController
     itinerary = itinerary_response.parsed_response['choices'][0]['text']
     @trip.update(itinerary: itinerary)
   end
+=======
+      itinerary_response = @@client.completions(
+        parameters: {
+          model: "text-davinci-003",
+          prompt: itinerary_prompt,
+          max_tokens: 2000,
+          temperature: 0.1
+        }
+      )
+      itinerary = itinerary_response.parsed_response['choices'][0]['text']
+      @trip.update(itinerary: )
+    end
+
+    end
+>>>>>>> Stashed changes
 
   def create
     date_range = params[:date_range]
