@@ -1,31 +1,27 @@
-<div class="banner" style="background-image: url(https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)">
-  <div class="container">
-    <h1>Welcome back,<%=@user.first_name%> <%=@user.last_name%>.</h1>
-    <p>Planning to visit your next dream destination?</p>
-    <br>
-    <%= link_to icon('fa-solid', 'chevron-right', class:"fa-fade"),  new_trip_path, class: 'button' %>
+
+<div class="parent">
+  <div class="banner" style="background-image: url(https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)">
+    <div class="container">
+      <h1>Welcome back,<%=@user.first_name%> <%=@user.last_name%>.</h1>
+      <p>Planning to visit your next dream destination?</p>
+      <%= link_to icon('fa-solid','chevron-right', class:"fa-beat-fade"),  new_trip_path, class: 'button' %>
+    </div>
   </div>
-</div>
-<br>
-<div class="cards">
-  <div class="card-category">
-    <%= link_to(image_tag("https://images.unsplash.com/photo-1523428461295-92770e70d7ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=790&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
+  <div class="cards">
+    <div class="card-category">
+      <%= link_to(image_tag("https://images.unsplash.com/photo-1574043623771-dc0c956ce7da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
+    </div>
+    <div class="card-category">
+      <%= link_to(image_tag("https://images.unsplash.com/photo-1505819244306-ef53954f9648?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=798&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
+    </div>
+    <div class="card-category">
+      <%= link_to(image_tag("https://images.unsplash.com/photo-1653580559380-e44e45d2893e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), favourites_path,  :method => :get) %>
+    </div>
   </div>
-  <div class="card-category">
-    <%= link_to(image_tag("https://images.unsplash.com/photo-1505819244306-ef53954f9648?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=798&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
+  <div class="image-container">
+    <div class="text">t r a v e l</div>
   </div>
-  <div class="card-category">
-    <%= link_to(image_tag("https://images.unsplash.com/photo-1653580559380-e44e45d2893e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), favourites_path,  :method => :get) %>
-  </div>
-</div>
-<br>
-<div class="image-container">
-  <div class="text">t r a v e l</div>
-</div>
-<br>
-<div class="activities-container">
-  <div class ="row">
-    <div style="width: 50%; height: 600px;"
+  <div class="user-map" style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
