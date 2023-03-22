@@ -2,7 +2,7 @@
   <div class="parent">
     <div class="trip-header">
       <div class="trip-title">
-        <h2><%= @trip.trip_name %></h2>
+        <h1><%= @trip.trip_name %></h1>
       </div>
       <div class="trip-countdown" data-controller="countdown">
         <p>
@@ -33,21 +33,22 @@
         <%= @trip.itinerary.html_safe %>
       </div>
       <div id="budget-content" class='d-none'>
-        <h2>Our suggested budget:</h2>
+        <h1>Budget suggestions:</h1>
         <%= @trip.budget.html_safe %>
       </div>
       <div id="packing-content" class='d-none'>
-        <h2>We recommend packing:</h2>
+        <h1>Packing recommendations:</h1>
         <%= @trip.packing_list.html_safe %>
       </div>
       <div id="visa-content" class='d-none'>
-        <h2>Visa Recommendations:</h2>
+        <h1>Visa Recommendations:</h1>
         <%= @trip.visa.html_safe %>
       </div>
     </div>
     <div class="trip-show-basket">
       <div class="sticky">
         <div class="trip-details">
+
         <div class="basket-title">
           <h2>Trip Details</h2>
           <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
@@ -62,6 +63,7 @@
           <h2>You selected:</h2>
           <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
         </div>
+          <h1>Selected Activities</h1>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
               <h6><%=activity.name%></h6>
