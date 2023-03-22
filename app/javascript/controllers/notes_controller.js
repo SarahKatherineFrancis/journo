@@ -15,5 +15,12 @@ export default class extends Controller {
         { value: 'Email', title: 'Email' },
       ]
     });
+
+    const pen = document.querySelector("pen")
+    const note = document.querySelector(".notes-form")
+
+    pen.addEventListener("click", (event) =>
+    note.classList.toggle("hide")
+    )
   }
 }
