@@ -8,14 +8,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :trips, only: [:index, :new, :create, :show] do
+    resources :notes, only: [:create]
     resources :activities, only: [:index, :update]
   end
 
   resources :favourites, only: [:index]
 
-  resources :activities, only: [] do
-    resources :notes, only: [:create]
-  end
+  resources :activities, only: []
 
   require "sidekiq/web"
   mount Sidekiq::Web => '/sidekiq'

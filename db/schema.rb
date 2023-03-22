@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_21_100952) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_100324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,12 +65,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_100952) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.bigint "activity_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comment"
-    t.index ["activity_id"], name: "index_notes_on_activity_id"
+    t.bigint "trip_id", null: false
+    t.text "note"
+    t.index ["trip_id"], name: "index_notes_on_trip_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
@@ -142,7 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_100952) do
   add_foreign_key "activities", "trips"
   add_foreign_key "favourites", "activities"
   add_foreign_key "favourites", "users"
-  add_foreign_key "notes", "activities"
+  add_foreign_key "notes", "trips"
   add_foreign_key "notes", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "trips", "users"
