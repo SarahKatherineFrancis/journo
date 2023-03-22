@@ -35,11 +35,6 @@
 <div class="image-container">
   <div class="text">t r a v e l</div>
 </div>
-<div class="cards-lower">
-  <%= link_to(image_tag("https://images.unsplash.com/photo-1497262693247-aa258f96c4f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
-  <%= link_to(image_tag("https://images.unsplash.com/photo-1574260031597-bcd9eb192b4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
-  <%= link_to(image_tag("https://images.unsplash.com/photo-1531969179221-3946e6b5a5e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), favourites_path,  :method => :get) %>
-</div>
 <div class="container bootstrap snippets bootdeys">
   <div class="row">
     <% @trips[0..2].each do |trip| %>
