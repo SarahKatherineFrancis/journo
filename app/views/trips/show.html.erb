@@ -69,15 +69,20 @@
       </div>
     </div>
     <div class="notes" data-controller="notes">
-      <% @notes.each do |note| %>
-     <h2><%= note.note %></h2>
-     <% end %>
-      <%= simple_form_for [@trip, @note] do |f| %>
-        <%= f.input :note %>
-        <%= f.button :submit %>
-      <% end %>
+    <div id="note"><%= @notes.last.note.html_safe %></div>
+      <% if @notes.length > 0 %>
+        <%= simple_form_for [@trip, @note] do |f| %>
+          <%= f.input :note %>
+          <%= f.button :submit, "Edit" %>
+          <% end %>
+        <% else %>
+          <%= simple_form_for [@trip, @note] do |f| %>
+            <%= f.input :note %>
+            <%= f.button :submit %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div>
     </div>
   </div>
-  <div>
-  </div>
-</div>
