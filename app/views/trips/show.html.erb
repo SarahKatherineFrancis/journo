@@ -69,7 +69,7 @@
       </div>
     </div>
     <div class="notes">
-      <h2><%= @trip.notes.first %></h2>
+      <h2><%= @trip.notes.first.note %></h2>
       <%= simple_form_for [@trip, @note] do |f| %>
         <%= f.input :note %>
         <%= f.button :submit %>
