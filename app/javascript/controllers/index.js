@@ -2,28 +2,31 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { application } from "./application"
 
-import BasketController from "./basket_controller";
-application.register("basket", BasketController);
+import ActivitiesTabsController from "./activities_tabs_controller"
+application.register("activities-tabs", ActivitiesTabsController)
 
-import ActivitiesTabsController from "./activities_tabs_controller";
-application.register("activities-tabs", ActivitiesTabsController);
+import ActivityDropdownController from "./activity_dropdown_controller"
+application.register("activity-dropdown", ActivityDropdownController)
 
-import ActivityDropdownController from "./activity_dropdown_controller";
-application.register("activity-dropdown", ActivityDropdownController);
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
 
-import AddressAutocompleteController from "./address_autocomplete_controller";
-application.register("address-autocomplete", AddressAutocompleteController);
+import BasketController from "./basket_controller"
+application.register("basket", BasketController)
 
-import CountdownController from "./countdown_controller";
-application.register("countdown", CountdownController);
+import CountdownController from "./countdown_controller"
+application.register("countdown", CountdownController)
 
-import HelloController from "./hello_controller";
-application.register("hello", HelloController);
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
-import MapController from "./map_controller";
-application.register("map", MapController);
+import MapController from "./map_controller"
+application.register("map", MapController)
 
-import RecommendationTabsController from "./recommendation_tabs_controller";
-application.register("recommendation-tabs", RecommendationTabsController);
+import NotesController from "./notes_controller"
+application.register("notes", NotesController)
+
+import RecommendationTabsController from "./recommendation_tabs_controller"
+application.register("recommendation-tabs", RecommendationTabsController)

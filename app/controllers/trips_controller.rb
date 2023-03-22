@@ -17,11 +17,10 @@ class TripsController < ApplicationController
   end
 
   def show
+    @trip = Trip.find(params[:id])
+    @activities = @trip.activities.where(status: :added)
     @note = Note.new
-    @trip = Trip.find(params[:id])
-    @activities = @trip.activities.where(status: :added)
-    @trip = Trip.find(params[:id])
-    @activities = @trip.activities.where(status: :added)
+    @notes = @trip.notes
 
     restaurants = @activities.where(category: :eat).pluck(:name)
     dos = @activities.where(category: :do).pluck(:name)
@@ -49,7 +48,7 @@ class TripsController < ApplicationController
         }
       )
       itinerary = itinerary_response.parsed_response['choices'][0]['text']
-      @trip.update(itinerary: itinerary)
+      @trip.update(itinerary: )
     end
   end
 
@@ -57,7 +56,9 @@ class TripsController < ApplicationController
     date_range = params[:date_range]
     start_date = Date.parse(date_range.split[0])
     end_date = Date.parse(date_range.split[2])
+
     date_range_hash = { start_date:, end_date: }
+
     full_params_trip = trip_params.merge(date_range_hash)
     @trip = Trip.new(full_params_trip)
     @trip.user = current_user
