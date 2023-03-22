@@ -32,8 +32,8 @@
 </div>
 <div class="container bootstrap snippets bootdeys">
   <div class="row">
-    <div class="col-md-4 col-sm-6 content-card">
-      <% @trips.each do |trip| %>
+    <% @trips.each do |trip| %>
+      <div class="col-md-4 col-sm-6 content-card">
         <%=link_to (trip) do%>
           <div class="card-big-shadow">
             <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
@@ -42,8 +42,10 @@
                 <h1 class="title"><%= trip.trip_name %></h1>
                 <p class="description">Destination:<%= trip.destination%></p>
               </div>
-            <%end%>
+            </div>
           </div>
-        <% end %>
+        <%end%>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>

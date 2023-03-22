@@ -3,7 +3,7 @@
     <h1>Welcome back,<%=@user.first_name%> <%=@user.last_name%>.</h1>
     <p>Planning to visit your next dream destination?</p>
     <br>
-    <%= link_to icon('fa-solid', 'chevron-right', class:"fa-fade"),  new_trip_path, class: 'btn' %>
+    <%= link_to icon('fa-solid', 'chevron-right', class:"fa-fade"),  new_trip_path, class: 'button' %>
   </div>
 </div>
 <br>
@@ -32,8 +32,8 @@
     </div>
     <div class="container bootstrap snippets bootdeys">
       <div class="row">
-        <div class="col-md-4 col-sm-6 content-card">
-          <% @trips.each do |trip| %>
+        <% @trips.each do |trip| %>
+          <div class="col-md-4 col-sm-6 content-card">
             <%=link_to (trip) do%>
               <div class="card-big-shadow">
                 <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
@@ -42,23 +42,20 @@
                     <h1 class="title"><%= trip.trip_name %></h1>
                     <p class="description">Destination:<%= trip.destination%></p>
                   </div>
-                <% end %>
+                </div>
               </div>
-            <% end %>
+            <%end%>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
     <br>
-    <div class="cards">
-      <div class="card-category">
-        <%= link_to(image_tag("https://images.unsplash.com/photo-1497262693247-aa258f96c4f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
-      </div>
-      <div class="card-category">
-        <%= link_to(image_tag("https://images.unsplash.com/photo-1574260031597-bcd9eb192b4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), trips_path,  :method => :get) %>
-      </div>
-      <div class="card-category">
-        <%= link_to(image_tag("https://images.unsplash.com/photo-1531969179221-3946e6b5a5e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", class: 'image-responsive'), favourites_path,  :method => :get) %>
+    <div class="trip-banner" style="background-image: url(https://images.unsplash.com/photo-1459213599465-03ab6a4d5931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80)">
+      <div class="container">
+        <h1>your next adventure awaits.</h1>
+        <p>plan your trip using your from your wishlist</p>
+        <br>
+        <%= link_to "go to wishlist",  favourites_path, class: 'btn' %>
       </div>
     </div>
     <br>
