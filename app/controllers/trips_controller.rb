@@ -40,20 +40,6 @@ class TripsController < ApplicationController
       The itinerary does not have to include everything.
       Please format the response in a HTML list."
 
-<<<<<<< Updated upstream
-    itinerary_response = @@client.completions(
-      parameters: {
-        model: "text-davinci-003",
-        prompt: itinerary_prompt,
-        max_tokens: 2000,
-        temperature: 0.1
-      }
-    )
-    itinerary = itinerary_response.parsed_response['choices'][0]['text']
-    @trip.update(itinerary: itinerary)
-
-  end
-=======
       itinerary_response = @@client.completions(
         parameters: {
           model: "text-davinci-003",
@@ -63,11 +49,9 @@ class TripsController < ApplicationController
         }
       )
       itinerary = itinerary_response.parsed_response['choices'][0]['text']
-      @trip.update(itinerary: )
+      @trip.update(itinerary: itinerary)
     end
-
-    end
->>>>>>> Stashed changes
+  end
 
   def create
     date_range = params[:date_range]
