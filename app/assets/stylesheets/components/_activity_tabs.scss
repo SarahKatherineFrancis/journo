@@ -35,3 +35,22 @@
 .tab-button h2 {
   margin-top: 8px;
 }
+
+.trip-tab-button {
+    padding: 8px;
+    background-color: var(--hunyadi-yellow);
+    color: var(--midnight-green);
+    width: 150px;
+    height: 75px;
+    text-align: center;
+    margin: auto;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+  }
+}
+
+.active-tab {
+  border-bottom: solid 2px var(--midnight-green);
+}

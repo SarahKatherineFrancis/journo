@@ -13,34 +13,36 @@
   </div>
   <div class="trip-recommendations" data-controller="recommendation-tabs">
     <div class="activities-tabs" >
-      <div id="itinerary" class="tab-button">
+      <div id="itinerary" class="trip-tab-button active-tab">
         <h2><i class="fa-solid fa-clipboard-list"></i></h2>
+        <p>itinerary</p>
       </div>
-      <div id="budget" class="tab-button">
+      <div id="budget" class="trip-tab-button">
         <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
+        <p>Budget</p>
       </div>
-      <div id="packing" class="tab-button">
+      <div id="packing" class="trip-tab-button">
         <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
+        <p>Packing</p>
       </div>
-      <div id="visa" class="tab-button">
+      <div id="visa" class="trip-tab-button">
         <h2><i class="fa-solid fa-passport"></i></h2>
+        <p>Visa</p>
       </div>
     </div>
-    <div id="itinerary-content" class=''>
-      <h2>Your recommended itinerary:</h2>
-      <%= @trip.itinerary.html_safe %>
-    </div>
-    <div id="budget-content" class='d-none'>
-      <h1>Budget suggestions:</h1>
-      <%= @trip.budget.html_safe %>
-    </div>
-    <div id="packing-content" class='d-none'>
-      <h1>Packing recommendations:</h1>
-      <%= @trip.packing_list.html_safe %>
-    </div>
-    <div id="visa-content" class='d-none'>
-      <h1>Visa Recommendations:</h1>
-      <%= @trip.visa.html_safe %>
+    <div class="contents">
+      <div id="itinerary-content" class=''>
+        <%= @trip.itinerary.html_safe %>
+      </div>
+      <div id="budget-content" class='d-none'>
+        <%= @trip.budget.html_safe %>
+      </div>
+      <div id="packing-content" class='d-none'>
+        <%= @trip.packing_list.html_safe %>
+      </div>
+      <div id="visa-content" class='d-none'>
+        <%= @trip.visa.html_safe %>
+      </div>
     </div>
   </div>
   <div class="trip-show-basket">
@@ -76,7 +78,7 @@
             <% elsif activity.category == 'do' %>
               <h5><i class="fa-solid fa-person-walking">&nbsp&nbsp</i><%=activity.name%></h5>
               <div class="favourites-form">
-               <% if activity.status == "added" %>
+                <% if activity.status == "added" %>
                   <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
                     <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
                   <% end %>
