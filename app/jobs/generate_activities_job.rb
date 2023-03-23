@@ -2,7 +2,7 @@ class GenerateActivitiesJob < ApplicationJob
   queue_as :default
 
   after_perform do |job|
-    job.arguments.first.broadcast_update(locals: {markers: "[]"})
+    job.arguments.first.broadcast_update(locals: { markers: "[]" })
   end
 
   def perform(trip, prompt, category)
