@@ -19,7 +19,7 @@
   background: none;
   border-radius: 28px;
   font-family: "Quicksand", "sans-serif";
-  color: #f4ebd9ff;
+  color: #073b4cff;
   font-size: 24px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -27,6 +27,20 @@
   margin: 12px;
   padding: 12px;
 }
+
+.btn:hover{
+  background: none;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  color: rgb(111, 153, 167);
+  font-size: 24px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+  margin: 12px;
+  padding: 12px;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -53,4 +67,27 @@ button {
 
 .fa-magnifying-glass{
   font-family: FontAwesome;
+}
+
+.tab-user-button {
+  padding: 8px;
+  border-radius: 5px;
+  color: var(--eggshell);
+  background-color: var(--midnight-green);
+  width: 300px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-user-button:hover {
+  cursor: pointer;
+  background-color:  var(--eggshell);;
+  color: var(--midnight-green);
+}
+
+.tab-user-button h1 {
+margin-top: 8px;
 }

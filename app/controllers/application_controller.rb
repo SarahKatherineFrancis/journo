@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:first_name, :last_name, :age, :location, :nationality, :profile_picture, :email, :password,
-        :eat_preference_list => [], :do_preference_list => [])
+               eat_preference_list: [], do_preference_list: [])
     end
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     user_path(current_user)
   end
 end
