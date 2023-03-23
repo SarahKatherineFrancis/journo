@@ -19,13 +19,13 @@
             <h2>explore</h2>
           </div>
         </div>
-        <div id="eat-rec" class="tab-content">
+        <div id="eat-rec" class="tab-content <%= "hide" unless params[:category] == "eat" ||  !params[:category].present?%>">
           <%= render "activities/activities_tab_content", activities: trip.activities.pending_eat, trip: trip, icon: "fa-utensils", class: "pen"%>
         </div>
-        <div id="do-rec" class="tab-content hide">
+        <div id="do-rec" class="tab-content <%= "hide" unless params[:category] == "do" %>">
           <%= render "activities/activities_tab_content", activities: trip.activities.pending_do, trip: trip, icon: "fa-person-walking", class: "pen"%>
         </div>
-        <div id="explore-rec" class="tab-content hide">
+        <div id="explore-rec" class="tab-content <%= "hide" unless params[:category] == "explore" %>">
           <%= render "activities/activities_tab_content", activities: trip.activities.pending_explore, trip: trip, icon: "fa-compass", class: "pen"%>
         </div>
       </div>
