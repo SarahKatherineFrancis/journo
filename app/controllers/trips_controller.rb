@@ -27,6 +27,12 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.ics do
+        send_data @trip.to_icalendar, filename: "#{@trip.trip_name}.ics"
+      end
+    end
     @selected_activities = @trip.activities.where(status: %i[added favourite])
     @activities = @selected_activities.order(:category)
 

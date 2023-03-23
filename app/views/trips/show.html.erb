@@ -48,7 +48,7 @@
       <div class="trip-details">
         <div class="basket-title">
           <h2>Trip Details</h2>
-          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
+          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, trip_path(@trip, format: :ics), class: 'pen' %>
         </div>
         <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
         <p><strong>Arriving from:</strong> <%= current_user.location %></p>
