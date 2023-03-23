@@ -8,6 +8,10 @@ export default class extends Controller {
       eatRecs.classList.remove("hide")
       doRecs.classList.add("hide");
       exploreRecs.classList.add("hide");
+
+      eat.classList.add("active-tab");
+      d.classList.remove("active-tab");
+      explore.classList.remove("active-tab");
     });
 
     const d = document.getElementById("do");
@@ -16,6 +20,10 @@ export default class extends Controller {
       eatRecs.classList.add("hide")
       doRecs.classList.remove("hide");
       exploreRecs.classList.add("hide");
+
+      d.classList.add("active-tab");
+      explore.classList.remove("active-tab");
+      eat.classList.remove("active-tab");
     });
 
     const explore = document.getElementById("explore");
@@ -24,6 +32,10 @@ export default class extends Controller {
       eatRecs.classList.add("hide")
       doRecs.classList.add("hide");
       exploreRecs.classList.remove("hide");
+
+      explore.classList.add("active-tab");
+      d.classList.remove("active-tab");
+      eat.classList.remove("active-tab");
     });
   }
 }

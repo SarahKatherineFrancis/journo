@@ -14,7 +14,6 @@
 
   .tab-button {
     padding: 8px;
-    border-radius: 5px;
     background-color: var(--hunyadi-yellow);
     color: var(--midnight-green);
     width: 150px;
@@ -23,11 +22,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+
+    h2 {
+      font-variant: small-caps;
+    }
   }
 
   .tab-button:hover {
     cursor: pointer;
-    color: var(--eggshell);
     background-color: var(--midnight-green);
   }
 }
