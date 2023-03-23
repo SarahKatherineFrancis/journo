@@ -2,9 +2,9 @@
 <div id="<%= dom_id(trip)%>">
   <div class="parent">
     <% if trip.activities.pending_eat.empty? %>
-      <div>
-        <i class="fa-solid fa-plane-departure fa-beat pen" style="color: #ffffff;"></i>
-        <h1>Generating activities</h1>
+      <div id="load-screen">
+        <i class="fa-solid fa-plane-departure fa-beat pen"></i>
+        <h1 data-controller="typed-js"></h1>
       </div>
     <% else %>
       <div class="recommendations">
@@ -30,17 +30,18 @@
         </div>
       </div>
     <% end %>
-    <div class="trip-basket">
+    <div class="trip-basket" data-controller="basket">
       <div class="basket-title">
         <h1><%=trip.trip_name%> trip</h1>
         <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(trip), class: "pen"%>
       </div>
-      <% trip.activities.selected.reverse.each do |activity| %>
-        <div class="recommendation-card">
-          <h6><%= activity.name%> <span></span>
-          </h6>
-        </div>
-      <% end %>
+      <div class="added-trips">
+        <% trip.activities.selected.reverse.each do |activity| %>
+          <div class="recommendation-card">
+            <h6><%= activity.name%> <span></span></h6>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="activities-index-map" data-controller="map"
       data-map-markers-value="<%= markers %>"

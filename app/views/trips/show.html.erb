@@ -60,10 +60,9 @@
         </div>
         <div class="selected-activities">
          <div class="basket-title">
-          <h2>You selected:</h2>
+          <h2>Selected Activities</h2>
           <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
         </div>
-          <h1>selected activities</h1>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
               <h6><%=activity.name%></h6>

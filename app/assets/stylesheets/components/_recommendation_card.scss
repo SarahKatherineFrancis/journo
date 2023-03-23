@@ -31,3 +31,9 @@
 .drop:hover {
   cursor: pointer;
 }
+
+#loads-screen {
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 1;
+}

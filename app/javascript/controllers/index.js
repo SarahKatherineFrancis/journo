@@ -30,3 +30,6 @@ application.register("notes", NotesController)
 
 import RecommendationTabsController from "./recommendation_tabs_controller"
 application.register("recommendation-tabs", RecommendationTabsController)
+
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)
