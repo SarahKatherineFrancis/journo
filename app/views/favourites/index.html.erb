@@ -4,6 +4,20 @@
     <div class="search-bar">
       <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
+
+    <h1>your wishlist</h1>
+  </div>
+</div>
+<div class="parent">
+  <%= link_to icon('fa-solid', 'chevron-left'),  trips_path, class: 'btn' %>
+  <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
+  <br>
+  <div class="page-header">
+    <h3></h3>
+  </div>
+  <div class="search-bar">
+    <%= form_with url: favourites_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
     params[:query],
     class: "form-control search-bar",
     placeholder: "Search Favourites"
@@ -11,6 +25,9 @@
         <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
+      <%= submit_tag "Search", class: "button" %>
+    <% end %>
+  </div>
   </div>
 </div>
 <div class="parent">
