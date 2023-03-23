@@ -3,7 +3,9 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="countdown"
 export default class extends Controller {
   connect() {
+    console.log('hello')
     setInterval(function () {
+
       const second = 1000,
         minute = second * 60,
         hour = minute * 60,
@@ -26,9 +28,6 @@ export default class extends Controller {
         )),
         (document.getElementById("minutes").innerText = Math.floor(
           (difference % hour) / minute
-        )),
-        (document.getElementById("seconds").innerText = Math.floor(
-          (difference % minute) / second
         ));
     }, 1000);
   }

@@ -5,7 +5,6 @@ class ActivitiesController < ApplicationController
     @explore = @trip.activities.where(category: :explore, status: :pending)
     @do = @trip.activities.where(category: :do, status: :pending)
     @selected_activities = selected_activities
-
     @activities = @trip.activities.all
   end
 
