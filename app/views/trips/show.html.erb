@@ -1,63 +1,66 @@
-<div class="parent">
-  <div class="trip-header">
-    <div class="trip-title">
-      <h1><%= @trip.trip_name %></h1>
-    </div>
-    <div class="trip-countdown" data-controller="countdown">
-      <p id="countdown">
-        <span id="days" class="countdown-number"></span>  d
-        <span id="hours" class="countdown-number"></span>  h
-        <span id="minutes" class="countdown-number"></span>  m
-      </p>
-    </div>
-  </div>
-  <div class="trip-recommendations" data-controller="recommendation-tabs">
-    <div class="activities-tabs" >
-      <div id="itinerary" class="tab-button">
-        <h2><i class="fa-solid fa-clipboard-list"></i></h2>
+<div class="trip">
+  <div class="parent">
+    <div class="trip-header">
+      <div class="trip-title">
+        <h1><%= @trip.trip_name %></h1>
       </div>
-      <div id="budget" class="tab-button">
-        <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
-      </div>
-      <div id="packing" class="tab-button">
-        <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
-      </div>
-      <div id="visa" class="tab-button">
-        <h2><i class="fa-solid fa-passport"></i></h2>
+      <div class="trip-countdown" data-controller="countdown">
+        <p id="countdown">
+          <span id="days" class="countdown-number"></span>  d
+          <span id="hours" class="countdown-number"></span>  h
+          <span id="minutes" class="countdown-number"></span>  m
+          <span id="seconds" class="countdown-number"></span>  s
+        </p>
       </div>
     </div>
-    <div id="itinerary-content" class=''>
-      <h2>Your recommended itinerary:</h2>
-      <%= @trip.itinerary.html_safe %>
+    <div class="trip-recommendations" data-controller="recommendation-tabs">
+      <div class="activities-tabs" >
+        <div id="itinerary" class="tab-button">
+          <h2><i class="fa-solid fa-clipboard-list"></i></h2>
+        </div>
+        <div id="budget" class="tab-button">
+          <h2><i class="fa-solid fa-money-bill-wave"></i></h2>
+        </div>
+        <div id="packing" class="tab-button">
+          <h2><i class="fa-solid fa-suitcase-rolling"></i></h2>
+        </div>
+        <div id="visa" class="tab-button">
+          <h2><i class="fa-solid fa-passport"></i></h2>
+        </div>
+      </div>
+      <div id="itinerary-content" class=''>
+        <h2>Your recommended itinerary:</h2>
+        <%= @trip.itinerary.html_safe %>
+      </div>
+      <div id="budget-content" class='d-none'>
+        <h1>Budget suggestions:</h1>
+        <%= @trip.budget.html_safe %>
+      </div>
+      <div id="packing-content" class='d-none'>
+        <h1>Packing recommendations:</h1>
+        <%= @trip.packing_list.html_safe %>
+      </div>
+      <div id="visa-content" class='d-none'>
+        <h1>Visa Recommendations:</h1>
+        <%= @trip.visa.html_safe %>
+      </div>
     </div>
-    <div id="budget-content" class='d-none'>
-      <h1>Budget suggestions:</h1>
-      <%= @trip.budget.html_safe %>
-    </div>
-    <div id="packing-content" class='d-none'>
-      <h1>Packing recommendations:</h1>
-      <%= @trip.packing_list.html_safe %>
-    </div>
-    <div id="visa-content" class='d-none'>
-      <h1>Visa Recommendations:</h1>
-      <%= @trip.visa.html_safe %>
-    </div>
-  </div>
-  <div class="trip-show-basket">
-    <div class="sticky">
-      <div class="trip-details">
+    <div class="trip-show-basket">
+      <div class="sticky">
+        <div class="trip-details">
+
         <div class="basket-title">
           <h2>Trip Details</h2>
           <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, trip_path(@trip, format: :ics), class: 'pen' %>
         </div>
-        <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
-        <p><strong>Arriving from:</strong> <%= current_user.location %></p>
-        <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
-        <p><strong>End Date:</strong> <%= @trip.end_date %></p>
-      </div>
-      <div class="selected-activities">
-        <div class="basket-title">
-          <h2>Selected Activities</h2>
+          <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
+          <p><strong>Arriving from:</strong> <%= current_user.location %></p>
+          <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
+          <p><strong>End Date:</strong> <%= @trip.end_date %></p>
+        </div>
+        <div class="selected-activities">
+         <div class="basket-title">
+          <h2>You selected:</h2>
           <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
         </div>
         <% @activities.each do |activity|%>
@@ -65,22 +68,34 @@
             <% if activity.category == 'eat' %>
               <h5><i class="fa-solid fa-utensils"></i>&nbsp&nbsp<%=activity.name%></h5>
               <div class="favourites-form">
-                <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(activity), method: :post do |f| %>
-                  <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                <% if activity.status == "added" %>
+                  <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
+                  <% end %>
+                <% else %>
+                  <i class="fa-solid fa-heart fave"></i>
                 <% end %>
               </div>
             <% elsif activity.category == 'do' %>
               <h5><i class="fa-solid fa-person-walking">&nbsp&nbsp</i><%=activity.name%></h5>
               <div class="favourites-form">
-                <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(activity), method: :post do |f| %>
-                  <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+               <% if activity.status == "added" %>
+                  <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
+                  <% end %>
+                <% else %>
+                  <i class="fa-solid fa-heart fave"></i>
                 <% end %>
               </div>
             <% else %>
               <h5><i class="fa-solid fa-compass">&nbsp&nbsp</i><%=activity.name%></h5>
               <div class="favourites-form">
-                <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(activity), method: :post do |f| %>
-                  <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                <% if activity.status == "added" %>
+                  <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
+                  <% end %>
+                <% else %>
+                  <i class="fa-solid fa-heart fave"></i>
                 <% end %>
               </div>
             <% end %>
@@ -88,18 +103,17 @@
         <%end%>
       </div>
     </div>
-  </div>
-  <div class="notes" data-controller="notes">
-    <div class="notes-header">
-      <h2>Notes</h2>
-      <i id="pen" class='fa-solid fa-pen pen'></i>
+    <div class="notes" data-controller="notes">
+      <div class="notes-header">
+        <h2>Notes</h2>
+        <i id="pen" class='fa-solid fa-pen pen'></i>
+      </div>
+      <div id="note"><%= @trip.note.note.html_safe %></div>
+      <div class="notes-form">
+        <%= simple_form_for [@trip, @trip.note] do |f| %>
+          <%= f.input :note %>
+          <%= f.button :submit, "Edit" %>
+        <% end %>
+      </div>
     </div>
-    <div id="note"><%= @trip.note.note.html_safe %></div>
-    <div id="notes-form" class="note-toggle">
-      <%= simple_form_for [@trip, @trip.note] do |f| %>
-        <%= f.input :note %>
-        <%= f.button :submit, "Save", class: "save-note" %>
-      <% end %>
-    </div>
   </div>
-</div>

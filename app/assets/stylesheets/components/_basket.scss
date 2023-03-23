@@ -47,3 +47,21 @@
   border-radius: 5px;
   border: 1px solid var(--midnight-green);
 }
+
+.checkout {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 36px;
+  margin: 24px auto 8px auto;
+  border-radius: 5px;
+  font-size: 24px;
+  background-color: orange;
+  color: var(--midnight-green)
+
+  a {
+    text-decoration: none;
+    color: var(--midnight-green);
+  }
+}

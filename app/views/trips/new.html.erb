@@ -6,10 +6,10 @@
           <i class="fa-solid fa-chevron-left"></i>
         </a>
         <h2>Where to?</h2>
-        <h1>We're here to help you plan!</h1>
+        <h4>We're here to help you plan!</h4>
+        <%= link_to "Edit your preferences?",  edit_user_registration_path%>
       </div>
       <div class="trip-form-body", data-controller="activities">
-        <%= link_to "Edit your preferences?",  edit_user_registration_path%>
         <%= simple_form_for @trip, html: { id: 'trip-form '} do |f| %>
           <div class="form-inputs">
             <%= f.input :trip_name,
@@ -21,10 +21,10 @@
             <%= f.input :longitude, :as => :hidden, :input_html => { :value => "lonTarget" } %>
             <%= f.input :latitude, :as => :hidden, :input_html => { :value => "latTarget" } %>
             <p>When? <i class="fa-regular fa-calendar"></i></p>
-            <input type="text" id="daterange" name="date_range">
+            <input type="text" id="daterange" name="date_range" class="calendar-input">
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Let's Go!", class: 'buttn' %>
+            <%= f.button :submit, "Let's Go!", class: 'button' %>
           </div>
         <% end %>
       </div>

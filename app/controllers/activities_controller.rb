@@ -25,6 +25,6 @@ class ActivitiesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @activity = Activity.find(params[:id])
     @activity.favourite!
-    redirect_to trip_activities_path(@trip)
+    redirect_to trip_path(@trip)
   end
 end
