@@ -50,7 +50,7 @@
       <div class="trip-details">
         <div class="basket-title">
           <h2>Trip Details</h2>
-          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
+          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, trip_path(@trip, format: :ics), class: 'pen' %>
         </div>
         <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
         <p><strong>Arriving from:</strong> <%= current_user.location %></p>
@@ -59,7 +59,7 @@
       </div>
       <div class="selected-activities">
         <div class="basket-title">
-          <h2>Selected Activities</h2>
+          <h2>You selected:</h2>
           <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
         </div>
         <% @activities.each do |activity|%>
@@ -102,18 +102,19 @@
         <%end%>
       </div>
     </div>
-  </div>
-  <div class="notes" data-controller="notes">
-    <div class="notes-header">
-      <h2>Notes</h2>
-      <i id="pen" class='fa-solid fa-pen pen'></i>
-    </div>
-    <div id="note"><%= @trip.note.note.html_safe %></div>
-    <div id="notes-form" class="note-toggle">
-      <%= simple_form_for [@trip, @trip.note] do |f| %>
-        <%= f.input :note %>
-        <%= f.button :submit, "Save", class: "save-note" %>
-      <% end %>
+    <div class="notes" data-controller="notes">
+      <div class="notes-header">
+        <h2>Notes</h2>
+        <i id="pen" class='fa-solid fa-pen pen'></i>
+      </div>
+      <div id="note"><%= @trip.note.note.html_safe %>
+      </div>
+      <div class="notes-form">
+        <%= simple_form_for [@trip, @trip.note] do |f| %>
+          <%= f.input :note %>
+          <%= f.button :submit, "Edit" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

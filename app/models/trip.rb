@@ -65,4 +65,20 @@ class Trip < ApplicationRecord
   def generate_visa
     GenerateVisaJob.perform_later(self)
   end
+
+  require 'icalendar'
+
+  def to_icalendar
+    cal = Icalendar::Calendar.new
+    cal.event do |e|
+      e.dtstart     = start_date
+      e.dtend       = end_date
+      e.summary     = trip_name
+      e.description = Nokogiri::HTML(itinerary).text
+      e.location    = destination
+      e.ip_class    = "PUBLIC"
+    end
+    cal.publish
+    cal.to_ical
+  end
 end
