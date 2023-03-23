@@ -259,6 +259,8 @@ GEM
       redis-client (>= 0.11.0)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
