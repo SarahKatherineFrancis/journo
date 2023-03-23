@@ -1,15 +1,12 @@
 <% activities.each do |activity| %>
   <div class="recommendation-card" data-controller="activity-dropdown">
     <div class="recommendation-card-info">
-      <h4><%= activity.name %> <i class="fa-solid <%= icon%>"></i></h4>
+      <h4><%= activity.name %> <i class="fa-solid pen <%= icon %>"></i></h4>
       <h6 data-activity-dropdown-target="description" class="activity-description"><%= activity.description %></h6>
     </div>
     <div class="recommendation-card-buttons">
       <%= simple_form_for [trip, activity], url: add_activity_to_trip_path(trip, activity), method: :post do |f| %>
-        <button type="submit"><i class="fa-solid fa-plus"></i></button>
-      <% end %>
-      <%= simple_form_for [trip, activity], url: add_activity_to_favourites_path(trip, activity), method: :post do |f| %>
-        <button type="submit"><i class="fa-solid fa-heart"></i></button>
+        <button type="submit"><i class="fa-solid fa-plus pen"></i></button>
       <% end %>
       <div class="dropdown">
         <h2><i class="fa-solid fa-chevron-down drop" data-action="click->activity-dropdown#toggle"></i></h2>

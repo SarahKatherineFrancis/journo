@@ -1,21 +1,41 @@
-.trip-form-headers {
+.trip-form-header {
   grid-column-start: 4;
   grid-column-end: 10;
   grid-row-start: 1;
   grid-row-end: 2;
+  padding-top: 30px;
   padding-bottom: 8px;
   text-align: center;
-  color: white;
+  background-color: var(--eggshell);
+  border-radius: 5px 5px 0px 0px;
+
+  h1 {
+    color: var(--midnight-green)
+  }
+
+  h2 {
+    color: var(--midnight-green)
+  }
+}
+
+.filler{
+  height: 200px;
 }
 
 .trip-form {
+  margin-top: 100px;
+  grid-column-start: 4;
+  grid-column-end: 10;
+  box-shadow: 2px 2px 7px black;
+}
+
+.trip-form-body {
   grid-column-start: 4;
   grid-column-end: 10;
   grid-row: 2, 9;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+  border-radius: 0px 0px 5px 5px;
   padding: 20px;
   background-color: #FAF5ED;
 }
@@ -35,4 +55,23 @@
   content: "\f133";
   font-size: 13px;
   position: absolute;
+}
+
+.back-arrow {
+  padding-top: 20px;
+  float: left;
+  margin-left: 24px;
+  z-index: 1;
+  color: var(--midnight-green);
+  font-size: 26px;
+}
+
+.parent-bottom {
+  margin-bottom: 200px;
+}
+
+.form-background {
+  background-image: url(https://images.unsplash.com/photo-1503221043305-f7498f8b7888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2053&q=80);
+  background-position: center;
+  background-repeat: no-repeat;
 }
