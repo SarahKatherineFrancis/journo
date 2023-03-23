@@ -95,7 +95,7 @@
       <i id="pen" class='fa-solid fa-pen pen'></i>
     </div>
     <div id="note"><%= @trip.note.note.html_safe %></div>
-    <div class="notes-form">
+    <div id="notes-form" class="note-toggle">
       <%= simple_form_for [@trip, @trip.note] do |f| %>
         <%= f.input :note %>
         <%= f.button :submit, "Edit" %>
