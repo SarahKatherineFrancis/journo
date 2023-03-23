@@ -18,7 +18,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @activities = @trip.activities.where(status: [:added, :favourite])
+    @selected_activities = @trip.activities.where(status: [:added, :favourite])
+    @activities = @selected_activities.order(:category)
 
     restaurants = @activities.where(category: :eat).pluck(:name)
     dos = @activities.where(category: :do).pluck(:name)

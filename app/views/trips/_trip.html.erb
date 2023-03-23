@@ -30,22 +30,49 @@
         </div>
       </div>
     <% end %>
-    <div class="trip-basket" data-controller="basket">
+    <div class="trip-basket">
       <div class="basket-title">
         <h1><%=trip.trip_name%> trip</h1>
         <%= link_to "<i class='fa-solid fa-circle-chevron-right'></i>".html_safe, trip_path(trip), class: "pen"%>
       </div>
       <div class="added-trips">
-        <% trip.activities.selected.reverse.each do |activity| %>
-          <div class="recommendation-card">
-            <h6><%= activity.name%> <span></span></h6>
+        <% if trip.activities.selected.length == 0  %>
+          <div class="empty-trip">
+            <h3>Add to your trip to get a personalised itinerary</h3>
           </div>
+        <% else %>
+          <% trip.activities.selected.each do |activity| %>
+            <div class="added-recommendation">
+              <% if activity.category == 'eat' %>
+                <h5><i class="fa-solid fa-utensils"></i>&nbsp&nbsp<%=activity.name%></h5>
+                <div class="favourites-form">
+                  <%= simple_form_for [trip, activity], url: add_activity_to_favourites_path(trip, activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                  <% end %>
+                </div>
+              <% elsif activity.category == 'do' %>
+                <h5><i class="fa-solid fa-person-walking">&nbsp&nbsp</i><%=activity.name%></h5>
+                <div class="favourites-form">
+                  <%= simple_form_for [trip, activity], url: add_activity_to_favourites_path(trip, activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                  <% end %>
+                </div>
+              <% else %>
+                <h5><i class="fa-solid fa-compass">&nbsp&nbsp</i><%=activity.name%></h5>
+                <div class="favourites-form">
+                  <%= simple_form_for [trip, activity], url: add_activity_to_favourites_path(trip, activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
-    </div>
-    <div class="activities-index-map" data-controller="map"
+      <div class="activities-index-map" data-controller="map"
       data-map-markers-value="<%= markers %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
   </div>
 </div>

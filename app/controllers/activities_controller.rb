@@ -5,14 +5,13 @@ class ActivitiesController < ApplicationController
     @explore = @trip.activities.where(category: :explore, status: :pending)
     @do = @trip.activities.where(category: :do, status: :pending)
     @selected_activities = selected_activities
-
     @activities = @trip.activities.all
 
   end
 
   def selected_activities
     @trip = Trip.find(params[:trip_id])
-    @selected_activities = @trip.activities.where(status: :added)
+    @selected_activities = @trip.activities.where(status: [:added, :favourite])
   #  @markers = Activity.generate_markers_json(@trip.activities.selected)
   end
 
