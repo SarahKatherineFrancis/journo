@@ -13,14 +13,8 @@ application.register("activity-dropdown", ActivityDropdownController)
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
-import BasketController from "./basket_controller"
-application.register("basket", BasketController)
-
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
-
-import FavouriteController from "./favourite_controller"
-application.register("favourite", FavouriteController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
@@ -33,6 +27,3 @@ application.register("notes", NotesController)
 
 import RecommendationTabsController from "./recommendation_tabs_controller"
 application.register("recommendation-tabs", RecommendationTabsController)
-
-import TypedJsController from "./typed_js_controller"
-application.register("typed-js", TypedJsController)
