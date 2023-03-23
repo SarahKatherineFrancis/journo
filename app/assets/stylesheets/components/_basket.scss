@@ -2,9 +2,9 @@
   grid-column-start: 8;
   grid-column-end: 12;
   grid-row-start: 1;
-  grid-row-end: 11;
+  grid-row-end: auto;
   margin: 8px;
-  padding: 8px;
+  padding: 16px;
   top: 0;
   background-color: var(--eggshell);
   border-radius: 5px;
@@ -13,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--midnight-green);
+    align-items: center;
   }
 }
 
@@ -23,6 +24,14 @@
   grid-row-end: 4;
   position: sticky;
   top: 0;
+
+  .basket-title {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--midnight-green);
+    margin-bottom: 8px;
+    align-items: center;
+  }
 }
 
 .empty-trip {

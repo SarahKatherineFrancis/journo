@@ -19,8 +19,6 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @activities = @trip.activities.where(status: :added)
-    @note = Note.new
-    @notes = @trip.notes
 
     restaurants = @activities.where(category: :eat).pluck(:name)
     dos = @activities.where(category: :do).pluck(:name)
@@ -56,11 +54,14 @@ class TripsController < ApplicationController
     date_range = params[:date_range]
     start_date = Date.parse(date_range.split[0])
     end_date = Date.parse(date_range.split[2])
-    date_range_hash = {start_date: start_date, end_date: end_date}
+
+    date_range_hash = { start_date:, end_date: }
+
     full_params_trip = trip_params.merge(date_range_hash)
     @trip = Trip.new(full_params_trip)
     @trip.user = current_user
     if @trip.save
+      @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
       redirect_to trip_activities_path(@trip)
     else
       render :new
@@ -72,5 +73,4 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:trip_name, :destination)
   end
-
 end

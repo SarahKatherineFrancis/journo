@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
   belongs_to :user
   has_many :activities, dependent: :destroy
-  has_many :notes, dependent: :destroy
+  has_one :note, dependent: :destroy
 
   validates :trip_name, :destination, presence: true
 
@@ -9,6 +9,8 @@ class Trip < ApplicationRecord
   after_commit :generate_budget, on: :create
   after_commit :generate_packing_list, on: :create
   after_commit :generate_visa, on: :create
+
+  # geocoded_by :address
 
   @@client = OpenAI::Client.new
 
@@ -41,7 +43,7 @@ class Trip < ApplicationRecord
     do_preference = user.do_preference_list
 
     explore_prompt = "You are a travel consultant. recommend the 5 best activities in #{destination}.
-    Response must be a JSON with inside an array of activities with only the keys called name, description and lat and lon."
+    Response must be a JSON with inside an array of activities with only the keys called name, description rating and lat and lon."
 
     eat_prompt = "You are a travel consultant. recommend the 5 best restaurants in #{destination} that are: #{eat_preference}.
     Response must be a JSON with inside an array of activities with only the keys called name, description and lat and lon."
