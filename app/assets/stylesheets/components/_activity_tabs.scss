@@ -37,20 +37,32 @@
 }
 
 .trip-tab-button {
-    padding: 8px;
-    background-color: var(--hunyadi-yellow);
+    padding-bottom: 16px 8px;
     color: var(--midnight-green);
     width: 150px;
     height: 75px;
     text-align: center;
     margin: auto;
 
+    p {
+      font-variant: small-caps;
+    }
+
   &:hover {
     cursor: pointer;
-    background-color: lightgrey;
   }
 }
 
 .active-tab {
-  border-bottom: solid 2px var(--midnight-green);
+  border-bottom: solid 2px orange;
+  color: white;
+
+  h2 {
+    color: orange;
+  }
+
+  p {
+    color: orange;
+    font-variant: small-caps;
+  }
 }
