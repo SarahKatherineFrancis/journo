@@ -25,7 +25,7 @@
 .trip-form {
   margin-top: 100px;
   grid-column-start: 4;
-  grid-column-end: 10;
+  grid-column-end: 9;
   box-shadow: 2px 2px 7px black;
 }
 
@@ -68,6 +68,24 @@
 
 .parent-bottom {
   margin-bottom: 200px;
+}
+
+.calendar-input {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .form-background {
