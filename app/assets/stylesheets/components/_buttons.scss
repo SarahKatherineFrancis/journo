@@ -67,9 +67,7 @@ button {
 
 .tab-button {
   padding: 8px;
-  border-radius: 5px;
-  background-color: var(--midnight-green);
-  color: var(--eggshell);
+  font-weight: 600;
   width: 150px;
   height: 75px;
   text-align: center;
@@ -80,8 +78,10 @@ button {
 
 .tab-button:hover {
   cursor: pointer;
+  color: orange;
   color: var(--eggshell);
-  background-color: var(--midnight-green);
+  border-bottom: 1px solid orange;
+  color: orange;
 }
 
 .tab-button h2 {

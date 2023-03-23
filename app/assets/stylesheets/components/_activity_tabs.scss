@@ -11,27 +11,35 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+}
 
-  .tab-button {
-    padding: 8px;
-    border-radius: 5px;
-    background-color: var(--hunyadi-yellow);
+.trip-tab-button {
+    padding-bottom: 16px 8px;
     color: var(--midnight-green);
     width: 150px;
     height: 75px;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    margin: auto;
 
-  .tab-button:hover {
+    p {
+      font-variant: small-caps;
+    }
+
+  &:hover {
     cursor: pointer;
-    color: var(--eggshell);
-    background-color: var(--midnight-green);
   }
 }
 
-.tab-button h2 {
-  margin-top: 8px;
+.active-tab {
+  border-bottom: solid 2px orange;
+  color: white;
+
+  h2 {
+    color: orange;
+  }
+
+  p {
+    color: orange;
+    font-variant: small-caps;
+  }
 }
