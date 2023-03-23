@@ -91,15 +91,6 @@ h1{
 //   mix-blend-mode: screen;
 // }
 
-.banner {
-  height: 250px;
-  grid-column-start: 2;
-  grid-column-end: 12;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  margin-bottom: 30px;
-}
-
 // .cards {
 //   display: grid;
 //   grid-template-columns: 1fr 1fr 1fr;
@@ -177,6 +168,20 @@ font-size: 24px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   background-position: center;
+  height: 250px;
+  position: relative;
+
+  h1 {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    margin: 0px;
+  }
+
+  .btn {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 
 .user-trips-row{
