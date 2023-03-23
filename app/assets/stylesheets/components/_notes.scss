@@ -2,16 +2,12 @@
   grid-column-start: 2;
   grid-column-end: 8;
   background-color: var(--eggshell);
-  padding: 8px;
+  padding: 16px;
   border-radius: 5px;
   margin-top: 30px;
   margin-bottom: 30px;
   grid-row-start: auto;
 }
-
-// .notes-form {
-//   display: none;
-// }
 
 .notes-header {
   display: flex;

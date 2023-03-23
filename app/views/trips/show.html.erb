@@ -5,11 +5,11 @@
         <h1><%= @trip.trip_name %></h1>
       </div>
       <div class="trip-countdown" data-controller="countdown">
-        <p>
-          <span id="days" class="countdown-number"></span>  days
-          <span id="hours" class="countdown-number"></span>  hours
-          <span id="minutes" class="countdown-number"></span>  minutes
-          <span id="seconds" class="countdown-number"></span>  seconds
+        <p id="countdown">
+          <span id="days" class="countdown-number"></span>  d
+          <span id="hours" class="countdown-number"></span>  h
+          <span id="minutes" class="countdown-number"></span>  m
+          <span id="seconds" class="countdown-number"></span>  s
         </p>
       </div>
     </div>
@@ -63,7 +63,7 @@
           <h2>You selected:</h2>
           <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
         </div>
-          <h1>Selected Activities</h1>
+          <h1>selected activities</h1>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
               <h6><%=activity.name%></h6>

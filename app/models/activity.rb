@@ -22,18 +22,18 @@ class Activity < ApplicationRecord
   scope :pending_explore, -> { where(category: :explore, status: :pending) }
   scope :selected, -> { where(status: :added) }
 
-  def self.generate_markers_json(activities)
-    ac = ActionController::Base.new()
-    activities.geocoded.map do |activity|
-      {
-        lat: activity.latitude,
-        lng: activity.longitude,
-        info_window_html: ac.render_to_string(partial: "/shared/info_window",
-                                           locals: {
-                                             activity:
-                                           }),
-        marker_html: ac.render_to_string(partial: "/shared/marker", locals: { activity: })
-      }
-    end.to_json
-  end
+  # def self.generate_markers_json(activities)
+  #   ac = ActionController::Base.new()
+  #   activities.geocoded.map do |activity|
+  #     {
+  #       lat: activity.latitude,
+  #       lng: activity.longitude,
+  #       info_window_html: ac.render_to_string(partial: "/trips/info_window",
+  #                                          locals: {
+  #                                            activity:
+  #                                          }),
+  #       marker_html: ac.render_to_string(partial: "/shared/marker", locals: { activity: })
+  #     }
+  #   end.to_json
+  # end
 end
