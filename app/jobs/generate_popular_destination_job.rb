@@ -3,8 +3,8 @@ class GeneratePopularDestinationJob < ApplicationJob
 
   def perform(user)
     client = OpenAI::Client.new
-    prompt = "You are a travel consultant. recommend the 3 top travel destinations.
-    Response must be an array."
+    prompt = "You are a travel consultant. recommend the 3 top travel destinations that best suit someone living in #{user.location}.
+    Response must be an ruby array!."
     response = client.completions(
       parameters: {
         model: "text-davinci-003",
@@ -16,6 +16,7 @@ class GeneratePopularDestinationJob < ApplicationJob
     p response
 
     infos = response.parsed_response['choices'][0]['text']
+    p infos
     popular_destinations = JSON.parse(infos)
     p popular_destinations
     user.update(popular_destinations: popular_destinations)
