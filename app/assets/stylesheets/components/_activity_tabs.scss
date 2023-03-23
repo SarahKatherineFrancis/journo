@@ -11,32 +11,6 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
-
-  .tab-button {
-    padding: 8px;
-    background-color: var(--hunyadi-yellow);
-    color: var(--midnight-green);
-    width: 150px;
-    height: 75px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-
-    h2 {
-      font-variant: small-caps;
-    }
-  }
-
-  .tab-button:hover {
-    cursor: pointer;
-    background-color: var(--midnight-green);
-  }
-}
-
-.tab-button h2 {
-  margin-top: 8px;
 }
 
 .trip-tab-button {
