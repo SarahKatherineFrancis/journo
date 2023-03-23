@@ -116,9 +116,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_200335) do
     t.string "budget"
     t.text "packing_list"
     t.text "visa"
+    t.text "itinerary"
     t.float "latitude"
     t.float "longitude"
-    t.text "itinerary"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 

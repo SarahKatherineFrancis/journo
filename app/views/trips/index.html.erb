@@ -17,6 +17,15 @@
 <%= link_to icon('fa-solid', 'chevron-left'),  new_trip_path, class: 'btn' %>
 <%= link_to icon('fa-solid', 'heart'),  favourites_path, class: 'btn' %>
 <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
+<div id="current_date"></p>
+<script>
+  date = new Date();
+  year = date.getFullYear();
+  month = date.getMonth() + 1;
+  day = date.getDate();
+  document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+</script>
+</div>
 <div class="container bootstrap snippets bootdeys">
   <div class="row">
     <% @trips.each do |trip| %>

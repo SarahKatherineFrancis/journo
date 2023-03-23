@@ -1,13 +1,13 @@
 <%= turbo_stream_from user%>
-  <div id="<%= dom_id(user)%>">
-    <% if user.popular_destinations%>
-      <% popular_destinations = JSON.parse(user.popular_destinations) %>
-      <div>
-        <% popular_destinations.each do |destination| %>
-          <div><a href="/trips/new?destination=<%= destination %>"><%= destination %></a></div>
-        <% end %>
-      </div>
-    <% else %>
-      <p>Popular Destinations are loading...</p>
-    <% end %>
-  </div>
+<div id="<%= dom_id(user)%>">
+  <% if user.popular_destinations%>
+    <% popular_destinations = JSON.parse(user.popular_destinations) %>
+    <ul>
+      <% popular_destinations.each do |destination| %>
+        <li><a href="/trips/new?destination=<%= destination %>"><%= destination %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Popular Destinations are loading...</p>
+  <% end %>
+</div>

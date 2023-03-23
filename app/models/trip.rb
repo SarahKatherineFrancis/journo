@@ -11,8 +11,8 @@ class Trip < ApplicationRecord
   after_commit :generate_visa, on: :create
 
   geocoded_by :destination
-
   after_validation :geocode
+
 
   @@client = OpenAI::Client.new
 
