@@ -48,24 +48,44 @@
     <div class="trip-show-basket">
       <div class="sticky">
         <div class="trip-details">
-
-        <div class="basket-title">
-          <h2>Trip Details</h2>
-          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
-        </div>
+          <div class="basket-title">
+            <h2>Trip Details</h2>
+            <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
+          </div>
           <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
           <p><strong>Arriving from:</strong> <%= current_user.location %></p>
           <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
           <p><strong>End Date:</strong> <%= @trip.end_date %></p>
         </div>
         <div class="selected-activities">
-         <div class="basket-title">
-          <h2>Selected Activities</h2>
-          <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
-        </div>
+          <div class="basket-title">
+            <h2>Selected Activities</h2>
+            <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
+          </div>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
-              <h6><%=activity.name%></h6>
+              <% if activity.category == 'eat' %>
+                <h5><i class="fa-solid fa-utensils"></i>&nbsp&nbsp<%=activity.name%></h5>
+                <div class="favourites-form">
+                  <%= simple_form_for [@trip, activity], url: add_activity_to_trip_path(activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                  <% end %>
+                </div>
+              <% elsif activity.category == 'do' %>
+                <h5><i class="fa-solid fa-person-walking">&nbsp&nbsp</i><%=activity.name%></h5>
+                <div class="favourites-form">
+                  <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                  <% end %>
+                </div>
+              <% else %>
+                <h5><i class="fa-solid fa-compass">&nbsp&nbsp</i><%=activity.name%></h5>
+                <div class="favourites-form">
+                  <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(activity), method: :post do |f| %>
+                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           <%end%>
         </div>
