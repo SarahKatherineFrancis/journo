@@ -72,6 +72,6 @@
 <% popular_destinations = JSON.parse(@popular_destinations) %>
 <ul>
   <% popular_destinations.each do |destination| %>
-    <li><%= destination %></li>
+    <li><a href="/trips/new?destination=<%= destination %>"><%= destination %></a></li>
   <% end %>
 </ul>
