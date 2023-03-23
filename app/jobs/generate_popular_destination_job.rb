@@ -1,6 +1,10 @@
 class GeneratePopularDestinationJob < ApplicationJob
   queue_as :default
 
+  after_perform do |job|
+    job.arguments.first.broadcast_update
+  end
+
   def perform(user)
     client = OpenAI::Client.new
     prompt = "You are a travel consultant. recommend the 3 top travel destinations that best suit someone living in #{user.location}.

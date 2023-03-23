@@ -69,11 +69,5 @@
 </div>
 <br>
 <h2>Popular Destinations</h2>
-<% if @popular_destinations %>
-  <% popular_destinations = JSON.parse(@popular_destinations) %>
-  <ul>
-    <% popular_destinations.each do |destination| %>
-      <li><a href="/trips/new?destination=<%= destination %>"><%= destination %></a></li>
-    <% end %>
-  </ul>
-<% end %>
+
+<%= render 'users/user', user: current_user %>
