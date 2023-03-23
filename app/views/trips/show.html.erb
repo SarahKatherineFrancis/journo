@@ -67,7 +67,7 @@
               <div class="favourites-form">
                 <% if activity.status == "added" %>
                   <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
-                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
                   <% end %>
                 <% else %>
                   <i class="fa-solid fa-heart fave"></i>
@@ -78,7 +78,7 @@
               <div class="favourites-form">
                <% if activity.status == "added" %>
                   <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
-                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
                   <% end %>
                 <% else %>
                   <i class="fa-solid fa-heart fave"></i>
@@ -89,7 +89,7 @@
               <div class="favourites-form">
                 <% if activity.status == "added" %>
                   <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
-                    <button type="submit"><i class="fa-solid fa-heart pen"></i></button>
+                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
                   <% end %>
                 <% else %>
                   <i class="fa-solid fa-heart fave"></i>
