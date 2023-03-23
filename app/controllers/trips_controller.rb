@@ -27,7 +27,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @selected_activities = @trip.activities.where(status: [:added, :favourite])
+    @selected_activities = @trip.activities.where(status: %i[added favourite])
     @activities = @selected_activities.order(:category)
 
     restaurants = @activities.where(category: :eat).pluck(:name)
@@ -59,28 +59,28 @@ class TripsController < ApplicationController
     itinerary = itinerary_response.parsed_response['choices'][0]['text']
     @trip.update(itinerary:)
   end
-end
 
-def create
-  date_range = params[:date_range]
-  start_date = Date.parse(date_range.split[0])
-  end_date = Date.parse(date_range.split[2])
+  def create
+    date_range = params[:date_range]
+    start_date = Date.parse(date_range.split[0])
+    end_date = Date.parse(date_range.split[2])
 
-  date_range_hash = { start_date:, end_date: }
+    date_range_hash = { start_date:, end_date: }
 
-  full_params_trip = trip_params.merge(date_range_hash)
-  @trip = Trip.new(full_params_trip)
-  @trip.user = current_user
-  if @trip.save
-    @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
-    redirect_to trip_activities_path(@trip)
-  else
-    render :new
+    full_params_trip = trip_params.merge(date_range_hash)
+    @trip = Trip.new(full_params_trip)
+    @trip.user = current_user
+    if @trip.save
+      @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
+      redirect_to trip_activities_path(@trip)
+    else
+      render :new
+    end
   end
-end
 
   private
 
-def trip_params
-  params.require(:trip).permit(:trip_name, :destination)
+  def trip_params
+    params.require(:trip).permit(:trip_name, :destination)
+  end
 end

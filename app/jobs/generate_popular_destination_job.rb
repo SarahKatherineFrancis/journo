@@ -12,7 +12,7 @@ class GeneratePopularDestinationJob < ApplicationJob
     response = client.completions(
       parameters: {
         model: "text-davinci-003",
-        prompt: prompt,
+        prompt:,
         max_tokens: 2000,
         temperature: 0.1
       }
@@ -23,6 +23,6 @@ class GeneratePopularDestinationJob < ApplicationJob
     p infos
     popular_destinations = JSON.parse(infos)
     p popular_destinations
-    user.update(popular_destinations: popular_destinations)
+    user.update(popular_destinations:)
   end
 end
