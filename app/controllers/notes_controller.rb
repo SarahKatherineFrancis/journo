@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-
   def edit
     @note = Note.find(params[:id])
     @trip = Trip.find(params[:trip_id])

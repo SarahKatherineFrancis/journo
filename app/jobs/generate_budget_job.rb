@@ -16,6 +16,6 @@ class GenerateBudgetJob < ApplicationJob
       }
     )
     budget = budget_response.parsed_response['choices'][0]['text']
-    trip.update(budget: budget)
+    trip.update(budget:)
   end
 end

@@ -14,6 +14,6 @@ class GenerateVisaJob < ApplicationJob
       }
     )
     visa = visa_response.parsed_response['choices'][0]['text']
-    trip.update(visa: visa)
+    trip.update(visa:)
   end
 end
