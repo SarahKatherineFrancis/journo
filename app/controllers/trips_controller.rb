@@ -46,7 +46,13 @@ class TripsController < ApplicationController
         }
       )
       itinerary = itinerary_response.parsed_response['choices'][0]['text']
-      @trip.update(itinerary: )
+      @trip.update(itinerary:)
+    end
+    respond_to do |format|
+      format.html
+      format.ics do
+        send_data @trip.to_icalendar, filename: "#{@trip.trip_name}.ics"
+      end
     end
   end
 
