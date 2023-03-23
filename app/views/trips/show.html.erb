@@ -48,21 +48,20 @@
     <div class="trip-show-basket">
       <div class="sticky">
         <div class="trip-details">
-
-        <div class="basket-title">
-          <h2>Trip Details</h2>
-          <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
-        </div>
+          <div class="basket-title">
+            <h2>Trip Details</h2>
+            <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, '#', class: 'pen' %>
+          </div>
           <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
           <p><strong>Arriving from:</strong> <%= current_user.location %></p>
           <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
           <p><strong>End Date:</strong> <%= @trip.end_date %></p>
         </div>
         <div class="selected-activities">
-         <div class="basket-title">
-          <h2>You selected:</h2>
-          <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
-        </div>
+          <div class="basket-title">
+            <h2>You selected:</h2>
+            <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
+          </div>
           <h1>selected activities</h1>
           <% @activities.each do |activity|%>
             <div class="added-recommendation">
@@ -86,3 +85,4 @@
       </div>
     </div>
   </div>
+</div>

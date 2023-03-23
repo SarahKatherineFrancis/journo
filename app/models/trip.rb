@@ -13,6 +13,7 @@ class Trip < ApplicationRecord
   geocoded_by :destination
   after_validation :geocode
 
+
   @@client = OpenAI::Client.new
 
   def call_gpt(prompt, category)

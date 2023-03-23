@@ -1,8 +1,8 @@
 .button{
-  background: #073b4cff;
+  background: none;
   border-radius: 28px;
   font-family: "Quicksand", "sans-serif";
-  color: #f4ebd9ff;
+  color: #073b4cff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -65,8 +65,31 @@ button {
   text-align: center;
 }
 
-.fa-magnifying-glass{
-  font-family: FontAwesome;
+.tab-button {
+  padding: 8px;
+  border-radius: 5px;
+  background-color: var(--midnight-green);
+  color: var(--eggshell);
+  width: 150px;
+  height: 75px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-button:hover {
+  cursor: pointer;
+  color: var(--eggshell);
+  background-color: var(--midnight-green);
+}
+
+.tab-button h2 {
+margin-top: 8px;
+}
+
+.add-button{
+  text-align: center;
 }
 
 .tab-user-button {
