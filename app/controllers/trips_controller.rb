@@ -27,6 +27,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+
     respond_to do |format|
       format.html
       format.ics do
