@@ -9,9 +9,11 @@ export default class extends Controller {
       tinycomments_mode: 'embedded',
     });
 
-    const pen = document.getElementById("pen")
-    const noteEditor = document.getElementById("notes-form")
+    const pen = document.getElementById("pen");
+    const noteEditor = document.getElementById("notes-form");
+    const note = document.getElementById("note");
     pen.addEventListener("click", (event) => {
+      console.log(event);
       note.classList.toggle("note-toggle");
       noteEditor.classList.toggle("note-toggle");
     });

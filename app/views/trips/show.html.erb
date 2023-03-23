@@ -98,7 +98,7 @@
     <div id="notes-form" class="note-toggle">
       <%= simple_form_for [@trip, @trip.note] do |f| %>
         <%= f.input :note %>
-        <%= f.button :submit, "Edit" %>
+        <%= f.button :submit, "Save", class: "save-note" %>
       <% end %>
     </div>
   </div>
