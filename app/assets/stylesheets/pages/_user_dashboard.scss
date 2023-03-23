@@ -101,6 +101,25 @@ h1{
 //   margin-bottom: 30px;
 // }
 
+.banner {
+  height: 250px;
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row: 2;
+  margin-bottom: 30px;
+}
+
 .image-container {
   grid-column-start: 2;
   grid-column-end: 12;
@@ -216,3 +235,4 @@ font-size: 24px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
+

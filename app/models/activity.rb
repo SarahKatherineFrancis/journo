@@ -20,7 +20,7 @@ class Activity < ApplicationRecord
   scope :pending_eat, -> { where(category: :eat, status: :pending) }
   scope :pending_do, -> { where(category: :do, status: :pending) }
   scope :pending_explore, -> { where(category: :explore, status: :pending) }
-  scope :selected, -> { where(status: :added) }
+  scope :selected, -> { where(status: [:added, :favourite]) }
 
   # def self.generate_markers_json(activities)
   #   ac = ActionController::Base.new()

@@ -5,21 +5,17 @@ export default class extends Controller {
   connect() {
     tinymce.init({
       selector: 'textarea',
-      hidden_input: false,
-      plugins: 'anchor autolink codesample emoticons image link lists visualblocks wordcount checklist mediaembed export pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage mergetags autocorrect typography inlinecss',
-      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline | link image media table mergetags | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
       tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-      mergetags_list: [
-        { value: 'First.Name', title: 'First Name' },
-        { value: 'Email', title: 'Email' },
-      ]
     });
 
-    const pen = document.getElementById("pen")
-    const note = document.querySelector(".notes-form")
-      pen.addEventListener("click", (event) =>
-      note.classList.remove("hide")
-    )
+    const pen = document.getElementById("pen");
+    const noteEditor = document.getElementById("notes-form");
+    const note = document.getElementById("note");
+    pen.addEventListener("click", (event) => {
+      console.log(event);
+      note.classList.toggle("note-toggle");
+      noteEditor.classList.toggle("note-toggle");
+    });
   }
 }

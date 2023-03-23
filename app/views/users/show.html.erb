@@ -33,11 +33,39 @@
       </div>
     </div>
   </div>
+<div class ='container'>
+  <div class="user-card-category" style ='width: 50%'>
+    <h1>Welcome back,<%=@user.first_name%> <%=@user.last_name%>.</h1>
+  </div>
+</div>
+<div class="cards">
+  <div class="user-card-category">
+    <h1><%= link_to icon("fa-regular", "plus"),  new_trip_path, class: 'tab-user-button' %></h1>
+  </div>
+  <div class="user-card-category">
+    <h1><%= link_to icon("fa-solid", "earth-africa"),  trips_path, class: 'tab-user-button' %></h1>
+  </div>
+  <div class="user-card-category">
+    <h1><%= link_to icon("fa-solid", "plane"),  trip_path(current_user), class: 'tab-user-button' %></h1>
+<div class="user-card-category" style= 'width: 50%'>
+  <div class='nationality'>
+    <p>Nationality: <%=@user.nationality%></p>
+  </div>
+  <div class='location'>
+    <p>Location: <%=@user.location%></p>
+  </div>
+  <div class='do-preference'>
+    <p>Preferencs for DO: <%=@user.do_preference_list%></p>
+  </div>
+  <div class='eat-preference'>
+    <p>Preferences for EAT: <%=@user.eat_preference_list%></p>
+  </div>
 </div>
 </div>
 <div class="container" >
   <div class ="userdashboard-row">
     <div class= "banner-card" style="background-image: url(https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)">
+    <div class= "banner-card" style="height: 450px; background-image: url(https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)">
       <h3>plan your next dream destination trip</h3>
       <h1><%= link_to icon("fa-solid", "chevron-right"),  new_trip_path, class: 'btn' %></h1>
     </div>
@@ -54,19 +82,37 @@
 <br>
 <div class="container-trips">
   <div class ="user-trips-row">
-    <div class="user-map" style="width: 50%; height: 450px;"
+    <div class="map-card" style="width: 50%; height: 450px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <% if @trips.any?%>
-      <div class ="user-trip" style="width: 50%; height: 450px;">
-        <div class="trip-details">
-          <h1><%=@trips.last.trip_name%></h1>
-          <h6><i class="fa-solid fa-location-dot"></i> <%=@trips.last.destination%></h6>
-          <h6><i class="fa-regular fa-calendar"></i> <%=@trips.last.start_date%></h6>
-        </div>
+    <div class ="map-card" style="width: 50%; height: 450px;">
+      <div class="trip-details">
+        <h1><%=@trips.last.trip_name%></h1>
+        <h6><i class="fa-solid fa-location-dot"></i> <%=@trips.last.destination%></h6>
+        <h6><i class="fa-regular fa-calendar"></i> <%=@trips.last.start_date%></h6>
       </div>
+    </div>
+    <br>
+    <div class="image-container">
+      <div>
+        <h1></h1>
+      </div>
+    </div>
+    <div class="container bootstrap snippets bootdeys">
+      <div class="row">
+        <% @trips[0..2].each do |trip| %>
+          <div class="col-md-4 col-sm-6 content-card">
+            <%=link_to (trip) do%>
+              <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                  <div class="content">
+                    <h6 class="category">Departing: <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
+                    <h1 class="title"><%= trip.trip_name %></h1>
+                    <p class="description">Destination:<%= trip.destination%></p>
+                  </div>
+                </div>
     <% end %>
     <h1>Popular Destinations</h1>
     <%= render 'users/user', user: current_user %>
@@ -90,10 +136,22 @@
                 <h1 class="title"><%= trip.trip_name %></h1>
                 <p class="description">Destination:<%= trip.destination%></p>
               </div>
-            </div>
+            <%end%>
           </div>
-        <%end%>
+        <% end %>
       </div>
+    </div>
+    <br>
+    <div class="trip-banner" style="background-image: url(https://images.unsplash.com/photo-1663052721651-795d253d0898?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)">
+      <div class="container">
+      <div class ="card">
+        <h1>your next adventure awaits.</h1>
+        <p>plan your trip using your from your wishlist</p>
+        <br>
+        <%= link_to "go to wishlist",  favourites_path, class: 'btn' %>
+        </div>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>

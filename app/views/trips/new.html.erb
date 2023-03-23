@@ -5,10 +5,11 @@
         <a class="back-arrow" href="/trips">
           <i class="fa-solid fa-chevron-left"></i>
         </a>
-        <h2>where to?</h2>
+        <h2>Where to?</h2>
         <h1>We're here to help you plan!</h1>
       </div>
       <div class="trip-form-body", data-controller="activities">
+        <%= link_to "Edit your preferences?",  edit_user_registration_path%>
         <%= simple_form_for @trip, html: { id: 'trip-form '} do |f| %>
           <div class="form-inputs">
             <%= f.input :trip_name,
