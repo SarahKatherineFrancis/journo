@@ -74,7 +74,7 @@ h1{
   position: relative;
   height: 300px;
   background-size: cover;
-  background-position: relative;
+  background-position: center;
   padding: 150px 0;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -248,10 +248,13 @@ font-size: 24px;
   border: 0px solid rgba(0, 0, 0, 0);
   text-align: center;
   justify-content: space-evenly;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
   padding: 8px;
   font-size: 16px;
   color: #073b4cff;
+  height: 120px;
+  padding: 10px;
+  background-color: var(--eggshell);
 
   a {
     text-decoration: none;
@@ -292,8 +295,8 @@ a{
 }
 
 .map-card{
-  width: 450px;
-  height: 450px;
+  width: 750px;
+  height: 500px;
 }
 
 .content-card{
