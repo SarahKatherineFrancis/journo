@@ -91,23 +91,6 @@ h1{
 //   mix-blend-mode: screen;
 // }
 
-.button{
-  background: #073b4cff;
-  border-radius: 28px;
-  font-family: "Quicksand", "sans-serif";
-  color: #f4ebd9ff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  text-align: center;
-}
-
-.button:hover {
-  background: #279af1ff;
-  color: #f4ebd9ff;
-  text-decoration: none;
-}
-
 .banner {
   height: 250px;
   grid-column-start: 2;
@@ -177,4 +160,15 @@ h1{
 .tab-button h1 {
 margin-top: 8px;
 font-size: 24px;
+}
+
+.userdashboard-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row: 2;
+  margin-bottom: 30px;
+
 }

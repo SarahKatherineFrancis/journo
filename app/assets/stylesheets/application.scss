@@ -11,7 +11,6 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "components/_lightbox";
 @import "pages/user_dashboard";
 @import "pages/trips_index";
 @import "pages/trip_form";
@@ -19,7 +18,7 @@
 @import "components/trip_banner";
 
 body{
-  background-color: #073b4cff;
+  background-color: #FAF5ED;
 }
 
 h1{
