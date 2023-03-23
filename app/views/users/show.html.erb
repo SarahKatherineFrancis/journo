@@ -1,20 +1,37 @@
-<div class ='container'>
-  <div class="user-card-category" style ='width: 50%'>
+<div class ='userdashboard-container'>
+  <div class="user-card-category">
     <h1>Welcome back,<%=@user.first_name%> <%=@user.last_name%>.</h1>
   </div>
-</div>
-<div class="user-card-category" style= 'width: 50%'>
-  <div class='nationality'>
-    <p>Nationality: <%=@user.nationality%></p>
-  </div>
-  <div class='location'>
-    <p>Location: <%=@user.location%></p>
-  </div>
-  <div class='do-preference'>
-    <p>Preferencs for DO: <%=@user.do_preference_list%></p>
-  </div>
-  <div class='eat-preference'>
-    <p>Preferences for EAT: <%=@user.eat_preference_list%></p>
+  <div class="user-preferences">
+    <div class="preferences-row">
+      <div class='preference-card'>
+        <h1><i class="fa-solid fa-house"></i></h1>
+        <p><%=@user.nationality%></p>
+      </div>
+      <div class='preference-card'>
+        <h1><i class="fa-solid fa-location-dot"></i></h1>
+        <p><%=@user.location%></p>
+      </div>
+      <div class='preference-card'>
+        <h1><i class="fa-solid fa-person-hiking"></i></h1>
+        <p><%=@user.do_preference_list%></p>
+      </div>
+      <div class='preference-card'>
+        <h1><i class="fa-solid fa-utensils"></i></h1>
+        <p><%=@user.eat_preference_list%></p>
+      </div>
+      <div class='preference-card'>
+        <h1><i class="fa-solid fa-calendar"></i></h1>
+        <div id="current_date"></p>
+        <script>
+          date = new Date();
+          year = date.getFullYear();
+          month = date.getMonth() + 1;
+          day = date.getDate();
+          document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+        </script>
+      </div>
+    </div>
   </div>
 </div>
 </div>
@@ -36,7 +53,7 @@
 </div>
 <br>
 <div class="container-trips">
-  <div class ="row">
+  <div class ="user-trips-row">
     <div class="user-map" style="width: 50%; height: 450px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -51,6 +68,8 @@
         </div>
       </div>
     <% end %>
+    <h1>Popular Destinations</h1>
+    <%= render 'users/user', user: current_user %>
   </div>
 </div>
 </div>
@@ -79,15 +98,22 @@
   </div>
 </div>
 <br>
-<div class="trip-banner" style="background-image: url(https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1721&q=80)">
-  <div class="container">
-    <h1>your next adventure awaits.</h1>
-    <p>plan your trip using your from your wishlist</p>
-    <br>
-    <%= link_to "go to wishlist",  favourites_path, class: 'btn' %>
+<div class="container" >
+  <div class ="userdashboard-row">
+    <div class= "banner-card" style="height: 450px; background-image: url(https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80)">
+      <h3>where next?</h3>
+      <h1><%= link_to icon("fa-solid", "chevron-right"),  new_trip_path, class: 'btn' %></h1>
+    </div>
+    <div class= "banner-card" style="background-image: url(https://images.unsplash.com/photo-1497262693247-aa258f96c4f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80)">
+      <h3>your trips</h3>
+      <h1><%= link_to icon("fa-solid", "chevron-right"),  trip_path(current_user), class: 'btn' %></h1>
+    </div>
+    <div class= "banner-card" style="background-image: url(https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1856&q=80)">
+      <h3>activites near you</h3>
+      <h1><%= link_to icon("fa-solid", "chevron-right"),  trips_path, class: 'btn' %></h1>
+    </div>
   </div>
 </div>
+<div class="trip-banner" style="background-image: url(https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1721&q=80)">
+</div>
 <br>
-<h2>Popular Destinations</h2>
-
-<%= render 'users/user', user: current_user %>
