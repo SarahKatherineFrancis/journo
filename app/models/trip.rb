@@ -11,6 +11,8 @@ class Trip < ApplicationRecord
   after_commit :generate_visa, on: :create
 
   geocoded_by :destination
+  after_validation :geocode
+
 
   @@client = OpenAI::Client.new
 
@@ -29,10 +31,9 @@ class Trip < ApplicationRecord
 
     activities.each do |info|
       Activity.create(name: info['name'], description: info['description'], latitude: info['lat'], longitude: info['lon'], category:,
-        trip: self)
+                      trip: self)
     end
   end
-
 
   def generate_activities
     destination = self.destination
