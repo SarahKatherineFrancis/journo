@@ -57,6 +57,10 @@
   padding: 16px;
   background-color: var(--eggshell);
   border-radius: 5px;
+
+  .contents {
+    padding-top: 16px;
+  }
 }
 
 .recommendations p {
@@ -106,4 +110,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+ul {
+
+  li {
+    margin: 8px 0px;
+  }
 }
