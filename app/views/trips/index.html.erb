@@ -1,26 +1,22 @@
 <div class="trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1514896856000-91cb6de818e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80);">
   <div class="container">
     <h1>your upcoming trips</h1>
-    <%# <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'new-trip-btn' %>
+    <div class="search-bar">
+      <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+    params[:query],
+    class: "form-control search-bar",
+    placeholder: "Search Your Trips"
+  %>
+        <%= submit_tag "search", class: "button" %>
+      <% end %>
+    </div>
   </div>
 </div>
 <br>
 <%= link_to icon('fa-solid', 'chevron-left'),  new_trip_path, class: 'btn' %>
 <%= link_to icon('fa-solid', 'heart'),  favourites_path, class: 'btn' %>
 <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
-<br>
-<div class="parent">
-  <div class="search-bar">
-    <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-    params[:query],
-    class: "form-control search-bar",
-    placeholder: "Search Your Trips"
-  %>
-      <%= submit_tag "search", class: "button fa-magnifying-glass" %>
-    <% end %>
-  </div>
-</div>
 <div id="current_date"></p>
 <script>
   date = new Date();

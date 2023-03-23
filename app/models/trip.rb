@@ -10,12 +10,9 @@ class Trip < ApplicationRecord
   after_commit :generate_packing_list, on: :create
   after_commit :generate_visa, on: :create
 
-  # geocoded_by :address
+  geocoded_by :destination
 
   @@client = OpenAI::Client.new
-
-  # geocoded_by :address,
-  # after_validation :geocode, if: :will_save_change_to_address?,
 
   def call_gpt(prompt, category)
     response = @@client.completions(
