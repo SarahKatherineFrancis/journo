@@ -19,6 +19,9 @@ application.register("basket", BasketController)
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 
+import FavouriteController from "./favourite_controller"
+application.register("favourite", FavouriteController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
