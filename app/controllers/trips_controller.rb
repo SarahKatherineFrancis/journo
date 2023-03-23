@@ -10,6 +10,15 @@ class TripsController < ApplicationController
     else
       @trips = Trip.where(user_id: current_user.id)
     end
+    @trips = Trip.where(user_id: current_user.id).all
+    @markers = @trips.geocoded.map do |trip|
+      {
+        lat: trip.latitude,
+        lng: trip.longitude,
+        info_window_html: render_to_string(partial: "/trips/info_window", locals: { trip: }),
+        marker_html: render_to_string(partial: "/trips/marker", locals: { trip: })
+      }
+    end
   end
 
   def new
@@ -26,8 +35,9 @@ class TripsController < ApplicationController
 
     activity_names = (dos + exps).uniq
 
-    if @trip.itinerary.nil?
-      itinerary_prompt = "I am going on a trip to #{@trip.destination}.
+    return unless @trip.itinerary.nil?
+
+    itinerary_prompt = "I am going on a trip to #{@trip.destination}.
       The itinerary must be for #{(@trip.end_date - @trip.start_date).to_i} days.
       I want to visit: #{activity_names}.
       I want to eat at: #{restaurants}.
@@ -37,40 +47,39 @@ class TripsController < ApplicationController
       The itinerary does not have to include everything.
       Please format the response in a HTML list."
 
-      itinerary_response = @@client.completions(
-        parameters: {
-          model: "text-davinci-003",
-          prompt: itinerary_prompt,
-          max_tokens: 2000,
-          temperature: 0.1
-        }
-      )
-      itinerary = itinerary_response.parsed_response['choices'][0]['text']
-      @trip.update(itinerary: )
-    end
+    itinerary_response = @@client.completions(
+      parameters: {
+        model: "text-davinci-003",
+        prompt: itinerary_prompt,
+        max_tokens: 2000,
+        temperature: 0.1
+      }
+    )
+    itinerary = itinerary_response.parsed_response['choices'][0]['text']
+    @trip.update(itinerary:)
   end
+end
 
-  def create
-    date_range = params[:date_range]
-    start_date = Date.parse(date_range.split[0])
-    end_date = Date.parse(date_range.split[2])
+def create
+  date_range = params[:date_range]
+  start_date = Date.parse(date_range.split[0])
+  end_date = Date.parse(date_range.split[2])
 
-    date_range_hash = { start_date:, end_date: }
+  date_range_hash = { start_date:, end_date: }
 
-    full_params_trip = trip_params.merge(date_range_hash)
-    @trip = Trip.new(full_params_trip)
-    @trip.user = current_user
-    if @trip.save
-      @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
-      redirect_to trip_activities_path(@trip)
-    else
-      render :new
-    end
+  full_params_trip = trip_params.merge(date_range_hash)
+  @trip = Trip.new(full_params_trip)
+  @trip.user = current_user
+  if @trip.save
+    @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
+    redirect_to trip_activities_path(@trip)
+  else
+    render :new
   end
+end
 
   private
 
-  def trip_params
-    params.require(:trip).permit(:trip_name, :destination)
-  end
+def trip_params
+  params.require(:trip).permit(:trip_name, :destination)
 end

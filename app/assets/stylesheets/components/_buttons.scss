@@ -10,8 +10,8 @@
 }
 
 .button:hover {
-  background: none;
-  color: #073b4cff;
+  background: #f5ab2dff;
+  color: #f4ebd9ff;
   text-decoration: none;
 }
 
@@ -27,6 +27,20 @@
   margin: 12px;
   padding: 12px;
 }
+
+.btn:hover{
+  background: none;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  color: rgb(111, 153, 167);
+  font-size: 24px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+  margin: 12px;
+  padding: 12px;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -41,8 +55,8 @@ button {
   width: 55px;
   height: 55px;
   box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
-  color: #f4ebd9ff;
-  background: #073b4cff;
+  color: #073b4cff;
+  background: none;
   border-radius: 28px;
   font-family: "Quicksand", "sans-serif";
   font-size: 20px;
@@ -76,4 +90,27 @@ margin-top: 8px;
 
 .add-button{
   text-align: center;
+}
+
+.tab-user-button {
+  padding: 8px;
+  border-radius: 5px;
+  color: var(--eggshell);
+  background-color: var(--midnight-green);
+  width: 300px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-user-button:hover {
+  cursor: pointer;
+  background-color:  var(--eggshell);;
+  color: var(--midnight-green);
+}
+
+.tab-user-button h1 {
+margin-top: 8px;
 }
