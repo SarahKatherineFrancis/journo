@@ -1,0 +1,20 @@
+.preference-form {
+    margin-top: 50px;
+    grid-column-start: 5;
+    grid-column-end: 8;
+    box-shadow: 2px 2px 7px black;
+    text-align: center;
+    padding: 16px;
+    background-color: var(--eggshell);
+    border-radius: 5px;
+
+    .form-check {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .col-form-label {
+      margin-top: 16px;
+    }
+}
