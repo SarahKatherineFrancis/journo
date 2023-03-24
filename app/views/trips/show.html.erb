@@ -25,25 +25,16 @@
     </div>
     <div class="contents">
       <div id="itinerary-content" class=''>
-          <%= @trip.itinerary.html_safe %>
-
+        <%= @trip.itinerary.html_safe %>
       </div>
       <div id="budget-content" class='d-none'>
-
-          <%= @trip.budget.html_safe %>
-
+        <%= @trip.budget.html_safe %>
       </div>
       <div id="packing-content" class='d-none'>
-
-          <%= @trip.packing_list.html_safe %>
- 
+        <%= @trip.packing_list.html_safe %>
       </div>
       <div id="visa-content" class='d-none'>
-        <% if @trip.visa %>
-          <%= @trip.visa.html_safe %>
-        <% else %>
-          <h4>Oops! Looks like something went wrong.</h4>
-        <% end %>
+        <%= @trip.visa.html_safe %>
       </div>
     </div>
   </div>
