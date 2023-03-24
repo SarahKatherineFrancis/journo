@@ -32,6 +32,13 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @activities = @trip.activities.where(status: :added)
 
+    respond_to do |format|
+      format.html
+      format.ics do
+        send_data @trip.to_icalendar, filename: "#{@trip.trip_name}.ics"
+      end
+    end
+
     restaurants = @activities.where(category: :eat).pluck(:name)
     dos = @activities.where(category: :do).pluck(:name)
     exps = @activities.where(category: :explore).pluck(:name)
