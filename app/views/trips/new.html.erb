@@ -2,8 +2,8 @@
   <div class="parent">
     <div class="trip-form">
       <div class="trip-form-header">
-        <h2>Where to?</h2>
-        <h4>We're here to help you plan!</h4>
+        <h1>Next Adventure</h1>
+        <h4>Generate trip with the power of AI!</h4>
         <%= link_to "Edit your preferences",  edit_user_registration_path%>
       </div>
       <div class="trip-form-body", data-controller="activities">
@@ -21,8 +21,8 @@
             <p>When? <i class="fa-regular fa-calendar"></i></p>
             <input type="text" id="daterange" name="date_range" class="calendar-input">
           </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Let's Go!", class: 'button' %>
+          <div class="checkout" style="height:50px">
+            <%= f.button :submit, "Let's Go!", class: 'override-bootstrap' %>
           </div>
         <% end %>
       </div>

@@ -28,19 +28,6 @@
   padding: 12px;
 }
 
-.btn:hover{
-  background: none;
-  border-radius: 28px;
-  font-family: "Quicksand", "sans-serif";
-  color: rgb(111, 153, 167);
-  font-size: 24px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  text-align: center;
-  margin: 12px;
-  padding: 12px;
-}
-
 button {
   background-color: transparent;
   border: none;
@@ -113,4 +100,22 @@ margin-top: 8px;
 
 .tab-user-button h1 {
 margin-top: 8px;
+}
+
+.override-bootstrap {
+  &:active {
+    border-color: none !important;
+  }
+}
+
+.search-button {
+  background: none;
+  border-radius: 28px;
+  font-family: "Quicksand", "sans-serif";
+  color: #073b4cff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align: center;
+  background-color: var(--eggshell);
 }
