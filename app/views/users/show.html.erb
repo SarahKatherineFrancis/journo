@@ -35,7 +35,7 @@
       <h1>trip boards<%= link_to icon("fa-solid", "chevron-right"),  trips_path, class: 'btn' %></h1>
     </div>
   </div>
-   <div class="image-container">
+  <div class="image-container">
     <h1><i class="fa-solid fa-calendar"></i></h1>
     <div id="current_date">
       <script>
@@ -55,9 +55,13 @@
         <div class="card-big-shadow">
           <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
             <div class="content">
+            <% if current_user.trips.empty? %>
+              <h1>You have no trips!</h1>
+            <% else %>
               <h1 class="title"><%=@trips.last.trip_name%></h1>
               <h6 class="description"><i class="fa-solid fa-location-dot"></i> <%=@trips.last.destination%></h6>
               <h6 class="category"><i class="fa-regular fa-calendar"></i> <%=@trips.last.start_date%></h6>
+            <% end %>
             </div>
           </div>
         </div>
@@ -78,3 +82,4 @@
       <h1></h1>
     </div>
   </div>
+</div>
