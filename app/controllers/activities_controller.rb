@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
     @do = @trip.activities.where(category: :do, status: :pending)
     @selected_activities = selected_activities
     @activities = @trip.activities.all
-    @markers = @activities.geocoded.map do |activity|
+    @markers = @selected_activities.map do |activity|
       {
         lat: activity.latitude,
         lng: activity.longitude,
