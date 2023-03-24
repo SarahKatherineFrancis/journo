@@ -3,13 +3,6 @@
     <div class="trip-title">
       <h1><%= @trip.trip_name %></h1>
     </div>
-    <div class="trip-countdown" data-controller="countdown">
-      <p id="countdown">
-        <span id="days" class="countdown-number"></span>  d
-        <span id="hours" class="countdown-number"></span>  h
-        <span id="minutes" class="countdown-number"></span>  m
-      </p>
-    </div>
   </div>
   <div class="trip-recommendations" data-controller="recommendation-tabs">
     <div class="activities-tabs" >
@@ -54,8 +47,7 @@
         </div>
         <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
         <p><strong>Arriving from:</strong> <%= current_user.location %></p>
-        <p><strong>Start date:</strong> <span id="start-date"><%= @trip.start_date %></span></p>
-        <p><strong>End Date:</strong> <%= @trip.end_date %></p>
+        <p><strong>Dates:</strong> <span id="start-date"><%= @trip.start_date.strftime("%e %b")%> - <%= @trip.end_date.strftime("%e %b") %></span></p>
       </div>
       <div class="selected-activities">
         <div class="basket-title">
