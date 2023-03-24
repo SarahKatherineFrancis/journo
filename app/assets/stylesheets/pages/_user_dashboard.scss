@@ -200,7 +200,6 @@ font-size: 24px;
   position: relative;
   display: flex;
   flex-direction: column;
-  // background-color: #fff;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   border: 0px solid rgba(0, 0, 0, 0);
@@ -210,6 +209,7 @@ font-size: 24px;
   height: 120px;
   justify-content: space-evenly;
   padding: 8px;
+  // background-color: var(--eggshell)
 
   h1 {
     height: 50%;

@@ -35,18 +35,6 @@
       <h1>trip boards<%= link_to icon("fa-solid", "chevron-right"),  trips_path, class: 'btn' %></h1>
     </div>
   </div>
-   <div class="image-container">
-    <h1><i class="fa-solid fa-calendar"></i></h1>
-    <div id="current_date">
-      <script>
-        date = new Date();
-        year = date.getFullYear();
-        month = date.getMonth() + 1;
-        day = date.getDate();
-        document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
-      </script>
-    </div>
-  </div>
   <div class="container-trips">
     <div class="user-trips-row" >
       <div class="content-card">
