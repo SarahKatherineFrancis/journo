@@ -1,5 +1,5 @@
 .trip-form-header {
-  grid-column-start: 4;
+  grid-column-start: 5;
   grid-column-end: 10;
   grid-row: 1;
   padding-bottom: 8px;
@@ -7,9 +7,9 @@
 }
 
 .trip-form {
-  grid-column-start: 4;
-  grid-column-end: 10;
-  grid-row: 2, 12;
+  margin: 0 auto;
+  width: 50%; 
+
 }
 
 .form-actions {
