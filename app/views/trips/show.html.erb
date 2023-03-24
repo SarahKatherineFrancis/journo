@@ -25,16 +25,32 @@
     </div>
     <div class="contents">
       <div id="itinerary-content" class=''>
-        <%= @trip.itinerary.html_safe %>
+        <% if @trip.itinerary %>
+          <%= @trip.itinerary.html_safe %>
+        <% else %>
+          <h4>Oops! Looks like something went wrong.</h4>
+        <% end %>
       </div>
       <div id="budget-content" class='d-none'>
-        <%= @trip.budget.html_safe %>
+        <% if @trip.budget %>
+          <%= @trip.budget.html_safe %>
+        <% else %>
+          <h4>Oops! Looks like something went wrong.</h4>
+        <% end %>
       </div>
       <div id="packing-content" class='d-none'>
-        <%= @trip.packing_list.html_safe %>
+        <% if @trip.packing_list %>
+          <%= @trip.packing_list.html_safe %>
+        <% else %>
+          <h4>Oops! Looks like something went wrong.</h4>
+        <% end %>
       </div>
       <div id="visa-content" class='d-none'>
-        <%= @trip.visa.html_safe %>
+        <% if @trip.visa %>
+          <%= @trip.visa.html_safe %>
+        <% else %>
+          <h4>Oops! Looks like something went wrong.</h4>
+        <% end %>
       </div>
     </div>
   </div>
@@ -61,7 +77,7 @@
               <div class="favourites-form">
                 <% if activity.status == "added" %>
                   <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
-                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
+                    <button type="submit" style="padding: 0"><i class="fa-solid fa-heart not-fave"></i></button>
                   <% end %>
                 <% else %>
                   <i class="fa-solid fa-heart fave"></i>
@@ -72,7 +88,7 @@
               <div class="favourites-form">
                 <% if activity.status == "added" %>
                   <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
-                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
+                    <button type="submit" style="padding: 0"><i class="fa-solid fa-heart not-fave"></i></button>
                   <% end %>
                 <% else %>
                   <i class="fa-solid fa-heart fave"></i>
@@ -83,7 +99,7 @@
               <div class="favourites-form">
                 <% if activity.status == "added" %>
                   <%= simple_form_for [@trip, activity], url: add_activity_to_favourites_path(@trip, activity), method: :post do |f| %>
-                    <button type="submit"><i class="fa-solid fa-heart not-fave"></i></button>
+                    <button type="submit" style="padding: 0"><i class="fa-solid fa-heart not-fave"></i></button>
                   <% end %>
                 <% else %>
                   <i class="fa-solid fa-heart fave"></i>

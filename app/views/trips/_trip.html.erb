@@ -8,13 +8,13 @@
     <% else %>
       <div class="recommendations">
         <div class="activities-tabs" data-controller="activities-tabs">
-          <div id="eat" class="tab-button">
+          <div id="eat" class="tab-button journo-bs">
             <h2>eat</h2>
           </div>
-          <div id="do" class="tab-button">
+          <div id="do" class="tab-button journo-bs">
             <h2>do</h2>
           </div>
-          <div id="explore" class="tab-button">
+          <div id="explore" class="tab-button journo-bs">
             <h2>explore</h2>
           </div>
         </div>
@@ -56,8 +56,13 @@
       data-map-markers-value="<%= markers %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
+<<<<<<< Updated upstream
       <%= link_to(trip) do %>
         <div class="checkout">
+=======
+      <%= link_to(@trip) do %>
+        <div class="checkout journo-bs">
+>>>>>>> Stashed changes
           <%= "Let's Plan!" %>
         </div>
       <% end %>

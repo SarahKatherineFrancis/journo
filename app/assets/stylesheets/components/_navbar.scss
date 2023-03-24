@@ -16,10 +16,15 @@
 .nav-item {
   padding-left: 24px;
   // font-variant: small-caps;
+  color: var(--midnightgreen);
   letter-spacing: 2px;
   font-size: 16px;
 
   &:hover {
-    color: var(--midnightgreen);
+    scale: 1.02;
   }
+}
+
+.scale-icon {
+  scale: 1.02;
 }
