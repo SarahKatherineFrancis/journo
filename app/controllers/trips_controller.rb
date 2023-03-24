@@ -26,11 +26,10 @@ class TripsController < ApplicationController
   end
 
   def show
-    @note = Note.new
     @trip = Trip.find(params[:id])
-    @activities = @trip.activities.where(status: :added)
-    @trip = Trip.find(params[:id])
-    @activities = @trip.activities.where(status: :added)
+
+    @selected_activities = @trip.activities.where(status: %i[added favourite])
+    @activities = @selected_activities.order(:category)
 
     respond_to do |format|
       format.html
@@ -78,6 +77,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(full_params_trip)
     @trip.user = current_user
     if @trip.save
+      @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
       redirect_to trip_activities_path(@trip)
     else
       render :new
