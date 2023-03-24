@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
 
   def selected_activities
     @trip = Trip.find(params[:trip_id])
-    @selected_activities = @trip.activities.where(status: :added)
+    @selected_activities = @trip.activities.where(status: %i[added favourite])
     # @markers = Activity.generate_markers_json(@trip.activities.selected)
   end
 
