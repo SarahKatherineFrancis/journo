@@ -14,7 +14,7 @@
                 autofocus: true %>
             <%= f.input :destination,
                 required: true,
-                autofocus: true
+                autofocus: true, input_html: {value: params[:destination]}
             %>
             <%= f.input :longitude, :as => :hidden, :input_html => { :value => "lonTarget" } %>
             <%= f.input :latitude, :as => :hidden, :input_html => { :value => "latTarget" } %>
