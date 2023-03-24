@@ -101,10 +101,12 @@
       <i id="pen" class='fa-solid fa-pen pen'></i>
     </div>
     <div id="note" class="">
-      <%= @trip.note.note.html_safe %>
+      <% if @trip.note %>
+        <%= @trip.note.note.html_safe %>
+      <% end %>
     </div>
     <div id="note-form" class="notes-form note-hide">
-      <%= simple_form_for [@trip, @trip.note] do |f| %>
+      <%= simple_form_for [@trip, @note] do |f| %>
         <%= f.input :note %>
         <%= f.button :submit, "Save" %>
       <% end %>

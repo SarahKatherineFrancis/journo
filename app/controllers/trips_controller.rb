@@ -26,23 +26,17 @@ class TripsController < ApplicationController
   end
 
   def show
+    @note = Note.new
     @trip = Trip.find(params[:id])
-
-    @selected_activities = @trip.activities.where(status: %i[added favourite])
-    @activities = @selected_activities.order(:category)
+    @activities = @trip.activities.where(status: :added)
+    @trip = Trip.find(params[:id])
+    @activities = @trip.activities.where(status: :added)
 
     restaurants = @activities.where(category: :eat).pluck(:name)
     dos = @activities.where(category: :do).pluck(:name)
     exps = @activities.where(category: :explore).pluck(:name)
 
     activity_names = (dos + exps).uniq
-
-    respond_to do |format|
-      format.html
-      format.ics do
-        send_data @trip.to_icalendar, filename: "#{@trip.trip_name}.ics"
-      end
-    end
 
     return unless @trip.itinerary.nil?
 
@@ -72,14 +66,11 @@ class TripsController < ApplicationController
     date_range = params[:date_range]
     start_date = Date.parse(date_range.split[0])
     end_date = Date.parse(date_range.split[2])
-
     date_range_hash = { start_date:, end_date: }
-
     full_params_trip = trip_params.merge(date_range_hash)
     @trip = Trip.new(full_params_trip)
     @trip.user = current_user
     if @trip.save
-      @note = Note.create(note: "Write your memories here!", user: current_user, trip: @trip)
       redirect_to trip_activities_path(@trip)
     else
       render :new

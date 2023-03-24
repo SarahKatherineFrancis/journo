@@ -53,7 +53,7 @@
         <% end %>
       </div>
       <div class="activities-index-map" data-controller="map"
-      data-map-markers-value="<%= markers %>"
+      data-map-markers-value="<%= markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
 
