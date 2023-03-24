@@ -42,7 +42,7 @@
     <div class="sticky">
       <div class="trip-details">
         <div class="basket-title">
-          <h2>Trip Details</h2>
+          <h1>Trip Details</h1>
           <%= link_to "<i class='fa-solid fa-calendar'></i>".html_safe, trip_path(@trip, format: :ics), class: 'pen' %>
         </div>
         <p><strong>Travelling to:</strong> <%= @trip.destination %></p>
@@ -51,7 +51,7 @@
       </div>
       <div class="selected-activities">
         <div class="basket-title">
-          <h2>You selected:</h2>
+          <h1>Selected Activities</h1>
           <%= link_to "<i class='fa-solid fa-plus'></i>".html_safe, trip_activities_path(@trip), class: 'pen' %>
         </div>
         <% @activities.each do |activity|%>

@@ -52,8 +52,22 @@
     font-size: 44px;
     letter-spacing: 2px;
   }
+
+  h4 {
+    font-size: 20px;
+    font-family: 'Gochi Hand', "cursive";
+    letter-spacing: 2px;
+    text-align: right;
+    color: var(--midnight-green);
+  }
 }
 
+#current_date{
+  font-family: 'Gochi Hand', "cursive";
+  text-align: right;
+  color: var(--midnight-green);
+  font-size: 20px;
+}
 .image-responsive {
   height: 100%;
   width: 120px;
@@ -154,18 +168,16 @@ font-size: 24px;
   grid-column-end: 12;
   grid-row: 2;
   margin-bottom: 30px;
-  padding: 20px 0px;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-
-
+  padding: 40px 0px;
+  border-bottom: 1px solid var(--midnight-green);
+  border-top: 1px solid var(--midnight-green);
 }
 
 .banner-card{
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   background-position: center;
-  height: 250px;
+  height: 300px;
   position: relative;
 
   h1 {
@@ -174,12 +186,14 @@ font-size: 24px;
     bottom: 2px;
     margin: 0px;
     font-family: "Quicksand", "sans-serif";
-    font-size: 18px;
+    font-size: 22px;
+    text-shadow: 1px 1px 2px var(--eggshell);
   }
 
   .btn {
     margin: 0px;
     padding: 0px;
+    font-size: 35px;
   }
 }
 
