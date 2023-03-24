@@ -20,10 +20,11 @@
 
 .filler{
   height: 200px;
+  grid-column: 1, 12;
 }
 
 .trip-form {
-  margin-top: 100px;
+  margin-top: 50px;
   grid-column-start: 4;
   grid-column-end: 10;
   box-shadow: 2px 2px 7px black;
