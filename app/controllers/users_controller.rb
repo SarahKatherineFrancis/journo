@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @trips = Trip.where(id: current_user)
+    @trips = Trip.where(user_id: current_user.id)
     @popular_destinations = @user.popular_destinations
     @markers = @trips.geocoded.map do |trip|
       {

@@ -55,16 +55,16 @@
       <div class="content-card">
         <p><i class="fa-solid fa-thumbtack"></i></p>
         <h1>Recently Created Trip:</h1>
-        <div class="card-big-shadow">
+        <div>
           <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
             <div class="content">
-            <% if current_user.trips.empty? %>
-              <h1>You currently have no trips!</h1>
-            <% else %>
-              <h1 class="title"><%= current_user.trips.last.trip_name %></h1>
-              <h6 class="description"><i class="fa-solid fa-location-dot"></i> <%=current_user.trips.last.destination%></h6>
-              <h6 class="category"><i class="fa-regular fa-calendar"></i> <%=current_user.trips.last.start_date%></h6>
-            <% end %>
+              <% if current_user.trips.empty? %>
+                <h1>You currently have no trips!</h1>
+              <% else %>
+                <h1 class="title"><%= current_user.trips.last.trip_name %></h1>
+                <h6 class="description"><i class="fa-solid fa-location-dot"></i> <%=current_user.trips.last.destination%></h6>
+                <h6 class="category"><i class="fa-regular fa-calendar"></i> <%=current_user.trips.last.start_date%></h6>
+              <% end %>
             </div>
           </div>
         </div>
