@@ -3,8 +3,7 @@
   <div class="parent">
     <% if trip.activities.pending_eat.empty? %>
       <div id="load-screen">
-        <i class="fa-solid fa-plane-departure fa-beat pen"></i>
-        <h1 data-controller="typed-js"></h1>
+        <h3><i class="fa-solid fa-plane fa-bounce pen"></i> Generating your dream trip...</h3>
       </div>
     <% else %>
       <div class="recommendations">
@@ -32,7 +31,7 @@
     <% end %>
     <div class="trip-basket">
       <div class="basket-title">
-        <h1><%=trip.trip_name%> trip</h1>
+        <h1><%=trip.trip_name%></h1>
       </div>
       <div class="added-trips">
         <% if trip.activities.selected.length == 0  %>
@@ -57,7 +56,7 @@
       data-map-markers-value="<%= markers %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-      <%= link_to(@trip) do %>
+      <%= link_to(trip) do %>
         <div class="checkout">
           <%= "Let's Plan!" %>
         </div>

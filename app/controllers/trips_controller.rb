@@ -28,12 +28,6 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
 
-    respond_to do |format|
-      format.html
-      format.ics do
-        send_data @trip.to_icalendar, filename: "#{@trip.trip_name}.ics"
-      end
-    end
     @selected_activities = @trip.activities.where(status: %i[added favourite])
     @activities = @selected_activities.order(:category)
 
@@ -42,6 +36,13 @@ class TripsController < ApplicationController
     exps = @activities.where(category: :explore).pluck(:name)
 
     activity_names = (dos + exps).uniq
+
+    respond_to do |format|
+      format.html
+      format.ics do
+        send_data @trip.to_icalendar, filename: "#{@trip.trip_name}.ics"
+      end
+    end
 
     return unless @trip.itinerary.nil?
 

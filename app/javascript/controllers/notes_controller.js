@@ -10,12 +10,12 @@ export default class extends Controller {
     });
 
     const pen = document.getElementById("pen");
-    const noteEditor = document.getElementById("notes-form");
+    const noteEditor = document.getElementById("note-form");
     const note = document.getElementById("note");
+
     pen.addEventListener("click", (event) => {
-      console.log(event);
-      note.classList.toggle("note-toggle");
-      noteEditor.classList.toggle("note-toggle");
+      note.classList.add("note-hide");
+      noteEditor.classList.remove("note-hide")
     });
   }
 }

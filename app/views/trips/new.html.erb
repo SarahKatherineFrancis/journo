@@ -2,12 +2,9 @@
   <div class="parent">
     <div class="trip-form">
       <div class="trip-form-header">
-        <a class="back-arrow" href="/trips">
-          <i class="fa-solid fa-chevron-left"></i>
-        </a>
         <h2>Where to?</h2>
         <h4>We're here to help you plan!</h4>
-        <%= link_to "Edit your preferences?",  edit_user_registration_path%>
+        <%= link_to "Edit your preferences",  edit_user_registration_path%>
       </div>
       <div class="trip-form-body", data-controller="activities">
         <%= simple_form_for @trip, html: { id: 'trip-form '} do |f| %>
@@ -16,8 +13,9 @@
                 required: true,
                 autofocus: true %>
             <%= f.input :destination,
-                input_html: {value: params[:destination], data: {address_autocomplete_target: "address", class: "d-none"}},
-                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+                required: true,
+                autofocus: true
+            %>
             <%= f.input :longitude, :as => :hidden, :input_html => { :value => "lonTarget" } %>
             <%= f.input :latitude, :as => :hidden, :input_html => { :value => "latTarget" } %>
             <p>When? <i class="fa-regular fa-calendar"></i></p>

@@ -13,9 +13,6 @@ application.register("activity-dropdown", ActivityDropdownController)
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
-import CountdownController from "./countdown_controller"
-application.register("countdown", CountdownController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
