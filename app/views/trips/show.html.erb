@@ -100,13 +100,13 @@
       <h2>Notes</h2>
       <i id="pen" class='fa-solid fa-pen pen'></i>
     </div>
-    <div id="note" class="note-toggle">
+    <div id="note" class="">
       <%= @trip.note.note.html_safe %>
     </div>
-    <div class="notes-form">
+    <div id="note-form" class="notes-form note-hide">
       <%= simple_form_for [@trip, @trip.note] do |f| %>
         <%= f.input :note %>
-        <%= f.button :submit, "Edit" %>
+        <%= f.button :submit, "Save" %>
       <% end %>
     </div>
   </div>
