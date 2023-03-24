@@ -8,6 +8,7 @@
   top: 0;
   background-color: var(--eggshell);
   border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 
   .basket-title {
     display: flex;
@@ -32,7 +33,6 @@
     margin-bottom: 22px;
     align-items: center;
   }
-
 }
 
 .empty-trip {
@@ -56,6 +56,11 @@
   font-size: 24px;
   background-color: orange;
   color: var(--midnight-green);
+
+  &:hover {
+    color: var(--eggshell);
+    scale: 1.02;
+  }
 
   a {
     text-decoration: none;
