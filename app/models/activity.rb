@@ -2,8 +2,9 @@ class Activity < ApplicationRecord
   belongs_to :trip
   has_many :notes, dependent: :destroy
 
-  geocoded_by :address
-  # geocoded_by :longitude, :latitude
+  # geocoded_by :address
+  after_validation :geocode
+  geocoded_by :longitude, :latitude
 
   enum category: {
     eat: 0,
