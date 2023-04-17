@@ -4,66 +4,93 @@
   padding: 300px 0;
   background-attachment: fixed;
   background-repeat: no-repeat;
+}
 
-  h1 {
-    margin: 0;
-    color: #073b4cff;
-    text-shadow: 1px 1px 3px white;
-    font-size: 60px;
-    font-weight: bold;
-    font-family: "Gochi Hand", cursive;
-    text-align: left;
-  }
+.banner h1 {
+  margin: 0;
+  color: #073b4cff;
+  text-shadow: 1px 1px 3px white;
+  font-size: 60px;
+  font-weight: bold;
+  font-family: "Gochi Hand", cursive;
+  text-align: left;
+}
 
-  h2 {
-    margin: 0;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    font-size: 32px;
-    font-weight: bold;
-    font-family: "Quicksand", sans-serif;
-    text-align: left;
-  }
+.banner h2,
+.banner h3 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif;
+  text-align: left;
+}
 
-  p {
-    font-size: 20px;
-    color: white;
-    opacity: 0.7;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  }
+.banner h2 {
+  font-size: 32px;
+}
 
-  .btn {
-    display: inline-block;
-    background-color: #073b4cff;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 30px;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.2s;
-  }
+.banner h3 {
+  font-size: 24px;
+}
 
-  .btn:hover {
-    background-color: #052d3dff;
-  }
+.banner .nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #073b4cff;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  margin-right: 20px;
+  border-radius: 30px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin-top: 12px;
+}
+
+.banner .nav-link:hover {
+  background-color: #052d3dff;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: 0.7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.banner .btn {
+  display: inline-block;
+  background-color: #073b4cff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.banner .btn:hover {
+  background-color: #052d3dff;
 }
 
 @media (max-width: 768px) {
   .banner {
     padding: 100px 0;
+  }
 
-    h1 {
-      font-size: 48px;
-    }
+  .banner h1 {
+    font-size: 48px;
+  }
 
-    h2 {
-      font-size: 28px;
-    }
+  .banner h2 {
+    font-size: 28px;
+  }
 
-    p {
-      font-size: 16px;
-    }
+  .banner p {
+    font-size: 16px;
   }
 }
